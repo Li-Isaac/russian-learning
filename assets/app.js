@@ -41,6 +41,82 @@
     13: { title: '复句思维', text: '俄语复合句用 который 连接定语从句，词序灵活。掌握这些连接词，你的俄语就从"蹦词"变成"成句"，这是 A2 到 B1 的关键一步。' }
   };
 
+  /* ---------- 写作训练数据 ---------- */
+  var WRITING_TASKS = [
+    {
+      no: 1, ru: 'О себе', zh: '自我介绍',
+      topic: '写 10~15 句，介绍：姓名、国籍、年龄、职业/学习、语言、爱好、家庭',
+      points: ['用 Меня зовут… 开头', '用 из + 属格 说来自哪里', '用 Я учусь / Я работаю 说职业', '至少用一个 потому что 连接句'],
+      sample: [
+        { ru: 'Здравствуйте! Меня зовут Анна.', zh: '您好！我叫安娜。' },
+        { ru: 'Я из Китая, из города Пекин.', zh: '我来自中国北京。' },
+        { ru: 'Мне двадцать два года.', zh: '我二十二岁。' },
+        { ru: 'Я студентка, я учусь в университете.', zh: '我是大学生，在大学读书。' },
+        { ru: 'Я изучаю русский язык уже два года.', zh: '我学俄语已经两年了。' },
+        { ru: 'Я люблю музыку и спорт, потому что это интересно.', zh: '我喜欢音乐和运动，因为很有趣。' },
+        { ru: 'Моя семья живёт в Пекине.', zh: '我的家人住在北京。' }
+      ],
+      checks: ['动词变位与人称一致（я учусь / он учится）', '名词性数一致（новая книга）', '用了过去时或将来时', '用了连接词（и / потому что / поэтому）', '句末标点完整']
+    },
+    {
+      no: 2, ru: 'Мой город', zh: '我的城市',
+      topic: '写 10~15 句，介绍：城市名称、位置、景点、交通、天气、你喜欢它的原因',
+      points: ['用 Я живу в… 开头', '用 в/на + 前置格 说位置（в центре）', '用 есть 说有（В городе есть…）', '至少用一个 поэтому 或 потому что'],
+      sample: [
+        { ru: 'Я живу в Пекине, это столица Китая.', zh: '我住在北京，它是中国的首都。' },
+        { ru: 'Пекин – очень большой и красивый город.', zh: '北京是一座很大很美的城市。' },
+        { ru: 'В центре города есть музей и театр.', zh: '市中心有博物馆和剧院。' },
+        { ru: 'В Пекине есть метро, поэтому транспорт удобный.', zh: '北京有地铁，所以交通很方便。' },
+        { ru: 'Летом в городе жарко, а зимой холодно.', zh: '夏天城市里很热，冬天很冷。' },
+        { ru: 'Мой любимый парк находится недалеко от моего дома.', zh: '我最喜欢的公园在我家附近。' },
+        { ru: 'Я люблю свой город, потому что здесь живут мои друзья.', zh: '我爱我的城市，因为我的朋友住在这里。' }
+      ],
+      checks: ['地点用前置格（в городе / в центре）', '方向用宾格（в школу）', '形容词与名词性数格一致', '用了连接词', '时态正确（过去/现在）']
+    },
+    {
+      no: 3, ru: 'Мой рабочий день', zh: '我的工作日',
+      topic: '写 10~15 句，按时间顺序描述：起床、上班、工作、午餐、回家、晚上',
+      points: ['用 утром / днём / вечером 分时间段', '用 в + 数字 + часов 说几点', '用过去时或现在时一致', '至少用一个 потом 或 когда'],
+      sample: [
+        { ru: 'Мой рабочий день начинается в семь часов утра.', zh: '我的工作日早上七点开始。' },
+        { ru: 'Утром я встаю, умываюсь и завтракаю.', zh: '早上我起床、洗漱、吃早餐。' },
+        { ru: 'В восемь часов я иду на работу.', zh: '八点我去上班。' },
+        { ru: 'Я работаю в офисе с девяти до шести.', zh: '我从九点到六点在办公室工作。' },
+        { ru: 'В обед я обедаю в кафе.', zh: '午餐我在咖啡馆吃饭。' },
+        { ru: 'После работы я еду домой на метро.', zh: '下班后我坐地铁回家。' },
+        { ru: 'Вечером я ужинаю и смотрю телевизор.', zh: '晚上我吃晚饭、看电视。' }
+      ],
+      checks: ['时间状语用工具格（утром/вечером）', '时间点用 в + 宾格（в семь часов）', '动词变位正确', '顺序词（потом / после）使用正确', '标点完整']
+    },
+    {
+      no: 4, ru: 'Мои выходные', zh: '我的周末',
+      topic: '写 10~15 句，描述周末：休息、爱好、和朋友见面、下个周末的计划',
+      points: ['用过去时描述上个周末', '用将来时描述下个周末', '用 ходить/ездить（习惯）', '至少用一个 если 或 чтобы'],
+      sample: [
+        { ru: 'По выходным я обычно отдыхаю.', zh: '周末我通常休息。' },
+        { ru: 'В прошлую субботу я ходил в парк.', zh: '上周六我去了公园。' },
+        { ru: 'Я гулял там с другом, и мы много разговаривали.', zh: '我和朋友在那里散步，聊了很多。' },
+        { ru: 'В воскресенье я смотрел интересный фильм дома.', zh: '周日我在家看了一部有趣的电影。' },
+        { ru: 'В следующие выходные я поеду за город.', zh: '下个周末我要去郊外。' },
+        { ru: 'Если будет хорошая погода, мы пойдём гулять.', zh: '如果天气好，我们去散步。' },
+        { ru: 'Я хочу хорошо отдохнуть, чтобы работать лучше.', zh: '我想好好休息，以便更好地工作。' }
+      ],
+      checks: ['过去时按性数变化（я ходил / я ходила）', '将来时用 буду+不定式或完成体变位', '运动动词定向/不定向正确', '用了 если / чтобы 从句', '时态前后一致']
+    }
+  ];
+
+  /* ---------- 听力训练数据（听音选义） ---------- */
+  var LISTENING_QUIZ = [
+    { word: 'голова', options: ['头', '腿', '手', '背'], answer: 0 },
+    { word: 'собака', options: ['猫', '狗', '马', '牛'], answer: 1 },
+    { word: 'яблоко', options: ['梨', '香蕉', '苹果', '橙子'], answer: 2 },
+    { word: 'холодный', options: ['热的', '暖的', '凉的', '冷的'], answer: 3 },
+    { word: 'завтра', options: ['昨天', '今天', '明天', '后天'], answer: 2 },
+    { word: 'работать', options: ['休息', '工作', '学习', '睡觉'], answer: 1 },
+    { word: 'дорогой', options: ['便宜的', '新的', '贵的', '旧的'], answer: 2 },
+    { word: 'слушать', options: ['说', '听', '看', '读'], answer: 1 }
+  ];
+
   /* ---------- 语音试听 ---------- */
   function speak(text, el) {
     if (!SYNTH_OK) return;
@@ -372,7 +448,7 @@
   function updateQuizScore(score) {
     var result = document.querySelector('.quiz-result');
     if (!result) return;
-    result.textContent = '已答 ' + (score.total + 0) + ' 题中答对 ' + score.right + ' 题（目标 ≥75%）';
+    result.textContent = '已答 ' + score.total + ' 题中答对 ' + score.right + ' 题（目标 ≥75%）';
     if (score.right === score.total) {
       result.textContent = '🎉 全对！' + score.total + '/' + score.total + '，太棒了，可以进入下一课！';
     } else if (score.right >= Math.ceil(score.total * 0.75)) {
@@ -487,7 +563,180 @@
       '<tr><td class="zh">4 写作</td><td class="es">2 任务</td><td class="es">50 分钟</td><td class="zh">个人信息表 + 命题短文（10-15 句）</td><td class="es">100</td></tr>' +
       '<tr><td class="zh">5 口语</td><td class="es">4 大题</td><td class="es">25 分钟</td><td class="zh">自我介绍、情景对话、主题陈述</td><td class="es">100</td></tr>' +
       '</table></div>' +
-      '<div class="note-banner" style="margin-top:0;"><b>通过标准：</b>每项 ≥ 66%（约 66 分），最多允许 1~2 项 60%；总时长约 4 小时。词汇量要求约 1300 词，本课程 12 课已覆盖考试要求的全部语法点与高频主题<sup><a href="#cite-2">[2]</a></sup><sup><a href="#cite-3">[3]</a></sup>。</div>';
+      '<div class="note-banner" style="margin-top:0;"><b>通过标准：</b>每项 ≥ 66%（约 66 分），最多允许 1~2 项 60%；总时长约 4 小时。词汇量要求约 1300 词，本课程 13 课已覆盖考试要求的全部语法点与高频主题<sup><a href="#cite-2">[2]</a></sup><sup><a href="#cite-3">[3]</a></sup>。</div>';
+  }
+
+  /* ---------- 词汇库 ---------- */
+  var vbState = { topic: 0, mode: 'list', flashIdx: 0, flashFlipped: false };
+
+  function buildVocabBank() {
+    var wrap = document.getElementById('vocab-bank');
+    if (!wrap) return;
+    var bank = window.VOCAB_BANK || [];
+    if (bank.length === 0) return;
+
+    /* 工具栏 */
+    var toolbar = el('div', 'vocab-toolbar');
+    var search = el('input', 'vocab-search');
+    search.type = 'text';
+    search.placeholder = '搜索俄语或中文…';
+    var toggle = el('div', 'mode-toggle');
+    var btnList = el('button', 'mode-btn active', '列表');
+    var btnFlash = el('button', 'mode-btn', '闪卡');
+    btnList.type = 'button'; btnFlash.type = 'button';
+    toggle.appendChild(btnList); toggle.appendChild(btnFlash);
+    toolbar.appendChild(search); toolbar.appendChild(toggle);
+    wrap.appendChild(toolbar);
+
+    /* 主题标签 */
+    var tabs = el('div', 'tabs');
+    tabs.id = 'vb-tabs';
+    bank.forEach(function (t, i) {
+      var b = el('button', 'tab-btn' + (i === 0 ? ' active' : ''), t.name);
+      b.type = 'button';
+      b.dataset.idx = i;
+      b.addEventListener('click', function () { vbState.topic = i; renderVb(); });
+      tabs.appendChild(b);
+    });
+    wrap.appendChild(tabs);
+
+    var listBox = el('div', null, '');
+    listBox.id = 'vb-list';
+    var flashBox = el('div', null, '');
+    flashBox.id = 'vb-flash';
+    flashBox.style.display = 'none';
+    wrap.appendChild(listBox);
+    wrap.appendChild(flashBox);
+
+    /* 听力小练 */
+    var listenBox = el('div', 'lesson-block');
+    listenBox.style.marginTop = '1.5rem';
+    listenBox.appendChild(el('h4', null, '<span class="b g">🎧</span> 听音选义（点击播放，选出正确中文）'));
+    LISTENING_QUIZ.forEach(function (q, i) {
+      listenBox.appendChild(buildListeningItem(q, i));
+    });
+    wrap.appendChild(listenBox);
+
+    /* 模式切换 */
+    btnList.addEventListener('click', function () {
+      vbState.mode = 'list';
+      btnList.classList.add('active'); btnFlash.classList.remove('active');
+      renderVb();
+    });
+    btnFlash.addEventListener('click', function () {
+      vbState.mode = 'flash';
+      btnFlash.classList.add('active'); btnList.classList.remove('active');
+      vbState.flashIdx = 0; vbState.flashFlipped = false;
+      renderVb();
+    });
+    search.addEventListener('input', function () { renderVb(); });
+
+    function renderVb() {
+      Array.from(tabs.querySelectorAll('.tab-btn')).forEach(function (b) {
+        b.classList.toggle('active', parseInt(b.dataset.idx, 10) === vbState.topic);
+      });
+      var kw = search.value.trim().toLowerCase();
+      var words = bank[vbState.topic].words.filter(function (w) {
+        if (!kw) return true;
+        return w.ru.toLowerCase().indexOf(kw) >= 0 || w.zh.indexOf(kw) >= 0;
+      });
+
+      if (vbState.mode === 'list') {
+        flashBox.style.display = 'none';
+        listBox.style.display = 'block';
+        listBox.innerHTML = '';
+        var grid = el('div', 'vocab-grid');
+        words.forEach(function (w) {
+          var chip = el('button', 'vocab-chip');
+          chip.type = 'button';
+          chip.innerHTML = '<span class="w-type">' + w.type + '</span><span class="w-es">' + w.ru + '</span><span class="w-zh">' + w.zh + '</span>';
+          chip.addEventListener('click', function () { speak(w.ru + '.', chip); });
+          grid.appendChild(chip);
+        });
+        listBox.appendChild(grid);
+      } else {
+        listBox.style.display = 'none';
+        flashBox.style.display = 'block';
+        flashBox.innerHTML = '';
+        if (words.length === 0) { flashBox.appendChild(el('p', null, '没有匹配的词')); return; }
+        if (vbState.flashIdx >= words.length) vbState.flashIdx = 0;
+        var w = words[vbState.flashIdx];
+        var card = el('div', 'flashcard');
+        card.innerHTML = vbState.flashFlipped
+          ? '<span class="f-zh">' + w.zh + '</span><span class="f-type">' + w.type + '</span><span class="f-ru" style="font-size:1.2rem;">' + w.ru + '</span>'
+          : '<span class="f-ru">' + w.ru + '</span><span class="f-type">' + w.type + '</span><span class="f-hint">点击翻面</span>';
+        card.addEventListener('click', function () {
+          vbState.flashFlipped = !vbState.flashFlipped;
+          if (vbState.flashFlipped) speak(w.ru + '.', card);
+          renderVb();
+        });
+        flashBox.appendChild(card);
+        var nav = el('div', 'flashcard-nav');
+        var prev = el('button', null, '← 上一个');
+        var next = el('button', null, '下一个 →');
+        prev.type = 'button'; next.type = 'button';
+        prev.addEventListener('click', function () { vbState.flashIdx = (vbState.flashIdx - 1 + words.length) % words.length; vbState.flashFlipped = false; renderVb(); });
+        next.addEventListener('click', function () { vbState.flashIdx = (vbState.flashIdx + 1) % words.length; vbState.flashFlipped = false; renderVb(); });
+        nav.appendChild(prev); nav.appendChild(next);
+        flashBox.appendChild(nav);
+      }
+    }
+
+    renderVb();
+  }
+
+  function buildListeningItem(q, i) {
+    var item = el('div', 'ex-item');
+    var qEl = el('div', 'ex-q');
+    qEl.innerHTML = '<b>' + (i + 1) + '.</b> ';
+    var playBtn = el('button', 'ex-opt', '▶ 播放');
+    playBtn.type = 'button';
+    playBtn.style.background = 'rgba(31,122,140,0.1)';
+    playBtn.style.color = '#1f7a8c';
+    playBtn.style.fontWeight = '700';
+    playBtn.addEventListener('click', function () { speak(q.word + '.', playBtn); });
+    qEl.appendChild(playBtn);
+    item.appendChild(qEl);
+    var opts = el('div', 'ex-opts');
+    q.options.forEach(function (opt, oi) {
+      var b = el('button', 'ex-opt', opt);
+      b.type = 'button';
+      b.addEventListener('click', function () {
+        var btns = opts.querySelectorAll('.ex-opt');
+        btns.forEach(function (x) { x.disabled = true; });
+        if (oi === q.answer) { b.classList.add('correct'); }
+        else { b.classList.add('wrong'); btns[q.answer].classList.add('correct'); }
+      });
+      opts.appendChild(b);
+    });
+    item.appendChild(opts);
+    return item;
+  }
+
+  /* ---------- 写作训练 ---------- */
+  function buildWriting() {
+    var wrap = document.getElementById('writing-panel');
+    if (!wrap) return;
+    var grid = el('div', 'writing-grid');
+    WRITING_TASKS.forEach(function (t) {
+      var card = el('div', 'writing-card');
+      card.appendChild(el('h3', null, '<span class="mark">' + t.no + '</span> ' + t.ru + ' · ' + t.zh));
+      card.appendChild(el('p', 'w-topic', t.topic));
+      t.points.forEach(function (p) {
+        card.appendChild(el('div', 'writing-point', '<b>▸</b> ' + p));
+      });
+      card.appendChild(el('div', 'writing-point', '<b>范文：</b>'));
+      t.sample.forEach(function (s) {
+        var line = el('div', 'text-para', s.ru + '<span class="tzh">' + s.zh + '</span>');
+        line.addEventListener('click', function () { speak(s.ru, line); });
+        card.appendChild(line);
+      });
+      var check = el('div', 'writing-check');
+      check.innerHTML = '<b>评分自查：</b>' + t.checks.join(' · ');
+      card.appendChild(check);
+      grid.appendChild(card);
+    });
+    wrap.appendChild(grid);
   }
 
   /* ---------- 启动 ---------- */
@@ -495,6 +744,8 @@
     buildCatalog();
     buildHandbook();
     buildExam();
+    buildVocabBank();
+    buildWriting();
     showLesson(1);
   });
 })();
