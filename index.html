@@ -336,6 +336,119 @@
     sup a:hover { text-decoration: underline; }
     .speaking { border-color: var(--accent) !important; box-shadow: 0 0 0 3px rgba(228, 87, 46, 0.2) !important; }
 
+    /* ===== Vocab bank ===== */
+    .tabs { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-bottom: 1.2rem; }
+    .tab-btn {
+      font-family: var(--font-body); font-size: 0.9rem; font-weight: 600;
+      color: var(--muted); background: rgba(255, 255, 255, 0.7);
+      border: 1px solid var(--rule); border-radius: 999px; padding: 0.45rem 1.1rem;
+      cursor: pointer; transition: all 0.15s ease;
+    }
+    .tab-btn:hover { color: var(--ink); border-color: rgba(228, 87, 46, 0.4); }
+    .tab-btn.active {
+      color: #fff; background: linear-gradient(135deg, var(--accent), #f0a04b);
+      border-color: transparent; box-shadow: 0 4px 12px rgba(228, 87, 46, 0.25);
+    }
+    .vocab-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+      gap: 0.9rem;
+    }
+    .vocab-chip {
+      display: flex; flex-direction: column; gap: 0.4rem;
+      background: rgba(255, 255, 255, 0.85);
+      border: 1px solid var(--rule); border-radius: 14px;
+      padding: 0.95rem 1.05rem;
+      cursor: pointer; text-align: left; font-family: inherit;
+      transition: transform 0.15s ease, border-color 0.15s ease, box-shadow 0.15s ease;
+      box-shadow: var(--shadow);
+    }
+    .vocab-chip:hover {
+      transform: translateY(-2px);
+      border-color: rgba(228, 87, 46, 0.45);
+      box-shadow: 0 6px 16px rgba(228, 87, 46, 0.1);
+    }
+    .vocab-chip .w-type {
+      align-self: flex-start;
+      font-size: 0.72rem; font-weight: 600;
+      color: var(--accent2); background: rgba(31, 122, 140, 0.1);
+      border-radius: 6px; padding: 0.12rem 0.5rem;
+    }
+    .vocab-chip .w-es {
+      font-family: var(--font-es); font-size: 1.28rem; color: var(--ink); line-height: 1.2;
+    }
+    .vocab-chip .w-zh {
+      font-size: 0.86rem; color: var(--muted); line-height: 1.45;
+    }
+    .vocab-toolbar {
+      display: flex; gap: 0.8rem; flex-wrap: wrap; align-items: center; margin-bottom: 1.2rem;
+    }
+    .vocab-search {
+      flex: 1; min-width: 200px;
+      font-family: var(--font-es); font-size: 1rem;
+      padding: 0.55rem 1.1rem; border: 1px solid var(--rule); border-radius: 999px;
+      background: rgba(255, 255, 255, 0.9); color: var(--ink);
+    }
+    .vocab-search:focus { outline: 2px solid rgba(31, 122, 140, 0.4); }
+    .mode-toggle { display: flex; gap: 0.4rem; }
+    .mode-btn {
+      font-family: var(--font-body); font-size: 0.88rem; font-weight: 600;
+      color: var(--muted); background: rgba(255, 255, 255, 0.7);
+      border: 1px solid var(--rule); border-radius: 999px; padding: 0.45rem 1.1rem; cursor: pointer;
+      transition: all 0.15s ease;
+    }
+    .mode-btn:hover { color: var(--ink); border-color: rgba(31, 122, 140, 0.4); }
+    .mode-btn.active {
+      color: #fff; background: linear-gradient(135deg, var(--accent2), #4aa5b5); border-color: transparent;
+    }
+    .flashcard {
+      text-align: center; cursor: pointer;
+      background: rgba(255, 255, 255, 0.9);
+      border: 1px solid var(--rule); border-radius: var(--radius);
+      padding: 2.5rem 1.5rem; box-shadow: var(--shadow);
+      transition: transform 0.15s ease, border-color 0.15s ease;
+      min-height: 170px; display: flex; flex-direction: column; justify-content: center; align-items: center; gap: 0.5rem;
+    }
+    .flashcard:hover { transform: translateY(-3px); border-color: rgba(31, 122, 140, 0.5); }
+    .flashcard .f-ru { font-family: var(--font-es); font-size: 1.9rem; }
+    .flashcard .f-zh { font-size: 1.1rem; color: var(--muted); }
+    .flashcard .f-type { font-size: 0.78rem; color: var(--accent2); }
+    .flashcard .f-hint { font-size: 0.75rem; color: rgba(228, 87, 46, 0.7); margin-top: 0.5rem; }
+    .flashcard-nav { display: flex; justify-content: center; gap: 0.8rem; margin-top: 1rem; }
+    .flashcard-nav button {
+      font-family: var(--font-body); font-size: 0.9rem; font-weight: 600;
+      color: var(--accent2); background: rgba(31, 122, 140, 0.08);
+      border: 1px solid rgba(31, 122, 140, 0.3); border-radius: 10px;
+      padding: 0.5rem 1.2rem; cursor: pointer; transition: all 0.15s ease;
+    }
+    .flashcard-nav button:hover { background: rgba(31, 122, 140, 0.16); }
+
+    /* ===== Writing ===== */
+    .writing-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1rem; }
+    .writing-card {
+      background: rgba(255, 255, 255, 0.78); backdrop-filter: blur(10px);
+      border: 1px solid var(--rule); border-radius: var(--radius);
+      padding: 1.3rem 1.4rem; box-shadow: var(--shadow);
+    }
+    .writing-card h3 {
+      font-family: var(--font-head); font-size: 1.08rem;
+      display: flex; align-items: center; gap: 0.5rem; margin-bottom: 0.2rem;
+    }
+    .writing-card h3 .mark {
+      display: inline-flex; align-items: center; justify-content: center;
+      font-family: var(--font-es); font-style: italic; font-size: 0.88rem;
+      min-width: 2rem; height: 2rem; border-radius: 8px;
+      background: rgba(228, 87, 46, 0.12); color: var(--accent); padding: 0 0.4rem;
+    }
+    .writing-card .w-topic { font-size: 0.85rem; color: var(--muted); margin-bottom: 1rem; }
+    .writing-point { font-size: 0.9rem; margin-bottom: 0.5rem; }
+    .writing-point b { color: var(--accent2); }
+    .writing-check {
+      background: rgba(46, 125, 50, 0.06); border: 1px dashed rgba(46, 125, 50, 0.35);
+      border-radius: 8px; padding: 0.7rem 0.9rem; font-size: 0.85rem; color: var(--muted); margin-top: 0.8rem;
+    }
+    .writing-check b { color: var(--ok); }
+
     /* ===== Responsive ===== */
     @media (max-width: 900px) { .course-grid { grid-template-columns: repeat(2, 1fr); } }
     @media (max-width: 768px) {
@@ -343,6 +456,7 @@
       .hero { padding: 3rem 0 2rem; }
       .topnav .inner { padding: 0.6rem 1rem; }
       .lesson-panel { padding: 1.2rem 1rem; }
+      .writing-grid { grid-template-columns: 1fr; }
     }
     @media (max-width: 520px) { .course-grid { grid-template-columns: 1fr; } }
     @media print { .topnav, .lesson-nav { display: none; } body { background: #fff; } }
@@ -360,6 +474,8 @@
       <a class="link" href="#kurse">课程目录</a>
       <a class="link" href="#urok">课时学习</a>
       <a class="link" href="#spravochnik">语法手册</a>
+      <a class="link" href="#slovar">词汇库</a>
+      <a class="link" href="#pismo">写作训练</a>
       <a class="link" href="#examen">考试指南</a>
     </div>
   </nav>
@@ -416,13 +532,37 @@
         </div>
       </section>
 
+      <!-- ============ Vocab bank ============ -->
+      <section id="slovar">
+        <div class="sec-head">
+          <h2>主题词汇库</h2>
+          <span class="es-tag">Словарь по темам</span>
+        </div>
+        <p class="sec-desc">按 ТРКИ A2 标准主题整理的补充词汇，每条带<b>重音、词性、中文</b>，点击可试听。支持<b>列表模式</b>和<b>闪卡模式</b>（点击卡片翻面），也可用搜索框快速查词。这是课程生词表之外的扩展词汇，目标覆盖 A2 全部 1300 词。</p>
+        <div id="vocab-bank">
+          <!-- 由 assets/app.js 生成 -->
+        </div>
+      </section>
+
+      <!-- ============ Writing ============ -->
+      <section id="pismo">
+        <div class="sec-head">
+          <h2>写作训练</h2>
+          <span class="es-tag">Письмо</span>
+        </div>
+        <p class="sec-desc">ТРКИ A2 写作要写"个人信息 + 一篇 10~15 句命题短文"。这里按考试主题给出<b>写作要点、参考范文、评分自查清单</b>。建议先自己写，再对照范文和自查点修改。</p>
+        <div id="writing-panel">
+          <!-- 由 assets/app.js 生成 -->
+        </div>
+      </section>
+
       <!-- ============ Exam guide ============ -->
       <section id="examen">
         <div class="sec-head">
           <h2>ТРКИ A2 考试指南</h2>
           <span class="es-tag">Экзамен ТБУ</span>
         </div>
-        <p class="sec-desc">ТРКИ A2（ТБУ 基础级）：词汇量约 <b>1300 词</b>，需掌握<b>六格变格、过去时与将来时、动词体、运动动词（含前缀）、常用复合句</b><sup><a href="#cite-2">[2]</a></sup>。本课程 12 课即按此大纲设计，学完即具备考试所需语法与词汇框架。</p>
+        <p class="sec-desc">ТРКИ A2（ТБУ 基础级）：词汇量约 <b>1300 词</b>，需掌握<b>六格变格、过去时与将来时、动词体、运动动词（含前缀）、常用复合句</b><sup><a href="#cite-2">[2]</a></sup>。本课程 13 课（A1 基础 4 课 + A2 进阶 9 课）按此大纲设计，学完即具备考试所需语法与词汇框架。</p>
         <div id="exam-detail">
           <!-- 由 assets/app.js 生成 -->
         </div>
@@ -456,6 +596,7 @@
 
   <script src="./assets/data-a1.js"></script>
   <script src="./assets/data-lessons.js"></script>
+  <script src="./assets/data-vocab.js"></script>
   <script src="./assets/app.js"></script>
 </body>
 </html>
