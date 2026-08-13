@@ -2,8 +2,44 @@
 (function () {
   'use strict';
 
-  var LESSONS = (window.LESSONS_A || []).concat(window.LESSONS_B || []);
+  var LESSONS = (window.LESSONS_A1 || []).concat(window.LESSONS_A || []).concat(window.LESSONS_B || []);
+  /* 重新编号，确保唯一且顺序正确（A1 语音课在前） */
+  LESSONS.forEach(function (L, i) { L.no = i + 1; });
   var SYNTH_OK = 'speechSynthesis' in window;
+  var PROGRESS_KEY = 'ru_course_progress_v1';
+
+  /* ---------- 学习进度（localStorage） ---------- */
+  function getProgress() {
+    try {
+      return JSON.parse(localStorage.getItem(PROGRESS_KEY)) || {};
+    } catch (e) { return {}; }
+  }
+  function saveProgress(p) {
+    try { localStorage.setItem(PROGRESS_KEY, JSON.stringify(p)); } catch (e) {}
+  }
+  function markLessonComplete(no) {
+    var p = getProgress();
+    p['l' + no] = true;
+    saveProgress(p);
+    refreshCatalogChecks();
+  }
+
+  /* ---------- 文化小贴士 ---------- */
+  var CULTURE = {
+    1: { title: '俄罗斯的字母表', text: '俄语字母源于西里尔字母，由希腊传教士西里尔兄弟于 9 世纪创制。学字母时注意：в 读 [v]、н 读 [n]、р 读 [r]，和拉丁字母外形相同但读音完全不同。' },
+    2: { title: '见面礼仪', text: '俄罗斯人初次见面用"Здравствуйте"（您好），熟人之间用"Привет"（你好）。正式场合称呼用名+父称，如"Анна Ивановна"。' },
+    3: { title: '俄罗斯家庭观念', text: '俄罗斯人非常重视家庭（семья）。问"кем работает?"（做什么工作）是常见寒暄话题。名字有昵称：Анна→Аня，Иван→Ваня。' },
+    4: { title: '作息习惯', text: '俄罗斯人早餐通常简单（茶+面包/粥），午餐是正餐。多数公司 9-10 点上班，18 点下班。"половина восьмого" 字面是"第八个的一半"，实指七点半。' },
+    5: { title: '城市交通', text: '莫斯科地铁世界闻名，装饰华丽如宫殿。俄罗斯人乘车说"ехать на метро"（乘地铁），步行说"идти пешком"（步行）。' },
+    6: { title: '购物习惯', text: '俄罗斯商店常用"касса"（收银台），购物先说"Дайте, пожалуйста…"（请给我…）。找零说"сдача"。数字 2-4 后名词用单数属格是俄语特色。' },
+    7: { title: '餐厅礼仪', text: '俄罗斯人喝汤（суп）多用勺，面包是主食。点餐常用"Можно меню?"（可以看菜单吗？），结账说"Счёт, пожалуйста!"。给小费约 10%。' },
+    8: { title: '过去与怀念', text: '俄罗斯人爱谈过去（вчера, раньше），尤其苏联时期。过去时按性数变化是俄语特色——这也是为什么问性别很重要。' },
+    9: { title: '未来计划', text: '俄罗斯人计划时常用"собираться + 不定式"（打算）。表达"将要做"用 буду+不定式，表达"将做完"用完成体变位——两个都要会。' },
+    10: { title: '动词体文化', text: '俄语动词"体"是俄罗斯人思维的体现：完成体表结果、未完成体表过程。比如"Я читал"（读了，没读完）vs"Я прочитал"（读完了）。' },
+    11: { title: '出行习惯', text: '俄罗斯城市里人们常用地铁和公交。记住：定向动词表"正在去"，不定向表"常去/往返"——"Я хожу в парк"表示你经常去公园。' },
+    12: { title: '就医习惯', text: '俄罗斯有免费公立医疗（поликлиника），看病常用"у меня болит…"（我…疼）。医生会问"Что у вас болит?"。保健语"Будьте здоровы!"（祝你健康）。' },
+    13: { title: '复句思维', text: '俄语复合句用 который 连接定语从句，词序灵活。掌握这些连接词，你的俄语就从"蹦词"变成"成句"，这是 A2 到 B1 的关键一步。' }
+  };
 
   /* ---------- 语音试听 ---------- */
   function speak(text, el) {
@@ -31,8 +67,10 @@
     if (!grid) return;
     LESSONS.forEach(function (L) {
       var card = el('button', 'course-card');
+      var stage = L.stage || (L.no <= 4 ? 'A1' : 'A2');
+      var done = getProgress()['l' + L.no];
       card.innerHTML =
-        '<span class="c-no">Урок ' + L.no + '</span>' +
+        '<span class="c-no">Урок ' + L.no + ' · ' + stage + (done ? ' ✓' : '') + '</span>' +
         '<span class="c-ru">' + L.ru + '</span>' +
         '<span class="c-zh">' + L.zh + '</span>' +
         '<span class="c-gram">' + L.gram + '</span>';
@@ -41,6 +79,19 @@
         document.getElementById('urok').scrollIntoView({ behavior: 'smooth' });
       });
       grid.appendChild(card);
+    });
+  }
+
+  function refreshCatalogChecks() {
+    var cards = document.querySelectorAll('.course-card');
+    var p = getProgress();
+    cards.forEach(function (card) {
+      var noEl = card.querySelector('.c-no');
+      if (!noEl) return;
+      var m = noEl.textContent.match(/Урок (\d+)/);
+      if (m && p['l' + m[1]]) {
+        if (noEl.textContent.indexOf('✓') < 0) noEl.textContent += ' ✓';
+      }
     });
   }
 
@@ -133,16 +184,53 @@
     quizBlock.appendChild(quizBox);
     panel.appendChild(quizBlock);
 
-    /* 上下课导航 */
+    /* 文化小贴士 */
+    var culture = CULTURE[L.no];
+    if (culture) {
+      var cultBlock = el('div', 'lesson-block');
+      var cultBox = el('div', 'gram-warn');
+      cultBox.style.borderLeft = '4px solid #1f7a8c';
+      cultBox.style.background = 'rgba(31,122,140,0.07)';
+      cultBox.style.borderColor = 'rgba(31,122,140,0.35)';
+      cultBox.innerHTML = '<b>🌍 文化小贴士 · ' + culture.title + '：</b>' + culture.text;
+      cultBlock.appendChild(cultBox);
+      panel.appendChild(cultBlock);
+    }
+
+    /* 标记完成 + 上下课导航 */
     var nav = el('div', 'lesson-nav');
+    var left = el('div');
+    left.style.display = 'flex';
+    left.style.gap = '0.6rem';
     var prev = el('button', null, '← 上一课');
-    var next = el('button', null, '下一课 →');
     if (no <= 1) prev.disabled = true;
-    if (no >= LESSONS.length) next.disabled = true;
     prev.addEventListener('click', function () { showLesson(no - 1); });
+    left.appendChild(prev);
+    nav.appendChild(left);
+
+    var right = el('div');
+    right.style.display = 'flex';
+    right.style.gap = '0.6rem';
+    var doneBtn = el('button', null, '✓ 标记本课完成');
+    doneBtn.style.background = 'rgba(46,125,50,0.1)';
+    doneBtn.style.color = '#2e7d32';
+    doneBtn.style.borderColor = 'rgba(46,125,50,0.35)';
+    doneBtn.addEventListener('click', function () {
+      markLessonComplete(no);
+      doneBtn.textContent = '✓ 已标记完成';
+      doneBtn.disabled = true;
+    });
+    if (getProgress()['l' + no]) {
+      doneBtn.textContent = '✓ 已标记完成';
+      doneBtn.disabled = true;
+    }
+    right.appendChild(doneBtn);
+    var next = el('button', null, '下一课 →');
+    if (no >= LESSONS.length) next.disabled = true;
     next.addEventListener('click', function () { showLesson(no + 1); });
-    nav.appendChild(prev);
-    nav.appendChild(next);
+    right.appendChild(next);
+    nav.appendChild(right);
+
     panel.appendChild(nav);
 
     wrap.appendChild(panel);
