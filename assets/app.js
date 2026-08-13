@@ -1,372 +1,11 @@
-/* 郦书甲老师的俄语小课堂 · ТРКИ A2 备考 · 交互脚本 */
+/* 郦书甲老师的俄语小课堂 · ТРКИ A2 系统课程 · 渲染引擎 */
 (function () {
   'use strict';
 
-  /* ---------- 字母数据（33 个） ---------- */
-  var LETTERS = [
-    { ch: 'а', name: 'а', pron: '[a] 阿', word: 'аптека', mean: '药店' },
-    { ch: 'б', name: 'бэ', pron: '[b] 贝', word: 'банк', mean: '银行' },
-    { ch: 'в', name: 'вэ', pron: '[v] 维', word: 'вода', mean: '水' },
-    { ch: 'г', name: 'гэ', pron: '[g] 盖', word: 'газета', mean: '报纸' },
-    { ch: 'д', name: 'дэ', pron: '[d] 得', word: 'дом', mean: '房子' },
-    { ch: 'е', name: 'е', pron: '[je] 耶', word: 'ель', mean: '冷杉' },
-    { ch: 'ё', name: 'ё', pron: '[jo] 哟', word: 'ёж', mean: '刺猬' },
-    { ch: 'ж', name: 'жэ', pron: '[ʐ] 日', word: 'журнал', mean: '杂志' },
-    { ch: 'з', name: 'зэ', pron: '[z] 兹', word: 'зонт', mean: '伞' },
-    { ch: 'и', name: 'и', pron: '[i] 伊', word: 'игра', mean: '游戏' },
-    { ch: 'й', name: 'и краткое', pron: '[j] 伊短音', word: 'йогурт', mean: '酸奶' },
-    { ch: 'к', name: 'ка', pron: '[k] 卡', word: 'кофе', mean: '咖啡' },
-    { ch: 'л', name: 'эль', pron: '[l] 埃尔', word: 'лампа', mean: '灯' },
-    { ch: 'м', name: 'эм', pron: '[m] 埃姆', word: 'мама', mean: '妈妈' },
-    { ch: 'н', name: 'эн', pron: '[n] 埃恩', word: 'нос', mean: '鼻子' },
-    { ch: 'о', name: 'о', pron: '[o] 奥', word: 'окно', mean: '窗户' },
-    { ch: 'п', name: 'пэ', pron: '[p] 佩', word: 'парк', mean: '公园' },
-    { ch: 'р', name: 'эр', pron: '[r] 大舌颤音', word: 'рынок', mean: '市场' },
-    { ch: 'с', name: 'эс', pron: '[s] 埃斯', word: 'сад', mean: '花园' },
-    { ch: 'т', name: 'тэ', pron: '[t] 特', word: 'телефон', mean: '电话' },
-    { ch: 'у', name: 'у', pron: '[u] 乌', word: 'улица', mean: '街道' },
-    { ch: 'ф', name: 'эф', pron: '[f] 埃夫', word: 'фрукт', mean: '水果' },
-    { ch: 'х', name: 'ха', pron: '[x] 哈', word: 'хлеб', mean: '面包' },
-    { ch: 'ц', name: 'цэ', pron: '[ts] 采', word: 'центр', mean: '中心' },
-    { ch: 'ч', name: 'че', pron: '[tɕ] 切', word: 'час', mean: '小时' },
-    { ch: 'ш', name: 'ша', pron: '[ʂ] 沙', word: 'школа', mean: '学校' },
-    { ch: 'щ', name: 'ща', pron: '[ɕː] 夏', word: 'щука', mean: '狗鱼' },
-    { ch: 'ъ', name: 'твёрдый знак', pron: '硬音符号·不发音', word: 'съезд', mean: '会议', type: 'sign' },
-    { ch: 'ы', name: 'ы', pron: '[ɨ] 厄', word: 'сыр', mean: '奶酪' },
-    { ch: 'ь', name: 'мягкий знак', pron: '软音符号·不发音', word: 'семья', mean: '家庭', type: 'sign' },
-    { ch: 'э', name: 'э', pron: '[e] 埃', word: 'это', mean: '这' },
-    { ch: 'ю', name: 'ю', pron: '[ju] 尤', word: 'юг', mean: '南方' },
-    { ch: 'я', name: 'я', pron: '[ja] 亚', word: 'яблоко', mean: '苹果' }
-  ];
-
-  var VOWELS = [
-    { ch: 'а', ipa: '[a]', word: 'мама' },
-    { ch: 'е', ipa: '[je]', word: 'метро' },
-    { ch: 'ё', ipa: '[jo]', word: 'ёж' },
-    { ch: 'и', ipa: '[i]', word: 'мир' },
-    { ch: 'о', ipa: '[o]', word: 'окно' },
-    { ch: 'у', ipa: '[u]', word: 'утро' },
-    { ch: 'ы', ipa: '[ɨ]', word: 'сыр' },
-    { ch: 'э', ipa: '[e]', word: 'это' },
-    { ch: 'ю', ipa: '[ju]', word: 'юг' },
-    { ch: 'я', ipa: '[ja]', word: 'яблоко' }
-  ];
-
-  var VOWEL_KEYS = ['а', 'е', 'ё', 'и', 'о', 'у', 'ы', 'э', 'ю', 'я'];
+  var LESSONS = (window.LESSONS_A || []).concat(window.LESSONS_B || []);
   var SYNTH_OK = 'speechSynthesis' in window;
 
-  /* ---------- 词汇数据（12 大主题） ---------- */
-  var VOCAB = {
-    numeros: [
-      { es: 'ноль', zh: '零' }, { es: 'один', zh: '一' }, { es: 'два', zh: '二' },
-      { es: 'три', zh: '三' }, { es: 'четыре', zh: '四' }, { es: 'пять', zh: '五' },
-      { es: 'шесть', zh: '六' }, { es: 'семь', zh: '七' }, { es: 'восемь', zh: '八' },
-      { es: 'девять', zh: '九' }, { es: 'десять', zh: '十' }, { es: 'одиннадцать', zh: '十一' },
-      { es: 'двенадцать', zh: '十二' }, { es: 'тринадцать', zh: '十三' }, { es: 'четырнадцать', zh: '十四' },
-      { es: 'пятнадцать', zh: '十五' }, { es: 'шестнадцать', zh: '十六' }, { es: 'семнадцать', zh: '十七' },
-      { es: 'восемнадцать', zh: '十八' }, { es: 'девятнадцать', zh: '十九' }, { es: 'двадцать', zh: '二十' },
-      { es: 'тридцать', zh: '三十' }, { es: 'сорок', zh: '四十' }, { es: 'пятьдесят', zh: '五十' },
-      { es: 'шестьдесят', zh: '六十' }, { es: 'семьдесят', zh: '七十' }, { es: 'восемьдесят', zh: '八十' },
-      { es: 'девяносто', zh: '九十' }, { es: 'сто', zh: '一百' }, { es: 'тысяча', zh: '一千' },
-      { es: 'первый', zh: '第一' }, { es: 'второй', zh: '第二' }, { es: 'третий', zh: '第三' },
-      { es: 'и', zh: '连接词：21~99 用 и 连接，如 двадцать один' }
-    ],
-    dias: [
-      { es: 'понедельник', zh: '星期一' }, { es: 'вторник', zh: '星期二' }, { es: 'среда', zh: '星期三' },
-      { es: 'четверг', zh: '星期四' }, { es: 'пятница', zh: '星期五' }, { es: 'суббота', zh: '星期六' },
-      { es: 'воскресенье', zh: '星期天' },
-      { es: 'январь', zh: '一月' }, { es: 'февраль', zh: '二月' }, { es: 'март', zh: '三月' },
-      { es: 'апрель', zh: '四月' }, { es: 'май', zh: '五月' }, { es: 'июнь', zh: '六月' },
-      { es: 'июль', zh: '七月' }, { es: 'август', zh: '八月' }, { es: 'сентябрь', zh: '九月' },
-      { es: 'октябрь', zh: '十月' }, { es: 'ноябрь', zh: '十一月' }, { es: 'декабрь', zh: '十二月' },
-      { es: 'сегодня', zh: '今天' }, { es: 'завтра', zh: '明天' }, { es: 'вчера', zh: '昨天' },
-      { es: 'утро', zh: '早晨' }, { es: 'день', zh: '白天' }, { es: 'вечер', zh: '晚上' },
-      { es: 'ночь', zh: '夜晚' }, { es: 'час', zh: '小时' }, { es: 'минута', zh: '分钟' },
-      { es: 'неделя', zh: '周' }, { es: 'месяц', zh: '月' }, { es: 'год', zh: '年' },
-      { es: 'сейчас', zh: '现在' }, { es: 'потом', zh: '然后/以后' }, { es: 'всегда', zh: '总是' },
-      { es: 'часто', zh: '经常' }, { es: 'иногда', zh: '有时' }, { es: 'никогда', zh: '从不' }
-    ],
-    colores: [
-      { es: 'красный', zh: '红色' }, { es: 'синий', zh: '蓝色' }, { es: 'зелёный', zh: '绿色' },
-      { es: 'жёлтый', zh: '黄色' }, { es: 'белый', zh: '白色' }, { es: 'чёрный', zh: '黑色' },
-      { es: 'оранжевый', zh: '橙色' }, { es: 'розовый', zh: '粉色' }, { es: 'серый', zh: '灰色' },
-      { es: 'коричневый', zh: '棕色' }, { es: 'голубой', zh: '天蓝色' }, { es: 'фиолетовый', zh: '紫色' },
-      { es: 'светлый', zh: '浅色' }, { es: 'тёмный', zh: '深色' }, { es: 'цвет', zh: '颜色' },
-      { es: 'какой?', zh: '什么样的？' }
-    ],
-    familia: [
-      { es: 'семья', zh: '家庭' }, { es: 'отец', zh: '父亲' }, { es: 'мать', zh: '母亲' },
-      { es: 'родители', zh: '父母' }, { es: 'брат', zh: '兄弟' }, { es: 'сестра', zh: '姐妹' },
-      { es: 'сын', zh: '儿子' }, { es: 'дочь', zh: '女儿' }, { es: 'дедушка', zh: '祖父' },
-      { es: 'бабушка', zh: '祖母' }, { es: 'дядя', zh: '叔叔/舅舅' }, { es: 'тётя', zh: '阿姨/姑姑' },
-      { es: 'муж', zh: '丈夫' }, { es: 'жена', zh: '妻子' }, { es: 'друг', zh: '朋友（男）' },
-      { es: 'подруга', zh: '朋友（女）' }, { es: 'ребёнок', zh: '孩子' }, { es: 'дети', zh: '孩子们' },
-      { es: 'люди', zh: '人们' }, { es: 'человек', zh: '人' }
-    ],
-    comida: [
-      { es: 'хлеб', zh: '面包' }, { es: 'вода', zh: '水' }, { es: 'молоко', zh: '牛奶' },
-      { es: 'кофе', zh: '咖啡' }, { es: 'чай', zh: '茶' }, { es: 'сок', zh: '果汁' },
-      { es: 'фрукт', zh: '水果' }, { es: 'яблоко', zh: '苹果' }, { es: 'банан', zh: '香蕉' },
-      { es: 'овощ', zh: '蔬菜' }, { es: 'рис', zh: '米饭' }, { es: 'мясо', zh: '肉' },
-      { es: 'рыба', zh: '鱼' }, { es: 'курица', zh: '鸡肉' }, { es: 'сыр', zh: '奶酪' },
-      { es: 'яйцо', zh: '鸡蛋' }, { es: 'салат', zh: '沙拉' }, { es: 'картофель', zh: '土豆' },
-      { es: 'суп', zh: '汤' }, { es: 'торт', zh: '蛋糕' }, { es: 'сахар', zh: '糖' },
-      { es: 'соль', zh: '盐' }, { es: 'завтрак', zh: '早餐' }, { es: 'обед', zh: '午餐' },
-      { es: 'ужин', zh: '晚餐' }, { es: 'вкусно', zh: '好吃' }
-    ],
-    gorod: [
-      { es: 'город', zh: '城市' }, { es: 'улица', zh: '街道' }, { es: 'площадь', zh: '广场' },
-      { es: 'дом', zh: '房子' }, { es: 'улица', zh: '街道' }, { es: 'магазин', zh: '商店' },
-      { es: 'рынок', zh: '市场' }, { es: 'аптека', zh: '药店' }, { es: 'больница', zh: '医院' },
-      { es: 'поликлиника', zh: '诊所' }, { es: 'школа', zh: '学校' }, { es: 'университет', zh: '大学' },
-      { es: 'библиотека', zh: '图书馆' }, { es: 'музей', zh: '博物馆' }, { es: 'театр', zh: '剧院' },
-      { es: 'кино', zh: '电影院' }, { es: 'парк', zh: '公园' }, { es: 'стадион', zh: '体育场' },
-      { es: 'вокзал', zh: '火车站' }, { es: 'аэропорт', zh: '机场' }, { es: 'метро', zh: '地铁' },
-      { es: 'автобус', zh: '公交车' }, { es: 'трамвай', zh: '有轨电车' }, { es: 'такси', zh: '出租车' },
-      { es: 'машина', zh: '汽车' }, { es: 'поезд', zh: '火车' }, { es: 'самолёт', zh: '飞机' },
-      { es: 'остановка', zh: '公交站' }, { es: 'станция', zh: '地铁站' }, { es: 'билет', zh: '票' },
-      { es: 'карта', zh: '地图' }, { es: 'гостиница', zh: '宾馆' }, { es: 'банк', zh: '银行' },
-      { es: 'почта', zh: '邮局' }, { es: 'центр', zh: '市中心' }, { es: 'далеко', zh: '远' },
-      { es: 'близко', zh: '近' }, { es: 'направо', zh: '向右' }, { es: 'налево', zh: '向左' },
-      { es: 'прямо', zh: '直走' }
-    ],
-    magazin: [
-      { es: 'покупка', zh: '购物' }, { es: 'купить', zh: '买（完成）' }, { es: 'покупать', zh: '买（未完成）' },
-      { es: 'продавать', zh: '卖' }, { es: 'цена', zh: '价格' }, { es: 'деньги', zh: '钱' },
-      { es: 'рубль', zh: '卢布' }, { es: 'юань', zh: '人民币' }, { es: 'дорого', zh: '贵' },
-      { es: 'дёшево', zh: '便宜' }, { es: 'скидка', zh: '折扣' }, { es: 'сдача', zh: '找零' },
-      { es: 'касса', zh: '收银台' }, { es: 'сумка', zh: '包' }, { es: 'одежда', zh: '衣服' },
-      { es: 'платье', zh: '连衣裙' }, { es: 'рубашка', zh: '衬衫' }, { es: 'брюки', zh: '裤子' },
-      { es: 'обувь', zh: '鞋' }, { es: 'размер', zh: '尺码' }, { es: 'цвет', zh: '颜色' },
-      { es: 'примерять', zh: '试穿' }, { es: 'наличные', zh: '现金' }, { es: 'карта', zh: '银行卡' },
-      { es: 'чекать', zh: '购物小票' }
-    ],
-    zdorovie: [
-      { es: 'здоровье', zh: '健康' }, { es: 'врач', zh: '医生' }, { es: 'болеть', zh: '生病' },
-      { es: 'температура', zh: '发烧' }, { es: 'голова', zh: '头' }, { es: 'живот', zh: '肚子' },
-      { es: 'горло', zh: '喉咙' }, { es: 'зуб', zh: '牙' }, { es: 'рука', zh: '手/手臂' },
-      { es: 'нога', zh: '腿/脚' }, { es: 'спина', zh: '背' }, { es: 'сердце', zh: '心脏' },
-      { es: 'таблетка', zh: '药片' }, { es: 'лекарство', zh: '药' }, { es: 'рецепт', zh: '处方' },
-      { es: 'грипп', zh: '流感' }, { es: 'кашель', zh: '咳嗽' }, { es: 'насморк', zh: '流鼻涕' },
-      { es: 'устал', zh: '累了' }, { es: 'плохо', zh: '不舒服' }, { es: 'хорошо', zh: '好（健康）' },
-      { es: 'отдыхать', zh: '休息' }, { es: 'спать', zh: '睡觉' }, { es: 'укол', zh: '打针' }
-    ],
-    pogoda: [
-      { es: 'погода', zh: '天气' }, { es: 'солнце', zh: '太阳' }, { es: 'солнечно', zh: '晴朗' },
-      { es: 'дождь', zh: '雨' }, { es: 'дождливо', zh: '下雨' }, { es: 'снег', zh: '雪' },
-      { es: 'ветер', zh: '风' }, { es: 'ветрено', zh: '有风' }, { es: 'облако', zh: '云' },
-      { es: 'туман', zh: '雾' }, { es: 'гроза', zh: '雷雨' }, { es: 'тепло', zh: '暖和' },
-      { es: 'холодно', zh: '冷' }, { es: 'жарко', zh: '热' }, { es: 'прохладно', zh: '凉快' },
-      { es: 'мороз', zh: '严寒' }, { es: 'градус', zh: '度' }, { es: 'зима', zh: '冬天' },
-      { es: 'весна', zh: '春天' }, { es: 'лето', zh: '夏天' }, { es: 'осень', zh: '秋天' },
-      { es: 'сезон', zh: '季节' }, { es: 'природа', zh: '大自然' }, { es: 'небо', zh: '天空' }
-    ],
-    rabota: [
-      { es: 'работа', zh: '工作' }, { es: 'работать', zh: '工作（动词）' }, { es: 'компания', zh: '公司' },
-      { es: 'офис', zh: '办公室' }, { es: 'завод', zh: '工厂' }, { es: 'школа', zh: '学校' },
-      { es: 'учить', zh: '教/学' }, { es: 'учиться', zh: '学习（上学）' }, { es: 'студент', zh: '大学生' },
-      { es: 'преподаватель', zh: '教师' }, { es: 'врач', zh: '医生' }, { es: 'инженер', zh: '工程师' },
-      { es: 'переводчик', zh: '翻译' }, { es: 'программист', zh: '程序员' }, { es: 'бизнесмен', zh: '商人' },
-      { es: 'секретарь', zh: '秘书' }, { es: 'директор', zh: '经理/校长' }, { es: 'начальник', zh: '上司' },
-      { es: 'зарплата', zh: '工资' }, { es: 'отпуск', zh: '休假' }, { es: 'отдых', zh: '休息' },
-      { es: 'начало', zh: '开始' }, { es: 'конец', zh: '结束' }, { es: 'урок', zh: '课' },
-      { es: 'экзамен', zh: '考试' }, { es: 'русский язык', zh: '俄语' }, { es: 'английский язык', zh: '英语' },
-      { es: 'иностранный', zh: '外国的' }
-    ],
-    otdyh: [
-      { es: 'отдыхать', zh: '休息' }, { es: 'гулять', zh: '散步' }, { es: 'читать', zh: '读书' },
-      { es: 'смотреть', zh: '看' }, { es: 'слушать', zh: '听' }, { es: 'музыка', zh: '音乐' },
-      { es: 'фильм', zh: '电影' }, { es: 'книга', zh: '书' }, { es: 'спорт', zh: '运动' },
-      { es: 'играть', zh: '玩/演奏' }, { es: 'футбол', zh: '足球' }, { es: 'баскетбол', zh: '篮球' },
-      { es: 'плавать', zh: '游泳' }, { es: 'бегать', zh: '跑步' }, { es: 'танцевать', zh: '跳舞' },
-      { es: 'петь', zh: '唱歌' }, { es: 'путешествовать', zh: '旅行' }, { es: 'турист', zh: '游客' },
-      { es: 'интересно', zh: '有趣' }, { es: 'скучно', zh: '无聊' }, { es: 'весело', zh: '开心' },
-      { es: 'хобби', zh: '爱好' }, { es: 'выходной', zh: '休息日' }, { es: 'каникулы', zh: '假期' }
-    ],
-    saludos: [
-      { es: 'Привет!', zh: '你好！（熟人）' }, { es: 'Здравствуйте!', zh: '您好！（正式）' },
-      { es: 'Доброе утро', zh: '早上好' }, { es: 'Добрый день', zh: '下午好' }, { es: 'Добрый вечер', zh: '晚上好' },
-      { es: 'Как дела?', zh: '怎么样？' }, { es: 'Как жизнь?', zh: '生活怎么样？' }, { es: 'Что нового?', zh: '有什么新鲜事？' },
-      { es: 'До свидания', zh: '再见' }, { es: 'Пока', zh: '拜拜' }, { es: 'До завтра', zh: '明天见' },
-      { es: 'До встречи', zh: '回头见' }, { es: 'Спокойной ночи', zh: '晚安' }, { es: 'Пожалуйста', zh: '请 / 不客气' },
-      { es: 'Спасибо', zh: '谢谢' }, { es: 'Большое спасибо', zh: '非常感谢' }, { es: 'Извините', zh: '对不起/打扰了' },
-      { es: 'Простите', zh: '很抱歉' }, { es: 'Ничего страшного', zh: '没关系' }, { es: 'Поздравляю!', zh: '恭喜！' },
-      { es: 'С днём рождения!', zh: '生日快乐！' }, { es: 'С Новым годом!', zh: '新年快乐！' }
-    ]
-  };
-
-  /* ---------- 必备句型（60+ 句） ---------- */
-  var PHRASES = [
-    { es: 'Меня зовут Ли. А тебя?', zh: '我叫李。你呢？' },
-    { es: 'Я из Китая, из Пекина.', zh: '我来自中国北京。' },
-    { es: 'Мне двадцать лет.', zh: '我二十岁。' },
-    { es: 'Я работаю в компании.', zh: '我在公司工作。' },
-    { es: 'Я студент университета.', zh: '我是大学生。' },
-    { es: 'Я учусь на первом курсе.', zh: '我读大一。' },
-    { es: 'Где туалет?', zh: '洗手间在哪里？' },
-    { es: 'Как пройти к метро?', zh: '怎么去地铁站？' },
-    { es: 'Это далеко или близко?', zh: '这远还是近？' },
-    { es: 'Сколько это стоит?', zh: '多少钱？' },
-    { es: 'Можно посмотреть?', zh: '可以看一下吗？' },
-    { es: 'У вас есть скидка?', zh: '有折扣吗？' },
-    { es: 'Который час?', zh: '几点了？' },
-    { es: 'Сейчас три часа дня.', zh: '现在下午三点。' },
-    { es: 'Во сколько начинается?', zh: '几点开始？' },
-    { es: 'Во сколько заканчивается?', zh: '几点结束？' },
-    { es: 'Я не понимаю.', zh: '我不明白。' },
-    { es: 'Повторите, пожалуйста.', zh: '请您再说一遍。' },
-    { es: 'Говорите медленнее, пожалуйста.', zh: '请说慢一点。' },
-    { es: 'Я немного говорю по-русски.', zh: '我会说一点俄语。' },
-    { es: 'Я учу русский язык уже год.', zh: '我学俄语已经一年了。' },
-    { es: 'Мне нравится русский язык.', zh: '我喜欢俄语。' },
-    { es: 'Я хочу выучить русский язык.', zh: '我想学会俄语。' },
-    { es: 'Я учу русский, потому что он интересный.', zh: '我学俄语，因为它有意思。' },
-    { es: 'Я занимаюсь русским каждый день.', zh: '我每天学俄语。' },
-    { es: 'Счёт, пожалуйста.', zh: '请结账。' },
-    { es: 'Можно меню?', zh: '可以看一下菜单吗？' },
-    { es: 'Я хочу заказать суп.', zh: '我想点一份汤。' },
-    { es: 'Это очень вкусно!', zh: '这非常好吃！' },
-    { es: 'У меня болит голова.', zh: '我头疼。' },
-    { es: 'Мне плохо, вызовите врача!', zh: '我不舒服，请叫医生！' },
-    { es: 'Где находится аптека?', zh: '药店在哪里？' },
-    { es: 'Мне нужны лекарства.', zh: '我需要买药。' },
-    { es: 'У меня температура.', zh: '我发烧了。' },
-    { es: 'Алло, здравствуйте!', zh: '喂，您好！' },
-    { es: 'Позовите, пожалуйста, Анну.', zh: '请叫安娜接电话。' },
-    { es: 'Я перезвоню вам позже.', zh: '我稍后给您回电话。' },
-    { es: 'Вы не подскажете, где банк?', zh: '您知道银行在哪里吗？' },
-    { es: 'Дайте, пожалуйста, один билет.', zh: '请给我一张票。' },
-    { es: 'Сколько стоит билет до Москвы?', zh: '去莫斯科的票多少钱？' },
-    { es: 'Когда отправляется поезд?', zh: '火车几点发车？' },
-    { es: 'Я хочу купить билет на самолёт.', zh: '我想买飞机票。' },
-    { es: 'Вчера я был в центре города.', zh: '昨天我去了市中心。' },
-    { es: 'Завтра я поеду в Москву.', zh: '明天我要去莫斯科。' },
-    { es: 'Летом я был в России.', zh: '夏天我在俄罗斯。' },
-    { es: 'Зимой здесь очень холодно.', zh: '冬天这里很冷。' },
-    { es: 'Какая сегодня погода?', zh: '今天天气怎么样？' },
-    { es: 'Сегодня идёт дождь.', zh: '今天下雨。' },
-    { es: 'Я люблю гулять в парке.', zh: '我喜欢在公园散步。' },
-    { es: 'Я часто хожу в кино.', zh: '我经常去电影院。' },
-    { es: 'По выходным я отдыхаю.', zh: '周末我休息。' },
-    { es: 'Каждое утро я пью чай и слушаю музыку.', zh: '每天早上我喝茶听音乐。' },
-    { es: 'Я занимаюсь спортом два раза в неделю.', zh: '我一周运动两次。' },
-    { es: 'Это мой друг, который живёт в Москве.', zh: '这是我住在莫斯科的朋友。' },
-    { es: 'Мне нравится город, в котором я живу.', zh: '我喜欢我住的城市。' },
-    { es: 'Если будет свободное время, я позвоню тебе.', zh: '如果我有空，我给你打电话。' },
-    { es: 'Я много занимаюсь, поэтому хорошо говорю по-русски.', zh: '我很努力，所以俄语说得不错。' },
-    { es: 'Я приехал в Россию, чтобы учиться.', zh: '我来俄罗斯是为了学习。' },
-    { es: 'Когда я был в Москве, я видел Красную площадь.', zh: '我在莫斯科时看了红场。' },
-    { es: 'Давай встретимся завтра в шесть часов.', zh: '我们明天六点见吧。' },
-    { es: 'Договорились, до завтра!', zh: '说定了，明天见！' }
-  ];
-
-  /* ---------- 范文数据（6 篇） ---------- */
-  var ESSAYS = [
-    {
-      ru: 'О себе',
-      zh: '自我介绍',
-      topic: '写作/口语高频主题：姓名、国籍、职业、语言、爱好',
-      lines: [
-        { ru: 'Здравствуйте! Меня зовут Анна.', zh: '您好！我叫安娜。' },
-        { ru: 'Я из Китая, из города Пекин.', zh: '我来自中国北京。' },
-        { ru: 'Мне двадцать два года.', zh: '我二十二岁。' },
-        { ru: 'Я студентка, я учусь в университете.', zh: '我是大学生，在大学读书。' },
-        { ru: 'Я изучаю русский язык уже два года.', zh: '我学俄语已经两年了。' },
-        { ru: 'Я немного говорю по-русски, но читаю хорошо.', zh: '我会说一点俄语，但读得不错。' },
-        { ru: 'Я люблю музыку и спорт, потому что это интересно.', zh: '我喜欢音乐和运动，因为很有趣。' },
-        { ru: 'Моя семья живёт в Пекине.', zh: '我的家人住在北京。' },
-        { ru: 'Летом я хочу поехать в Россию и увидеть Москву.', zh: '夏天我想去俄罗斯看看莫斯科。' },
-        { ru: 'Спасибо за внимание! До свидания.', zh: '谢谢聆听！再见。' }
-      ]
-    },
-    {
-      ru: 'Моя семья',
-      zh: '我的家庭',
-      topic: '口语 Tarea 2 / 写作高频主题：家庭成员、职业、居住地',
-      lines: [
-        { ru: 'У меня большая и дружная семья.', zh: '我有一个和睦的大家庭。' },
-        { ru: 'В семье четыре человека: папа, мама, брат и я.', zh: '家里有四口人：爸爸、妈妈、哥哥和我。' },
-        { ru: 'Мой папа работает врачом в больнице.', zh: '我爸爸在医院当医生。' },
-        { ru: 'Моя мама учительница, она работает в школе.', zh: '我妈妈是老师，她在学校工作。' },
-        { ru: 'Мой брат студент, он учится в университете.', zh: '我哥哥是大学生，他在大学读书。' },
-        { ru: 'Мы живём в большом доме в центре города.', zh: '我们住在市中心的一栋大房子里。' },
-        { ru: 'По выходным мы вместе гуляем в парке.', zh: '周末我们一起去公园散步。' },
-        { ru: 'Зимой мы часто ездим на дачу.', zh: '冬天我们经常去乡下别墅。' },
-        { ru: 'Я очень люблю свою семью.', zh: '我非常爱我的家人。' },
-        { ru: 'Семья – это самое главное в жизни.', zh: '家庭是生活中最重要的。' }
-      ]
-    },
-    {
-      ru: 'Мой рабочий день',
-      zh: '我的工作日',
-      topic: '写作/口语高频主题：作息时间、工作学习安排',
-      lines: [
-        { ru: 'Мой рабочий день начинается в семь часов утра.', zh: '我的工作日早上七点开始。' },
-        { ru: 'Я встаю, умываюсь и завтракаю дома.', zh: '我起床、洗漱、在家吃早饭。' },
-        { ru: 'В восемь часов я иду на работу.', zh: '八点我去上班。' },
-        { ru: 'Я работаю в офисе с девяти до шести.', zh: '我从九点到六点在办公室工作。' },
-        { ru: 'В обед я обедаю в кафе недалеко от работы.', zh: '午餐我在公司附近的咖啡馆吃。' },
-        { ru: 'После работы я обычно еду домой на метро.', zh: '下班后我通常坐地铁回家。' },
-        { ru: 'Вечером я ужинаю и смотрю телевизор.', zh: '晚上我吃晚饭、看电视。' },
-        { ru: 'Перед сном я читаю книгу или слушаю музыку.', zh: '睡前我读书或听音乐。' },
-        { ru: 'Я ложусь спать в одиннадцать часов.', zh: '我十一点睡觉。' },
-        { ru: 'Завтра будет такой же день, потому что у меня много работы.', zh: '明天也是一样，因为我工作很多。' }
-      ]
-    },
-    {
-      ru: 'Мой город',
-      zh: '我的城市',
-      topic: '写作/口语高频主题：城市介绍、位置、景点',
-      lines: [
-        { ru: 'Я живу в Пекине, это столица Китая.', zh: '我住在北京，它是中国的首都。' },
-        { ru: 'Пекин – очень большой и красивый город.', zh: '北京是一座很大很美的城市。' },
-        { ru: 'В центре города много старых зданий и музеев.', zh: '市中心有很多老建筑和博物馆。' },
-        { ru: 'Я часто гуляю по улицам и смотрю на архитектуру.', zh: '我经常在街上散步，看建筑。' },
-        { ru: 'В Пекине есть метро, поэтому транспорт удобный.', zh: '北京有地铁，所以交通很方便。' },
-        { ru: 'Летом в городе жарко, а зимой холодно.', zh: '夏天城市里很热，冬天很冷。' },
-        { ru: 'Осенью погода очень красивая и тёплая.', zh: '秋天天气很美很暖和。' },
-        { ru: 'Мой любимый парк находится недалеко от моего дома.', zh: '我最喜欢的公园在我家附近。' },
-        { ru: 'Я люблю свой город, потому что здесь живут мои друзья.', zh: '我爱我的城市，因为我的朋友住在这里。' },
-        { ru: 'Каждый год в Пекин приезжают туристы со всего мира.', zh: '每年全世界的游客都来北京。' }
-      ]
-    },
-    {
-      ru: 'Здоровье и врач',
-      zh: '健康与就医',
-      topic: '写作/口语高频主题：生病、看医生、建议',
-      lines: [
-        { ru: 'Вчера я плохо себя чувствовал.', zh: '昨天我感觉不舒服。' },
-        { ru: 'У меня болела голова и была температура.', zh: '我头疼而且发烧了。' },
-        { ru: 'Утром я пошёл к врачу в поликлинику.', zh: '早上我去诊所看医生。' },
-        { ru: 'Врач спросил, что у меня болит.', zh: '医生问我哪里不舒服。' },
-        { ru: 'Я ответил, что у меня болит горло.', zh: '我回答说我喉咙疼。' },
-        { ru: 'Врач посмотрел меня и выписал лекарство.', zh: '医生给我检查并开了药。' },
-        { ru: 'Он сказал, что мне нужно отдыхать и пить чай.', zh: '他说我需要休息、多喝茶。' },
-        { ru: 'Я купил таблетки в аптеке рядом с домом.', zh: '我在家附近的药店买了药。' },
-        { ru: 'Сейчас мне уже лучше, но я ещё отдыхаю.', zh: '我现在好多了，但还在休息。' },
-        { ru: 'Здоровье – самое главное, поэтому я буду беречь себя.', zh: '健康最重要，所以我会保重身体。' }
-      ]
-    },
-    {
-      ru: 'Погода и времена года',
-      zh: '天气与季节',
-      topic: '写作/口语高频主题：四季、天气描述',
-      lines: [
-        { ru: 'В году четыре времени года: весна, лето, осень и зима.', zh: '一年有四季：春、夏、秋、冬。' },
-        { ru: 'Весной природа просыпается, становится тепло.', zh: '春天大自然苏醒，天气变暖。' },
-        { ru: 'Летом очень жарко, я люблю плавать и гулять.', zh: '夏天很热，我喜欢游泳和散步。' },
-        { ru: 'Осенью часто идёт дождь, дует ветер.', zh: '秋天经常下雨、刮风。' },
-        { ru: 'Зимой выпадает снег, и всё становится белым.', zh: '冬天会下雪，一切都变白了。' },
-        { ru: 'Зимой в Пекине холодно, но мороз не сильный.', zh: '北京的冬天冷，但严寒不厉害。' },
-        { ru: 'Сегодня погода хорошая: солнечно и тепло.', zh: '今天天气很好：晴朗暖和。' },
-        { ru: 'Завтра будет дождь, поэтому я возьму зонт.', zh: '明天有雨，所以我带伞。' },
-        { ru: 'Я люблю осень, потому что это красивое время года.', zh: '我喜欢秋天，因为这是个美丽的季节。' },
-        { ru: 'Каждое время года красиво по-своему.', zh: '每个季节都有自己的美。' }
-      ]
-    }
-  ];
-
-  /* ---------- 语音试听（俄语） ---------- */
+  /* ---------- 语音试听 ---------- */
   function speak(text, el) {
     if (!SYNTH_OK) return;
     window.speechSynthesis.cancel();
@@ -379,206 +18,395 @@
     window.speechSynthesis.speak(u);
   }
 
-  /* ---------- 生成字母卡片 ---------- */
-  function buildLetters() {
-    var grid = document.getElementById('letter-grid');
+  function el(tag, cls, html) {
+    var e = document.createElement(tag);
+    if (cls) e.className = cls;
+    if (html !== undefined) e.innerHTML = html;
+    return e;
+  }
+
+  /* ---------- 课程目录 ---------- */
+  function buildCatalog() {
+    var grid = document.getElementById('course-grid');
     if (!grid) return;
+    LESSONS.forEach(function (L) {
+      var card = el('button', 'course-card');
+      card.innerHTML =
+        '<span class="c-no">Урок ' + L.no + '</span>' +
+        '<span class="c-ru">' + L.ru + '</span>' +
+        '<span class="c-zh">' + L.zh + '</span>' +
+        '<span class="c-gram">' + L.gram + '</span>';
+      card.addEventListener('click', function () {
+        showLesson(L.no);
+        document.getElementById('urok').scrollIntoView({ behavior: 'smooth' });
+      });
+      grid.appendChild(card);
+    });
+  }
 
-    LETTERS.forEach(function (l) {
-      var btn = document.createElement('button');
-      btn.type = 'button';
-      var cls = 'letter-card';
-      if (l.type === 'sign') cls += ' sign';
-      else if (VOWEL_KEYS.indexOf(l.ch) >= 0) cls += ' vowel';
-      btn.className = cls;
-      btn.setAttribute('aria-label', '试听字母 ' + l.ch + ' 的发音');
+  /* ---------- 课时面板 ---------- */
+  var currentLesson = 1;
 
-      var charDiv = document.createElement('span');
-      charDiv.className = 'l-char';
-      charDiv.innerHTML = '<span class="l-maj">' + l.ch.toUpperCase() + '</span>' +
-        '<span class="l-min">' + l.ch.toLowerCase() + '</span>';
+  function showLesson(no) {
+    currentLesson = no;
+    var L = LESSONS.filter(function (x) { return x.no === no; })[0];
+    if (!L) return;
+    var wrap = document.getElementById('lesson-panel');
+    wrap.innerHTML = '';
+    var panel = el('div', 'lesson-panel active');
 
-      var nameSpan = document.createElement('span');
-      nameSpan.className = 'l-name';
-      nameSpan.textContent = l.name;
+    var head = el('div', 'lesson-head');
+    head.innerHTML = '<h3>Урок ' + L.no + ' · ' + L.ru + '</h3><span class="es">' + L.zh + '</span>';
+    panel.appendChild(head);
 
-      var pronSpan = document.createElement('span');
-      pronSpan.className = 'l-pron';
-      pronSpan.textContent = l.pron;
+    var goals = el('div', 'lesson-goals');
+    goals.innerHTML = '<b>本课目标：</b>' + L.goals.join(' · ');
+    panel.appendChild(goals);
 
-      var wordSpan = document.createElement('span');
-      wordSpan.className = 'l-word';
-      wordSpan.innerHTML = l.word + '<i>' + l.mean + '</i>';
+    /* 生词表 */
+    var vocabBlock = el('div', 'lesson-block');
+    vocabBlock.appendChild(el('h4', null, '<span class="b g">1</span> 生词表（点击可试听）'));
+    var vw = el('div', 'table-wrap');
+    var vt = el('table', 'tbl');
+    vt.innerHTML = '<tr><th>单词</th><th>重音</th><th>词性</th><th>中文</th><th>用法/变格</th></tr>';
+    L.vocab.forEach(function (v) {
+      var tr = el('tr', 'vocab-word');
+      tr.innerHTML = '<td class="es">' + v.ru + '</td><td class="es">' + v.stress + '</td><td class="zh">' + v.type + '</td><td class="zh">' + v.zh + '</td><td class="inf">' + v.info + '</td>';
+      tr.addEventListener('click', function () { speak(v.ru + '.', tr); });
+      vt.appendChild(tr);
+    });
+    vw.appendChild(vt);
+    vocabBlock.appendChild(vw);
+    panel.appendChild(vocabBlock);
 
-      var hintSpan = document.createElement('span');
-      hintSpan.className = 'l-hint';
-      hintSpan.textContent = '▶ 点击试听';
+    /* 语法精讲 */
+    var gramBlock = el('div', 'lesson-block');
+    gramBlock.appendChild(el('h4', null, '<span class="b">2</span> 语法精讲'));
+    L.grammar.forEach(function (g) {
+      var pt = el('div', 'gram-pt');
+      pt.innerHTML = '<b>' + g.b + '</b> <span class="ex">' + g.ex + ' <i>' + g.i + '</i></span>';
+      gramBlock.appendChild(pt);
+    });
+    panel.appendChild(gramBlock);
 
-      btn.appendChild(charDiv);
-      btn.appendChild(nameSpan);
-      btn.appendChild(pronSpan);
-      btn.appendChild(wordSpan);
-      btn.appendChild(hintSpan);
+    /* 情景课文 */
+    var textBlock = el('div', 'lesson-block');
+    textBlock.appendChild(el('h4', null, '<span class="b g">3</span> 情景课文（点击整句可试听）'));
+    L.text.forEach(function (t) {
+      var p = el('div', 'text-para');
+      p.innerHTML = t.ru + '<span class="tzh">' + t.zh + '</span>';
+      p.addEventListener('click', function () { speak(t.ru, p); });
+      textBlock.appendChild(p);
+    });
+    panel.appendChild(textBlock);
 
-      btn.addEventListener('click', function () {
-        if (l.type === 'sign') {
-          speak(l.word + '.', btn);
+    /* 对话 */
+    var diaBlock = el('div', 'lesson-block');
+    diaBlock.appendChild(el('h4', null, '<span class="b">4</span> 情景对话（点击可试听）'));
+    L.dialog.forEach(function (d) {
+      var line = el('div', 'dialog-line');
+      line.innerHTML = '<span class="who">' + d.who + '</span><span><span class="d-ru">' + d.ru + '</span><span class="d-zh">' + d.zh + '</span></span>';
+      line.addEventListener('click', function () { speak(d.ru, line); });
+      diaBlock.appendChild(line);
+    });
+    panel.appendChild(diaBlock);
+
+    /* 互动练习 */
+    var exBlock = el('div', 'lesson-block');
+    exBlock.appendChild(el('h4', null, '<span class="b g">5</span> 互动练习（点击作答，即时判题）'));
+    L.exercises.forEach(function (ex, i) {
+      exBlock.appendChild(buildExercise(ex, i));
+    });
+    panel.appendChild(exBlock);
+
+    /* 单元自测 */
+    var quizBlock = el('div', 'lesson-block');
+    var quizBox = el('div', 'quiz-box');
+    quizBox.appendChild(el('div', 'quiz-title', '📝 单元自测（答完自动评分，≥75% 可进入下一课）'));
+    var quizScore = { total: L.quiz.length, right: 0 };
+    L.quiz.forEach(function (q, i) {
+      quizBox.appendChild(buildQuizItem(q, i, quizScore));
+    });
+    var result = el('div', 'quiz-result');
+    result.textContent = '已答 0 / ' + quizScore.total + ' 题';
+    quizBox.appendChild(result);
+    quizBlock.appendChild(quizBox);
+    panel.appendChild(quizBlock);
+
+    /* 上下课导航 */
+    var nav = el('div', 'lesson-nav');
+    var prev = el('button', null, '← 上一课');
+    var next = el('button', null, '下一课 →');
+    if (no <= 1) prev.disabled = true;
+    if (no >= LESSONS.length) next.disabled = true;
+    prev.addEventListener('click', function () { showLesson(no - 1); });
+    next.addEventListener('click', function () { showLesson(no + 1); });
+    nav.appendChild(prev);
+    nav.appendChild(next);
+    panel.appendChild(nav);
+
+    wrap.appendChild(panel);
+  }
+
+  /* ---------- 构建一道选择题/填空题 ---------- */
+  function buildExercise(ex, idx) {
+    var item = el('div', 'ex-item');
+    var q = el('div', 'ex-q');
+    q.innerHTML = '<b>' + (idx + 1) + '.</b> ' + ex.q;
+    item.appendChild(q);
+
+    var fb = el('div', 'ex-fb hint');
+    if (ex.type === 'choice') {
+      fb.textContent = '点击选项作答';
+    } else {
+      fb.textContent = '输入后点击"检查"';
+    }
+
+    if (ex.type === 'choice') {
+      var opts = el('div', 'ex-opts');
+      ex.options.forEach(function (opt, oi) {
+        var btn = el('button', 'ex-opt', opt);
+        btn.type = 'button';
+        btn.addEventListener('click', function () {
+          var btns = opts.querySelectorAll('.ex-opt');
+          btns.forEach(function (b) { b.disabled = true; });
+          if (oi === ex.answer) {
+            btn.classList.add('correct');
+            fb.className = 'ex-fb ok';
+            fb.textContent = '✓ 正确！' + (ex.fb || '');
+          } else {
+            btn.classList.add('wrong');
+            btns[ex.answer].classList.add('correct');
+            fb.className = 'ex-fb no';
+            fb.textContent = '✗ 再想想。正确答案：' + ex.options[ex.answer] + '。' + (ex.fb || '');
+          }
+        });
+        opts.appendChild(btn);
+      });
+      item.appendChild(opts);
+    } else {
+      var wrap2 = el('div', 'ex-input-wrap');
+      var input = el('input', 'ex-input');
+      input.type = 'text';
+      input.placeholder = '输入俄语…';
+      var btn2 = el('button', 'ex-btn', '检查');
+      btn2.type = 'button';
+      btn2.addEventListener('click', function () {
+        var val = input.value.trim().toLowerCase().replace(/ё/g, 'е');
+        var ok = (ex.answers || []).some(function (a) {
+          return val === a.toLowerCase().replace(/ё/g, 'е');
+        });
+        if (ok) {
+          fb.className = 'ex-fb ok';
+          fb.textContent = '✓ 正确！' + (ex.fb || '');
+          input.style.borderColor = '#2e7d32';
+          btn2.disabled = true;
         } else {
-          speak(l.ch + '. ' + l.word + '.', btn);
+          fb.className = 'ex-fb no';
+          fb.textContent = '✗ 不对。' + (ex.fb || '');
+          input.style.borderColor = '#c62828';
         }
       });
-      grid.appendChild(btn);
-    });
-  }
-
-  /* ---------- 生成元音 ---------- */
-  function buildVowels() {
-    var row = document.getElementById('vowel-row');
-    if (!row) return;
-
-    VOWELS.forEach(function (v) {
-      var cell = document.createElement('button');
-      cell.type = 'button';
-      cell.className = 'vowel-cell';
-      cell.setAttribute('aria-label', '试听元音 ' + v.ch);
-
-      cell.innerHTML =
-        '<span class="v-char">' + v.ch.toUpperCase() + '</span>' +
-        '<span class="v-ipa">' + v.ipa + '</span>' +
-        '<span class="v-ex">' + v.word + '</span>';
-
-      cell.addEventListener('click', function () {
-        speak(v.ch + '.', cell);
+      input.addEventListener('keydown', function (ev) {
+        if (ev.key === 'Enter') { ev.preventDefault(); btn2.click(); }
       });
-      row.appendChild(cell);
-    });
+      wrap2.appendChild(input);
+      wrap2.appendChild(btn2);
+      item.appendChild(wrap2);
+    }
+
+    item.appendChild(fb);
+    return item;
   }
 
-  /* ---------- 生成词汇面板 + 标签切换 ---------- */
-  function buildVocab() {
-    var tabs = document.getElementById('vocab-tabs');
-    var panels = document.getElementById('vocab-panels');
-    if (!tabs || !panels) return;
+  /* ---------- 单元自测题 ---------- */
+  function buildQuizItem(q, idx, score) {
+    var item = el('div', 'ex-item');
+    var qEl = el('div', 'ex-q');
+    qEl.innerHTML = '<b>' + (idx + 1) + '.</b> ' + q.q;
+    item.appendChild(qEl);
 
-    Object.keys(VOCAB).forEach(function (key) {
-      var panel = document.createElement('div');
-      panel.className = 'tab-panel' + (key === 'numeros' ? ' active' : '');
-      panel.id = 'panel-' + key;
-
-      var grid = document.createElement('div');
-      grid.className = 'vocab-grid';
-
-      VOCAB[key].forEach(function (w) {
-        var chip = document.createElement('button');
-        chip.type = 'button';
-        chip.className = 'vocab-chip';
-        chip.setAttribute('aria-label', '试听 ' + w.es);
-
-        var es = document.createElement('span');
-        es.className = 'w-es';
-        es.textContent = w.es;
-
-        var zh = document.createElement('span');
-        zh.className = 'w-zh';
-        zh.textContent = w.zh;
-
-        chip.appendChild(es);
-        chip.appendChild(zh);
-        chip.addEventListener('click', function () {
-          speak(w.es + '.', chip);
+    if (q.type === 'choice') {
+      var opts = el('div', 'ex-opts');
+      q.options.forEach(function (opt, oi) {
+        var btn = el('button', 'ex-opt', opt);
+        btn.type = 'button';
+        btn.addEventListener('click', function () {
+          if (btn.disabled) return;
+          var btns = opts.querySelectorAll('.ex-opt');
+          btns.forEach(function (b) { b.disabled = true; });
+          if (oi === q.answer) {
+            btn.classList.add('correct');
+            score.right++;
+          } else {
+            btn.classList.add('wrong');
+            btns[q.answer].classList.add('correct');
+          }
+          updateQuizScore(score);
         });
-        grid.appendChild(chip);
+        opts.appendChild(btn);
       });
-
-      panel.appendChild(grid);
-      panels.appendChild(panel);
-    });
-
-    tabs.querySelectorAll('.tab-btn').forEach(function (btn) {
-      btn.addEventListener('click', function () {
-        tabs.querySelectorAll('.tab-btn').forEach(function (b) { b.classList.remove('active'); });
-        btn.classList.add('active');
-        panels.querySelectorAll('.tab-panel').forEach(function (p) { p.classList.remove('active'); });
-        var target = document.getElementById('panel-' + btn.getAttribute('data-tab'));
-        if (target) target.classList.add('active');
+      item.appendChild(opts);
+    } else {
+      var wrap2 = el('div', 'ex-input-wrap');
+      var input = el('input', 'ex-input');
+      input.type = 'text';
+      input.placeholder = '输入俄语…';
+      var btn2 = el('button', 'ex-btn', '检查');
+      btn2.type = 'button';
+      btn2.addEventListener('click', function () {
+        if (btn2.disabled) return;
+        var val = input.value.trim().toLowerCase().replace(/ё/g, 'е');
+        var ok = (q.answers || []).some(function (a) {
+          return val === a.toLowerCase().replace(/ё/g, 'е');
+        });
+        if (ok) {
+          input.style.borderColor = '#2e7d32';
+          score.right++;
+        } else {
+          input.style.borderColor = '#c62828';
+          input.value = q.answers[0];
+        }
+        btn2.disabled = true;
+        input.disabled = true;
+        updateQuizScore(score);
       });
+      input.addEventListener('keydown', function (ev) {
+        if (ev.key === 'Enter') { ev.preventDefault(); btn2.click(); }
+      });
+      wrap2.appendChild(input);
+      wrap2.appendChild(btn2);
+      item.appendChild(wrap2);
+    }
+    return item;
+  }
+
+  function updateQuizScore(score) {
+    var result = document.querySelector('.quiz-result');
+    if (!result) return;
+    result.textContent = '已答 ' + (score.total + 0) + ' 题中答对 ' + score.right + ' 题（目标 ≥75%）';
+    if (score.right === score.total) {
+      result.textContent = '🎉 全对！' + score.total + '/' + score.total + '，太棒了，可以进入下一课！';
+    } else if (score.right >= Math.ceil(score.total * 0.75)) {
+      result.textContent = '✅ 已达标：' + score.right + '/' + score.total + '（≥75%），可进入下一课！';
+    }
+  }
+
+  /* ---------- 语法手册 ---------- */
+  function buildHandbook() {
+    var wrap = document.getElementById('handbook');
+    if (!wrap) return;
+
+    var blocks = [
+      { title: '六格变格总表（стол/книга/окно）', head: ['格', '问题', '阳性 стол', '阴性 книга', '中性 окно', '用法'],
+        rows: [
+          ['1 主格', 'кто? что?', 'стол', 'книга', 'окно', '主语'],
+          ['2 属格', 'кого? чего?', 'стола', 'книги', 'окна', '所属/否定/数量'],
+          ['3 与格', 'кому? чему?', 'столу', 'книге', 'окну', '间接宾语'],
+          ['4 宾格', 'кого? что?', 'стол', 'книгу', 'окно', '直接宾语'],
+          ['5 工具格', 'кем? чем?', 'столом', 'книгой', 'окном', '工具/一起'],
+          ['6 前置格', 'о ком? о чём?', 'о столе', 'о книге', 'об окне', 'в/на/о 后']
+        ] },
+      { title: '人称代词变格', head: ['格', 'я', 'ты', 'он/оно', 'она', 'мы', 'вы', 'они'],
+        rows: [
+          ['主格', 'я', 'ты', 'он', 'она', 'мы', 'вы', 'они'],
+          ['属格', 'меня', 'тебя', 'его', 'её', 'нас', 'вас', 'их'],
+          ['与格', 'мне', 'тебе', 'ему', 'ей', 'нам', 'вам', 'им'],
+          ['宾格', 'меня', 'тебя', 'его', 'её', 'нас', 'вас', 'их'],
+          ['工具格', 'мной', 'тобой', 'им', 'ей', 'нами', 'вами', 'ими'],
+          ['前置格', 'обо мне', 'о тебе', 'о нём', 'о ней', 'о нас', 'о вас', 'о них']
+        ] },
+      { title: '过去时（按性数）', head: ['动词', '阳性', '阴性', '中性', '复数'],
+        rows: [
+          ['читать', 'читал', 'читала', 'читало', 'читали'],
+          ['говорить', 'говорил', 'говорила', 'говорило', 'говорили'],
+          ['быть', 'был', 'была', 'было', 'были'],
+          ['жить', 'жил', 'жила', 'жило', 'жили']
+        ] },
+      { title: '将来时（未完成 vs 完成）', head: ['人称', '未完成：буду читать', '完成：прочитаю'],
+        rows: [
+          ['я', 'буду читать', 'прочитаю'],
+          ['ты', 'будешь читать', 'прочитаешь'],
+          ['он/она', 'будет читать', 'прочитает'],
+          ['мы', 'будем читать', 'прочитаем'],
+          ['вы', 'будете читать', 'прочитаете'],
+          ['они', 'будут читать', 'прочитают']
+        ] },
+      { title: '高频动词体配对', head: ['未完成体', '含义', '完成体'],
+        rows: [
+          ['читать', '读', 'прочитать'],
+          ['писать', '写', 'написать'],
+          ['делать', '做', 'сделать'],
+          ['покупать', '买', 'купить'],
+          ['смотреть', '看', 'посмотреть'],
+          ['говорить', '说', 'сказать'],
+          ['есть', '吃', 'съесть'],
+          ['пить', '喝', 'выпить'],
+          ['открывать', '打开', 'открыть'],
+          ['начинать', '开始', 'начать']
+        ] },
+      { title: '运动动词与前缀', head: ['定向', '不定向', '含义', '带前缀完成体'],
+        rows: [
+          ['идти', 'ходить', '走', 'пойти / прийти / уйти'],
+          ['ехать', 'ездить', '乘车', 'поехать / приехать / уехать'],
+          ['бежать', 'бегать', '跑', 'побежать / прибежать'],
+          ['лететь', 'летать', '飞', 'полететь / прилететь'],
+          ['плыть', 'плавать', '游', 'поплыть / приплыть']
+        ] },
+      { title: '复合句连接词', head: ['连接词', '功能', '例句'],
+        rows: [
+          ['который', '定语（…的）', 'человек, который живёт в Москве'],
+          ['когда', '时间（当…时）', 'Когда я был в Москве…'],
+          ['если', '条件（如果）', 'Если будет время…'],
+          ['потому что', '原因（因为）', 'Я учу русский, потому что…'],
+          ['поэтому', '结果（所以）', 'Я занимаюсь, поэтому…'],
+          ['чтобы', '目的（为了）', 'учусь, чтобы работать…']
+        ] }
+    ];
+
+    blocks.forEach(function (b) {
+      var block = el('div', 'lesson-block');
+      block.appendChild(el('h4', null, '<span class="b g">▣</span> ' + b.title));
+      var vw = el('div', 'table-wrap');
+      var tb = el('table', 'tbl');
+      var h = '<tr>';
+      b.head.forEach(function (h2) { h += '<th>' + h2 + '</th>'; });
+      h += '</tr>';
+      tb.innerHTML = h;
+      b.rows.forEach(function (r) {
+        var tr = el('tr');
+        tr.innerHTML = r.map(function (c, i) {
+          return i === 0 ? '<td class="zh">' + c + '</td>' : '<td class="es">' + c + '</td>';
+        }).join('');
+        tb.appendChild(tr);
+      });
+      vw.appendChild(tb);
+      block.appendChild(vw);
+      wrap.appendChild(block);
     });
   }
 
-  /* ---------- 生成必备句型 ---------- */
-  function buildPhrases() {
-    var grid = document.getElementById('phrase-grid');
-    if (!grid) return;
-
-    PHRASES.forEach(function (p) {
-      var card = document.createElement('button');
-      card.type = 'button';
-      card.className = 'phrase-card';
-      card.setAttribute('aria-label', '试听句子');
-
-      var es = document.createElement('span');
-      es.className = 'p-es';
-      es.textContent = p.es;
-
-      var zh = document.createElement('span');
-      zh.className = 'p-zh';
-      zh.textContent = p.zh;
-
-      card.appendChild(es);
-      card.appendChild(zh);
-      card.addEventListener('click', function () {
-        speak(p.es, card);
-      });
-      grid.appendChild(card);
-    });
-  }
-
-  /* ---------- 生成范文（6 篇） ---------- */
-  function buildEssays() {
-    var grid = document.getElementById('essay-grid');
-    if (!grid) return;
-
-    ESSAYS.forEach(function (essay, idx) {
-      var card = document.createElement('div');
-      card.className = 'essay-card';
-
-      var h3 = document.createElement('h3');
-      h3.innerHTML = '<span class="mark">' + (idx + 1) + '</span> ' + essay.ru + ' · ' + essay.zh;
-      card.appendChild(h3);
-
-      var topic = document.createElement('p');
-      topic.className = 'e-zh-title';
-      topic.textContent = essay.topic;
-      card.appendChild(topic);
-
-      essay.lines.forEach(function (line, i) {
-        var div = document.createElement('div');
-        div.className = 'essay-line';
-        div.setAttribute('data-es', line.ru);
-        div.innerHTML = '<span class="n">' + (i + 1) + '</span>' +
-          '<span class="ru">' + line.ru + '</span>' +
-          '<span class="zh">' + line.zh + '</span>';
-        card.appendChild(div);
-      });
-
-      grid.appendChild(card);
-    });
-
-    Array.prototype.forEach.call(document.querySelectorAll('.essay-line'), function (line) {
-      var text = line.getAttribute('data-es');
-      if (!text) return;
-      line.addEventListener('click', function () {
-        speak(text, line);
-      });
-    });
+  /* ---------- 考试指南 ---------- */
+  function buildExam() {
+    var wrap = document.getElementById('exam-detail');
+    if (!wrap) return;
+    wrap.innerHTML =
+      '<div class="table-wrap" style="margin-bottom:1.2rem;">' +
+      '<table class="tbl"><tr><th>子测试</th><th>题量</th><th>时长</th><th>考察内容</th><th>满分</th></tr>' +
+      '<tr><td class="zh">1 词汇与语法</td><td class="es">100 题</td><td class="es">50 分钟</td><td class="zh">六格变格、动词体、运动动词、连接词</td><td class="es">100</td></tr>' +
+      '<tr><td class="zh">2 阅读</td><td class="es">30 题</td><td class="es">50 分钟</td><td class="zh">生活短文、公告、广告（250-300 词）</td><td class="es">100</td></tr>' +
+      '<tr><td class="zh">3 听力</td><td class="es">25 题</td><td class="es">30 分钟</td><td class="zh">日常对话与通知（播放两遍）</td><td class="es">100</td></tr>' +
+      '<tr><td class="zh">4 写作</td><td class="es">2 任务</td><td class="es">50 分钟</td><td class="zh">个人信息表 + 命题短文（10-15 句）</td><td class="es">100</td></tr>' +
+      '<tr><td class="zh">5 口语</td><td class="es">4 大题</td><td class="es">25 分钟</td><td class="zh">自我介绍、情景对话、主题陈述</td><td class="es">100</td></tr>' +
+      '</table></div>' +
+      '<div class="note-banner" style="margin-top:0;"><b>通过标准：</b>每项 ≥ 66%（约 66 分），最多允许 1~2 项 60%；总时长约 4 小时。词汇量要求约 1300 词，本课程 12 课已覆盖考试要求的全部语法点与高频主题<sup><a href="#cite-2">[2]</a></sup><sup><a href="#cite-3">[3]</a></sup>。</div>';
   }
 
   /* ---------- 启动 ---------- */
   document.addEventListener('DOMContentLoaded', function () {
-    buildLetters();
-    buildVowels();
-    buildVocab();
-    buildPhrases();
-    buildEssays();
+    buildCatalog();
+    buildHandbook();
+    buildExam();
+    showLesson(1);
   });
 })();
