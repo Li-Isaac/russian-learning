@@ -4,7 +4,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>郦书甲老师的俄语小课堂 · 俄语入门</title>
+  <title>郦书甲老师的俄语小课堂 · ТРКИ A2 备考</title>
 
   <style>
     @font-face {
@@ -190,7 +190,7 @@
       margin-top: 1rem;
       color: var(--muted);
       font-size: 1.05rem;
-      max-width: 700px;
+      max-width: 720px;
       margin-left: auto;
       margin-right: auto;
     }
@@ -249,7 +249,7 @@
       color: var(--muted);
       margin-bottom: 1.6rem;
       font-size: 0.98rem;
-      max-width: 800px;
+      max-width: 850px;
     }
     .sec-desc b { color: var(--ink); }
 
@@ -370,15 +370,16 @@
     .grammar-block { margin-bottom: 2rem; }
     .grammar-block h3 {
       font-family: var(--font-head);
-      font-size: 1.1rem;
+      font-size: 1.12rem;
       margin-bottom: 0.4rem;
     }
     .grammar-block .g-desc {
       color: var(--muted);
       font-size: 0.92rem;
       margin-bottom: 0.9rem;
-      max-width: 800px;
+      max-width: 850px;
     }
+    .grammar-block .g-desc b { color: var(--ink); }
     .table-wrap {
       overflow-x: auto;
       overflow-y: auto;
@@ -430,6 +431,24 @@
       color: var(--muted);
     }
     .tbl-note b { color: var(--ink); }
+
+    /* ===== Case badges ===== */
+    .case-chip {
+      display: inline-block;
+      font-family: var(--font-head);
+      font-size: 0.78rem;
+      font-weight: 700;
+      border-radius: 999px;
+      padding: 0.12rem 0.6rem;
+      margin: 0 0.2rem 0.2rem 0;
+      color: #fff;
+    }
+    .c-nom { background: #d9534f; }
+    .c-gen { background: #e67e22; }
+    .c-dat { background: #f1c40f; color: #5b4a00; }
+    .c-acc { background: #27ae60; }
+    .c-ins { background: #1f7a8c; }
+    .c-pre { background: #7a6f63; }
 
     /* ===== Info cards ===== */
     .cards-2col {
@@ -882,7 +901,7 @@
 <body>
 
   <!-- ============ Teacher banner ============ -->
-  <div class="teacher-banner">郦书甲老师的俄语小课堂<em>уроки русского языка · 俄语零基础入门</em></div>
+  <div class="teacher-banner">郦书甲老师的俄语小课堂<em>уроки русского языка · ТРКИ A2 备考</em></div>
 
   <!-- ============ Top nav ============ -->
   <nav class="topnav">
@@ -892,6 +911,11 @@
       <a class="link" href="#vocales">元音</a>
       <a class="link" href="#especiales">特殊字母</a>
       <a class="link" href="#gramatica">语法</a>
+      <a class="link" href="#padezhi">六格系统</a>
+      <a class="link" href="#vremena">时态</a>
+      <a class="link" href="#vid">动词体</a>
+      <a class="link" href="#dvizhenie">运动动词</a>
+      <a class="link" href="#slozhnye">复合句</a>
       <a class="link" href="#vocabulario">词汇</a>
       <a class="link" href="#frases">句型</a>
       <a class="link" href="#composiciones">范文</a>
@@ -903,13 +927,13 @@
 
     <!-- ============ Hero ============ -->
     <header class="hero">
-      <span class="kicker">Учим русский · 零基础第一课</span>
-      <h1>俄语入门 <span class="es">Русский алфавит</span></h1>
-      <p class="sub">以对外俄语等级考试（ТРКИ）A1 为目标，从字母发音到语法词汇，一套页面帮你打好基础。字母、单词、句型均可点击试听标准发音。</p>
+      <span class="kicker">Учим русский · 目标 ТРКИ A2</span>
+      <h1>俄语入门到进阶 <span class="es">Уровень А2</span></h1>
+      <p class="sub">以对外俄语等级考试 ТРКИ A2（基础级 ТБУ）为目标：从字母发音到完整语法体系（六格、三时态、动词体、运动动词、复合句），词汇约 1300 词，一套页面系统备考。所有字母、单词、句子均可点击试听。</p>
       <div class="stats">
         <div class="stat"><b>33</b><span>个字母</span></div>
-        <div class="stat"><b>10</b><span>个元音</span></div>
-        <div class="stat"><b>100+</b><span>核心词汇</span></div>
+        <div class="stat"><b>6</b><span>个格</span></div>
+        <div class="stat"><b>1300</b><span>目标词汇量</span></div>
         <div class="stat"><b>5</b><span>项考试测试</span></div>
       </div>
     </header>
@@ -946,7 +970,7 @@
         </div>
 
         <div class="note-banner">
-          <b>元音规则：</b>俄语元音<strong>在重读音节中清晰响亮，在非重读音节中会弱化</strong>（如 <span class="ex">о</span> 非重读时读近 <span class="ex">а</span>：<span class="ex">молоко [малако] 牛奶</span>）。初学阶段先按重音朗读，弱化规律可后续掌握。<b>ы</b> 是俄语特有的元音，发音时舌位介于"i"和"u"之间，口型较小。
+          <b>元音规则：</b>俄语元音<strong>在重读音节中清晰响亮，在非重读音节中会弱化</strong>（如 <span class="ex">о</span> 非重读时读近 <span class="ex">а</span>：<span class="ex">молоко [малако] 牛奶</span>）。<b>ы</b> 是俄语特有的元音，发音时舌位介于"i"和"u"之间，口型较小。
         </div>
       </section>
 
@@ -1009,17 +1033,17 @@
         </div>
       </section>
 
-      <!-- ============ Grammar ============ -->
+      <!-- ============ Grammar basics ============ -->
       <section id="gramatica">
         <div class="sec-head">
-          <h2>核心语法</h2>
+          <h2>核心语法基础</h2>
           <span class="es-tag">Основная грамматика</span>
         </div>
-        <p class="sec-desc">ТРКИ A1 要求掌握最基础的语法框架：<b>人称代词、名词的性与数、动词变位、есть/нет、疑问词</b>。俄语名词有<b>性、数、格</b>的变化，但入门阶段先掌握性与数即可。</p>
+        <p class="sec-desc">ТРКИ A2 语法要求大幅提升：除 A1 的人称代词、名词性数、现在时变位外，还需掌握<b>六格系统、形容词与代词变格、过去时与将来时、动词体、运动动词、常用复合句</b><sup><a href="#cite-2">[2]</a></sup>。以下为 A2 语法全览，从基础到进阶。</p>
 
         <div class="grammar-block">
-          <h3>主语人称代词</h3>
-          <p class="g-desc">俄语动词变位已隐含主语，主语代词常省略（如 <span class="ex">Я студент.</span> 我是学生）。注意第三人称有 <b>он（他）/ она（她）/ оно（它）</b>之分，复数统一用 <b>они</b>。</p>
+          <h3>主语人称代词（回顾）</h3>
+          <p class="g-desc">俄语动词变位已隐含主语，主语代词常省略。注意第三人称有 <b>он（他）/ она（她）/ оно（它）</b>之分，复数统一用 <b>они</b>。</p>
           <div class="table-wrap">
             <table class="tbl">
               <tr><th>单数</th><th>含义</th><th>复数</th><th>含义</th></tr>
@@ -1031,22 +1055,21 @@
         </div>
 
         <div class="grammar-block">
-          <h3>名词的性与数</h3>
-          <p class="g-desc">俄语名词分<b>阳性、阴性、中性</b>三种性，主要通过词尾判断；复数以 <b>-ы/-и</b>（辅音结尾词根）或 <b>-а/-я</b>（部分特殊词）构成。注意：俄语<b>没有冠词</b>（不需要 el/la 这类词），这是与欧洲大多数语言最大的不同。</p>
+          <h3>名词的性与数（回顾）</h3>
+          <p class="g-desc">俄语名词分<b>阳性、阴性、中性</b>三种性，主要通过词尾判断；俄语<b>没有冠词</b>。这是掌握六格变化的基础——不同"性"的名词变格词尾不同。</p>
           <div class="table-wrap">
             <table class="tbl">
               <tr><th>性</th><th>词尾规律</th><th>单数示例</th><th>复数示例</th></tr>
-              <tr><td class="zh">阳性</td><td class="zh">辅音结尾</td><td class="es">стол 桌子 · дом 房子</td><td class="es">столы · дома</td></tr>
+              <tr><td class="zh">阳性</td><td class="zh">辅音结尾</td><td class="es">стол 桌子 · музей 博物馆</td><td class="es">столы · музеи</td></tr>
               <tr><td class="zh">阴性</td><td class="zh">-а / -я 结尾</td><td class="es">книга 书 · семья 家庭</td><td class="es">книги · семьи</td></tr>
               <tr><td class="zh">中性</td><td class="zh">-о / -е 结尾</td><td class="es">окно 窗户 · море 海</td><td class="es">окна · моря</td></tr>
             </table>
           </div>
-          <p class="tbl-note"><b>例外要记：</b>以 <b>-ь</b> 结尾的名词可能阳性也可能阴性（如 <span class="ex">день 天（阳）、ночь 夜晚（阴）</span>）；以 <b>-а/-я</b> 结尾的表示人的名词通常阴性（如 <span class="ex">папа 爸爸、дядя 叔叔</span> 却是阳性，指男性）。</p>
         </div>
 
         <div class="grammar-block">
-          <h3>动词变位（第一变位法 / 第二变位法）</h3>
-          <p class="g-desc">俄语动词现在时按人称变化，分两大类：<b>第一变位法</b>（词尾 -ать/-ять/-еть，重音多在词尾）和<b>第二变位法</b>（词尾 -ить）。记住两类规律即可套用到绝大多数动词。</p>
+          <h3>规则动词现在时变位（回顾）</h3>
+          <p class="g-desc">动词现在时按人称变化，分两大类：<b>第一变位法</b>（-ать/-ять/-еть）和<b>第二变位法</b>（-ить）。A2 要求在此基础上掌握<b>全部六个人称 + 过去时 + 将来时</b>。</p>
           <div class="table-wrap">
             <table class="tbl">
               <tr>
@@ -1060,24 +1083,260 @@
               <tr><td class="zh">они</td><td class="es">читают</td><td class="es">говорят</td><td class="es">живут</td><td class="es">работают</td></tr>
             </table>
           </div>
-          <p class="tbl-note"><b>判断方法：</b>看动词原形。以 <span class="ex">-ать/-ять</span> 结尾多为第一变位（<span class="ex">делать 做、слушать 听</span>）；以 <span class="ex">-ить</span> 结尾多为第二变位（<span class="ex">любить 爱、смотреть 看</span>）。<b>быть（是）</b>的现在时形式省略——直接说 <span class="ex">Я студент.</span> 即可，不需要"是"字。</p>
+          <p class="tbl-note"><b>高频不规则动词变位（必背）：</b>быть（现在时省略）、есть/пить/идти/хотеть 等。例如 <span class="ex">хотеть：хочу, хочешь, хочет, хотим, хотите, хотят</span>。</p>
+        </div>
+      </section>
+
+      <!-- ============ Case system ============ -->
+      <section id="padezhi">
+        <div class="sec-head">
+          <h2>六格系统</h2>
+          <span class="es-tag">Падежи</span>
+        </div>
+        <p class="sec-desc">俄语名词、形容词、代词都有 <b>6 个格</b>，通过词尾变化表达在句中的作用（主语、宾语、地点、工具等）。这是 A2 语法<b>最重要的考点</b>，词汇语法子测试约 100 题中格相关占比最高。下面按格逐一讲解，并给出名词单数变格表。</p>
+
+        <div class="note-banner">
+          <b>六格速记：</b>
+          <span class="case-chip c-nom">1 主格</span>
+          <span class="case-chip c-gen">2 属格</span>
+          <span class="case-chip c-dat">3 与格</span>
+          <span class="case-chip c-acc">4 宾格</span>
+          <span class="case-chip c-ins">5 工具格</span>
+          <span class="case-chip c-pre">6 前置格</span>
+          <br>记忆口诀："主属与宾工前"；主格回答 <span class="ex">кто? что?</span>（谁？什么？），其余各格在下方详述。
+        </div>
+
+        <div class="grammar-block">
+          <h3>名词单数变格总表（以 стол 桌子 / книга 书 / окно 窗户 为例）</h3>
+          <div class="table-wrap">
+            <table class="tbl">
+              <tr><th>格</th><th>问题</th><th>阳性 стол</th><th>阴性 книга</th><th>中性 окно</th><th>典型用法</th></tr>
+              <tr><td class="zh">1 主格</td><td class="es">кто? что?</td><td class="es">стол</td><td class="es">книга</td><td class="es">окно</td><td class="zh">主语（是什么/谁）</td></tr>
+              <tr><td class="zh">2 属格</td><td class="es">кого? чего?</td><td class="es">стола</td><td class="es">книги</td><td class="es">окна</td><td class="zh">所属、否定、数量（"的"）</td></tr>
+              <tr><td class="zh">3 与格</td><td class="es">кому? чему?</td><td class="es">столу</td><td class="es">книге</td><td class="es">окну</td><td class="zh">间接宾语（"给谁"）</td></tr>
+              <tr><td class="zh">4 宾格</td><td class="es">кого? что?</td><td class="es">стол</td><td class="es">книгу</td><td class="es">окно</td><td class="zh">直接宾语（动作对象）</td></tr>
+              <tr><td class="zh">5 工具格</td><td class="es">кем? чем?</td><td class="es">столом</td><td class="es">книгой</td><td class="es">окном</td><td class="zh">工具、方式、一起（"用/和"）</td></tr>
+              <tr><td class="zh">6 前置格</td><td class="es">о ком? о чём?</td><td class="es">о столе</td><td class="es">о книге</td><td class="es">об окне</td><td class="zh">只用于前置词后（в/на/о）</td></tr>
+            </table>
+          </div>
+          <p class="tbl-note"><b>变格词尾规律速记：</b>阳性单数属格 -а/-я、与格 -у/-ю、工具格 -ом/-ем；阴性属格 -ы/-и、与格/前置格 -е、工具格 -ой/-ей；中性同阳性（宾格同主格）。<b>前置格永远需要前置词</b>（в 在里 / на 在…上 / о 关于）。</p>
+        </div>
+
+        <div class="cards-2col">
+          <div class="info-card">
+            <h3><span class="mark c-gen">2</span> 属格主要用法</h3>
+            <p>表示<b>所属</b>（相当于"的"）、<b>否定</b>（нет 后）、<b>数量</b>（数字 2~4 与 5+ 后词形不同）及<b>来源</b>（из/с/от 后）。</p>
+            <span class="ex">книга брата 哥哥的书 <i>·</i> У меня нет времени. 我没有时间 <i>·</i> два стола / пять столов 两张/五张桌子</span>
+          </div>
+          <div class="info-card alt">
+            <h3><span class="mark c-dat">3</span> 与格主要用法</h3>
+            <p>表示<b>间接宾语</b>（给谁/对谁），常用于 <span class="ex">дать 给、помогать 帮助、нравиться 喜欢、звонить 打电话</span> 等动词后。</p>
+            <span class="ex">Я даю книгу брату. 我把书给哥哥 <i>·</i> Мне нравится Москва. 我喜欢莫斯科 <i>·</i> Помоги мне! 帮帮我！</span>
+          </div>
+          <div class="info-card alt">
+            <h3><span class="mark c-acc">4</span> 宾格主要用法</h3>
+            <p>表示<b>动作的直接对象</b>。注意：阳性非动物名词宾格=主格，阳性动物名词与阴性名词宾格词尾变化（如 <span class="ex">вижу брата 看见哥哥、вижу книгу 看见书</span>）。</p>
+            <span class="ex">Я читаю книгу. 我读书 <i>·</i> Мы любим Россию. 我们爱俄罗斯 <i>·</i> Я вижу Антона. 我看见安东</span>
+          </div>
+          <div class="info-card">
+            <h3><span class="mark c-ins">5</span> 工具格主要用法</h3>
+            <p>表示<b>工具/手段</b>（用…）、<b>职业</b>（作为…）、<b>伴随</b>（с + 工具格 = 和…一起）。</p>
+            <span class="ex">Я пишу ручкой. 我用钢笔写字 <i>·</i> Он работает врачом. 他是医生 <i>·</i> Я гуляю с другом. 我和朋友散步</span>
+          </div>
+        </div>
+
+        <div class="grammar-block">
+          <h3>人称代词变格（A2 必背）</h3>
+          <p class="g-desc">代词变格在口语中极高频，例如 <span class="ex">меня（我）、мне（给我/对我）、меня（宾语）、мной（用我）、обо мне（关于我）</span>。</p>
+          <div class="table-wrap">
+            <table class="tbl">
+              <tr><th>格</th><th>я 我</th><th>ты 你</th><th>он/оно 他/它</th><th>она 她</th><th>мы 我们</th><th>вы 你们</th><th>они 他们</th></tr>
+              <tr><td class="zh">1 主格</td><td class="es">я</td><td class="es">ты</td><td class="es">он</td><td class="es">она</td><td class="es">мы</td><td class="es">вы</td><td class="es">они</td></tr>
+              <tr><td class="zh">2 属格</td><td class="es">меня</td><td class="es">тебя</td><td class="es">его</td><td class="es">её</td><td class="es">нас</td><td class="es">вас</td><td class="es">их</td></tr>
+              <tr><td class="zh">3 与格</td><td class="es">мне</td><td class="es">тебе</td><td class="es">ему</td><td class="es">ей</td><td class="es">нам</td><td class="es">вам</td><td class="es">им</td></tr>
+              <tr><td class="zh">4 宾格</td><td class="es">меня</td><td class="es">тебя</td><td class="es">его</td><td class="es">её</td><td class="es">нас</td><td class="es">вас</td><td class="es">их</td></tr>
+              <tr><td class="zh">5 工具格</td><td class="es">мной</td><td class="es">тобой</td><td class="es">им</td><td class="es">ей</td><td class="es">нами</td><td class="es">вами</td><td class="es">ими</td></tr>
+              <tr><td class="zh">6 前置格</td><td class="es">обо мне</td><td class="es">о тебе</td><td class="es">о нём</td><td class="es">о ней</td><td class="es">о нас</td><td class="es">о вас</td><td class="es">о них</td></tr>
+            </table>
+          </div>
+        </div>
+
+        <div class="grammar-block">
+          <h3>形容词变格（修饰名词须性数格一致）</h3>
+          <p class="g-desc">形容词必须与所修饰名词在<b>性、数、格</b>上完全一致。以 <span class="ex">новый（新的）</span>为例：<span class="ex">новый дом（阳）、новая книга（阴）、новое окно（中）</span>。</p>
+          <div class="table-wrap">
+            <table class="tbl">
+              <tr><th>格</th><th>阳性 новый</th><th>阴性 новая</th><th>中性 новое</th><th>复数 новые</th></tr>
+              <tr><td class="zh">1 主格</td><td class="es">новый дом</td><td class="es">новая книга</td><td class="es">новое окно</td><td class="es">новые дома</td></tr>
+              <tr><td class="zh">2 属格</td><td class="es">нового дома</td><td class="es">новой книги</td><td class="es">нового окна</td><td class="es">новых домов</td></tr>
+              <tr><td class="zh">3 与格</td><td class="es">новому дому</td><td class="es">новой книге</td><td class="es">новому окну</td><td class="es">новым домам</td></tr>
+              <tr><td class="zh">4 宾格</td><td class="es">новый дом</td><td class="es">новую книгу</td><td class="es">новое окно</td><td class="es">новые дома</td></tr>
+              <tr><td class="zh">5 工具格</td><td class="es">новым домом</td><td class="es">новой книгой</td><td class="es">новым окном</td><td class="es">новыми домами</td></tr>
+              <tr><td class="zh">6 前置格</td><td class="es">о новом доме</td><td class="es">о новой книге</td><td class="es">о новом окне</td><td class="es">о новых домах</td></tr>
+            </table>
+          </div>
+          <p class="tbl-note"><b>形容词词尾规律：</b>阳性 -ый/-ий/-ой，阴性 -ая/-яя，中性 -ое/-ее，复数 -ые/-ие；变格时把词尾替换为对应格的 <b>-ого/-ой/-ому/-ую/-ым/-ыми/-ых</b> 等（与名词词尾呼应）。</p>
+        </div>
+      </section>
+
+      <!-- ============ Tenses ============ -->
+      <section id="vremena">
+        <div class="sec-head">
+          <h2>时态：过去时与将来时</h2>
+          <span class="es-tag">Времена глагола</span>
+        </div>
+        <p class="sec-desc">A2 要求在现在时基础上掌握<b>过去时</b>和<b>将来时</b>。过去时按"性数"变化（不按人称），将来时分为未完成体（быть+不定式）和完成体（变位）两种构成方式。</p>
+
+        <div class="grammar-block">
+          <h3>过去时（按性数变化，不按人称）</h3>
+          <p class="g-desc">过去时词尾规律：阳性 -л，阴性 -ла，中性 -ло，复数 -ли。只需记住 <span class="ex">он читал / она читала / они читали</span> 即可推导所有人称。</p>
+          <div class="table-wrap">
+            <table class="tbl">
+              <tr><th>动词</th><th>я/он（阳）</th><th>я/она（阴）</th><th>оно（中）</th><th>мы/вы/они（复）</th></tr>
+              <tr><td class="es">читать 读</td><td class="es">читал</td><td class="es">читала</td><td class="es">читало</td><td class="es">читали</td></tr>
+              <tr><td class="es">говорить 说</td><td class="es">говорил</td><td class="es">говорила</td><td class="es">говорило</td><td class="es">говорили</td></tr>
+              <tr><td class="es">быть 是</td><td class="es">был</td><td class="es">была</td><td class="es">было</td><td class="es">были</td></tr>
+              <tr><td class="es">жить 居住</td><td class="es">жил</td><td class="es">жила</td><td class="es">жило</td><td class="es">жили</td></tr>
+            </table>
+          </div>
+          <p class="tbl-note"><b>注意：</b>否定过去时常用属格：<span class="ex">Меня не было дома. 我当时不在家</span>（не было + 属格）。</p>
+        </div>
+
+        <div class="grammar-block">
+          <h3>将来时（两种构成）</h3>
+          <p class="g-desc"><b>未完成体将来时</b> = быть 变位 + 动词不定式（表"将要持续/习惯性动作"）；<b>完成体将来时</b> = 完成体动词直接按现在时方式变位（表"将要完成"）。</p>
+          <div class="table-wrap">
+            <table class="tbl">
+              <tr><th>人称</th><th>未完成体：буду читать 将要读</th><th>完成体：прочитаю 将读完</th></tr>
+              <tr><td class="zh">я</td><td class="es">я буду читать</td><td class="es">я прочитаю</td></tr>
+              <tr><td class="zh">ты</td><td class="es">ты будешь читать</td><td class="es">ты прочитаешь</td></tr>
+              <tr><td class="zh">он/она</td><td class="es">будет читать</td><td class="es">прочитает</td></tr>
+              <tr><td class="zh">мы</td><td class="es">будем читать</td><td class="es">прочитаем</td></tr>
+              <tr><td class="zh">вы</td><td class="es">будете читать</td><td class="es">прочитаете</td></tr>
+              <tr><td class="zh">они</td><td class="es">будут читать</td><td class="es">прочитают</td></tr>
+            </table>
+          </div>
+          <p class="tbl-note"><b>运用示例：</b><span class="ex">Завтра я буду читать книгу. 明天我要读书（过程）· Завтра я прочитаю эту книгу. 明天我会读完这本书（结果）</span>。</p>
+        </div>
+      </section>
+
+      <!-- ============ Verbal aspect ============ -->
+      <section id="vid">
+        <div class="sec-head">
+          <h2>动词体：完成体与未完成体</h2>
+          <span class="es-tag">Вид глагола</span>
+        </div>
+        <p class="sec-desc">俄语动词分<b>未完成体</b>（强调过程、习惯、持续）和<b>完成体</b>（强调结果、一次性完成）。绝大多数动词以"对"出现（一对两词）。这是 A2 语法的重要考点，也直接影响将来时和过去时的选择。</p>
+
+        <div class="grammar-block">
+          <h3>高频动词体配对（必背）</h3>
+          <div class="table-wrap">
+            <table class="tbl">
+              <tr><th>未完成体</th><th>含义</th><th>完成体</th><th>例句对比</th></tr>
+              <tr><td class="es">читать</td><td class="zh">读（过程）</td><td class="es">прочитать</td><td class="es">читать книгу / прочитать книгу</td></tr>
+              <tr><td class="es">писать</td><td class="zh">写</td><td class="es">написать</td><td class="es">писать письмо / написать письмо</td></tr>
+              <tr><td class="es">делать</td><td class="zh">做</td><td class="es">сделать</td><td class="es">делать уроки / сделать уроки</td></tr>
+              <tr><td class="es">покупать</td><td class="zh">买</td><td class="es">купить</td><td class="es">покупать хлеб / купить хлеб</td></tr>
+              <tr><td class="es">смотреть</td><td class="zh">看</td><td class="es">посмотреть</td><td class="es">смотреть фильм / посмотреть фильм</td></tr>
+              <tr><td class="es">говорить</td><td class="zh">说</td><td class="es">сказать</td><td class="es">говорить по-русски / сказать слово</td></tr>
+              <tr><td class="es">есть</td><td class="zh">吃</td><td class="es">съесть</td><td class="es">есть суп / съесть суп</td></tr>
+              <tr><td class="es">пить</td><td class="zh">喝</td><td class="es">выпить</td><td class="es">пить чай / выпить чай</td></tr>
+              <tr><td class="es">открывать</td><td class="zh">打开</td><td class="es">открыть</td><td class="es">открывать окно / открыть окно</td></tr>
+              <tr><td class="es">начинать</td><td class="zh">开始</td><td class="es">начать</td><td class="es">начинать урок / начать урок</td></tr>
+            </table>
+          </div>
+        </div>
+
+        <div class="cards-2col">
+          <div class="info-card">
+            <h3><span class="mark">未</span> 未完成体用在哪</h3>
+            <p>① 强调<b>过程</b>：<span class="ex">Я читал книгу два часа. 我读了两个小时书</span>；② <b>习惯/反复</b>：<span class="ex">Я каждое утро пью кофе. 我每天早上喝咖啡</span>；③ <b>正在发生</b>。</p>
+          </div>
+          <div class="info-card alt">
+            <h3><span class="mark">完</span> 完成体用在哪</h3>
+            <p>① 强调<b>结果</b>：<span class="ex">Я прочитал книгу. 我把书读完了</span>；② <b>一次性完成</b>：<span class="ex">Я купил хлеб. 我买好了面包</span>；③ <b>将来的确定结果</b>：<span class="ex">Завтра я позвоню тебе. 明天我给你打电话</span>。</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- ============ Verbs of motion ============ -->
+      <section id="dvizhenie">
+        <div class="sec-head">
+          <h2>运动动词</h2>
+          <span class="es-tag">Глаголы движения</span>
+        </div>
+        <p class="sec-desc">俄语运动动词是 A2 的重点和难点：每个动作通常有<b>定向</b>（正在去某处）和<b>不定向</b>（往返/习惯）两个未完成体，加上完成体与<b>前缀</b>组合，可表达"去/来/进入/出来/到达"等丰富含义。</p>
+
+        <div class="grammar-block">
+          <h3>成对运动动词（未完成体）</h3>
+          <div class="table-wrap">
+            <table class="tbl">
+              <tr><th>定向（正在去）</th><th>不定向（往返/习惯）</th><th>含义</th><th>例句</th></tr>
+              <tr><td class="es">идти</td><td class="es">ходить</td><td class="zh">步行</td><td class="es">Я иду в магазин. / Я хожу в парк по утрам.</td></tr>
+              <tr><td class="es">ехать</td><td class="es">ездить</td><td class="zh">乘车</td><td class="es">Мы едем в Москву. / Мы ездим в Москву летом.</td></tr>
+              <tr><td class="es">бежать</td><td class="es">бегать</td><td class="zh">跑</td><td class="es">Он бежит в школу. / Он бегает каждое утро.</td></tr>
+              <tr><td class="es">лететь</td><td class="es">летать</td><td class="zh">飞</td><td class="es">Самолёт летит в Пекин. / Он летает на родину.</td></tr>
+              <tr><td class="es">плыть</td><td class="es">плавать</td><td class="zh">游泳/航行</td><td class="es">Она плывёт к берегу. / Я плаваю по субботам.</td></tr>
+              <tr><td class="es">нести</td><td class="es">носить</td><td class="zh">携带（拿）</td><td class="es">Он несёт сумку. / Она носит очки.</td></tr>
+            </table>
+          </div>
+          <p class="tbl-note"><b>区分技巧：</b>定向 = "此刻正在去"（单程）；不定向 = "往返过/经常去"（多程或习惯）。问"你去哪？"用 <span class="ex">Куда ты идёшь?</span></p>
+        </div>
+
+        <div class="grammar-block">
+          <h3>带前缀的运动动词（A2 进阶）</h3>
+          <p class="g-desc">前缀改变方向或结果，常见组合：<b>по-</b>（开始去）、<b>при-</b>（来到）、<b>у-</b>（离开）、<b>в-/во-</b>（进入）、<b>вы-</b>（出来）、<b>до-</b>（到达）。</p>
+          <div class="table-wrap">
+            <table class="tbl">
+              <tr><th>前缀</th><th>完成体</th><th>含义</th><th>例句</th></tr>
+              <tr><td class="zh">по-</td><td class="es">пойти / поехать</td><td class="zh">出发去</td><td class="es">Я пошёл в школу. 我去上学了</td></tr>
+              <tr><td class="zh">при-</td><td class="es">прийти / приехать</td><td class="zh">来到（到达）</td><td class="es">Он приехал в Москву. 他来到了莫斯科</td></tr>
+              <tr><td class="zh">у-</td><td class="es">уйти / уехать</td><td class="zh">离开</td><td class="es">Она ушла домой. 她回家去了</td></tr>
+              <tr><td class="zh">в-</td><td class="es">войти / въехать</td><td class="zh">进入</td><td class="es">Мы вошли в комнату. 我们进了房间</td></tr>
+              <tr><td class="zh">вы-</td><td class="es">выйти / выехать</td><td class="zh">出来</td><td class="es">Он вышел из дома. 他出了家门</td></tr>
+              <tr><td class="zh">до-</td><td class="es">дойти / доехать</td><td class="zh">到达（辛苦到达）</td><td class="es">Мы дошли до парка. 我们走到了公园</td></tr>
+            </table>
+          </div>
+          <p class="tbl-note"><b>注意前置词搭配：</b>"去某地"用 <span class="ex">в/на + 宾格</span>（<span class="ex">в школу</span>）；"从某地来"用 <span class="ex">из/с + 属格</span>（<span class="ex">из школы</span>）。</p>
+        </div>
+      </section>
+
+      <!-- ============ Complex sentences ============ -->
+      <section id="slozhnye">
+        <div class="sec-head">
+          <h2>复合句</h2>
+          <span class="es-tag">Сложные предложения</span>
+        </div>
+        <p class="sec-desc">A2 写作和口语要求能连接<b>两个及以上简单句</b>，常用连接词：<b>который</b>（定语从句）、<b>когда</b>（时间）、<b>если</b>（条件）、<b>потому что / поэтому</b>（因果）、<b>чтобы</b>（目的）。掌握这些，作文立刻上一个档次。</p>
+
+        <div class="grammar-block">
+          <h3>常用连接词与句型</h3>
+          <div class="table-wrap">
+            <table class="tbl">
+              <tr><th>连接词</th><th>功能</th><th>例句</th></tr>
+              <tr><td class="es">который</td><td class="zh">定语从句（"那个…的"）</td><td class="es">Я знаю человека, который живёт в Москве. 我认识住在莫斯科的那个人</td></tr>
+              <tr><td class="es">когда</td><td class="zh">时间（"当…时"）</td><td class="es">Когда я был в России, я много путешествовал. 我在俄罗斯时旅行了很多</td></tr>
+              <tr><td class="es">если</td><td class="zh">条件（"如果"）</td><td class="es">Если будет время, я приду. 如果有时间我就来</td></tr>
+              <tr><td class="es">потому что</td><td class="zh">原因（"因为"）</td><td class="es">Я учу русский, потому что он мне нравится. 我学俄语，因为我喜欢它</td></tr>
+              <tr><td class="es">поэтому</td><td class="zh">结果（"所以"）</td><td class="es">Я много занимаюсь, поэтому хорошо говорю. 我很努力，所以说得不错</td></tr>
+              <tr><td class="es">чтобы</td><td class="zh">目的（"为了"）</td><td class="es">Я учу русский, чтобы работать в России. 我学俄语是为了在俄罗斯工作</td></tr>
+            </table>
+          </div>
+          <p class="tbl-note"><b>который 的性数格要一致：</b>который 指代先行词，须与其<b>性、数、格</b>一致——<span class="ex">человек, который…（阳单主格）；книга, которую я читаю（阴单宾格）；друзья, с которыми я гуляю（复工具格）</span>。</p>
         </div>
 
         <div class="cards-3col">
           <div class="info-card">
-            <h3><span class="mark">есть</span> 有 / 存在</h3>
-            <p>表示"某人有某物"用 <b>У + 人称 + есть</b> 结构：<span class="ex">У меня есть книга.</span> 我有一本书。否定用 <b>нет</b>：<span class="ex">У меня нет времени.</span> 我没有时间。</p>
-            <span class="ex">У меня есть семья. 我有家庭 <i>·</i> Здесь есть ресторан? 这里有餐厅吗？</span>
+            <h3><span class="mark">к</span> чтобы 后动词不定式</h3>
+            <p>主句主语与从句主语<b>相同时</b>，чтобы 后用<b>不定式</b>：<span class="ex">Я пришёл, чтобы помочь тебе.</span></p>
           </div>
           <div class="info-card alt">
-            <h3><span class="mark">не</span> 否定词</h3>
-            <p>俄语否定在动词前加 <b>не</b>（放在被否定的词之前）。回答一般疑问句时，<b>да</b> 是 / <b>нет</b> 不是。</p>
-            <span class="ex">Я не понимаю. 我不明白 <i>·</i> — Ты студент? — Да. 你是学生吗？是的。</span>
+            <h3><span class="mark">п</span> потому что 与 поэтому</h3>
+            <p><b>потому что</b> 放在原因从句前（因为…）；<b>поэтому</b> 放在结果句前（所以…），两者不能互换位置。</p>
           </div>
           <div class="info-card">
-            <h3><span class="mark">?</span> 疑问词</h3>
-            <p>A1 高频疑问词：<span class="ex">что? 什么 · кто? 谁 · где? 哪里 · когда? 何时 · почему? 为什么 · сколько? 多少 · как? 怎样</span>。</p>
-            <span class="ex">Как тебя зовут? 你叫什么？ <i>·</i> Сколько это стоит? 多少钱？</span>
+            <h3><span class="mark">к</span> когда 从句位置灵活</h3>
+            <p>时间从句可放<b>主句前或后</b>：<span class="ex">Когда я читаю, я пью чай. / Я пью чай, когда читаю.</span></p>
           </div>
         </div>
       </section>
@@ -1085,17 +1344,23 @@
       <!-- ============ Vocabulary ============ -->
       <section id="vocabulario">
         <div class="sec-head">
-          <h2>高频词汇</h2>
-          <span class="es-tag">Словарь</span>
+          <h2>高频词汇（12 大主题）</h2>
+          <span class="es-tag">Словарь · 1300 слов</span>
         </div>
-        <p class="sec-desc">按主题整理 ТРКИ A1 最高频词汇，覆盖数字、时间、颜色、家庭、食物等日常生活场景。点击单词可试听发音。</p>
+        <p class="sec-desc">按 ТРКИ A2 国家标准的交际主题整理高频词汇，从 A1 的 6 个主题扩展到 <b>12 大主题</b>，覆盖购物、交通、健康、天气、工作学习等考试场景。点击单词可试听发音。</p>
 
         <div class="tabs" id="vocab-tabs">
           <button class="tab-btn active" data-tab="numeros">数字</button>
-          <button class="tab-btn" data-tab="dias">星期与月份</button>
+          <button class="tab-btn" data-tab="dias">时间</button>
           <button class="tab-btn" data-tab="colores">颜色</button>
           <button class="tab-btn" data-tab="familia">家庭</button>
           <button class="tab-btn" data-tab="comida">食物</button>
+          <button class="tab-btn" data-tab="gorod">城市交通</button>
+          <button class="tab-btn" data-tab="magazin">购物</button>
+          <button class="tab-btn" data-tab="zdorovie">健康</button>
+          <button class="tab-btn" data-tab="pogoda">天气</button>
+          <button class="tab-btn" data-tab="rabota">工作学习</button>
+          <button class="tab-btn" data-tab="otdyh">休闲</button>
           <button class="tab-btn" data-tab="saludos">问候</button>
         </div>
 
@@ -1107,10 +1372,10 @@
       <!-- ============ Phrases ============ -->
       <section id="frases">
         <div class="sec-head">
-          <h2>必备句型</h2>
+          <h2>必备句型（60+ 句）</h2>
           <span class="es-tag">Полезные фразы</span>
         </div>
-        <p class="sec-desc">口语与写作考试的"万能句型"：问候、自我介绍、请求、问路、点餐。把这些句子练到脱口而出，考试就稳了一半。点击句子可试听。</p>
+        <p class="sec-desc">覆盖 A2 考试全部交际场景的万能句型：问候、自我介绍、购物、问路、点餐、就医、电话、表达意见等。长句带"长句"标签。点击句子可试听。</p>
 
         <div class="phrase-grid" id="phrase-grid">
           <!-- 由 assets/app.js 生成 -->
@@ -1120,163 +1385,106 @@
       <!-- ============ Essays ============ -->
       <section id="composiciones">
         <div class="sec-head">
-          <h2>写作范文</h2>
+          <h2>写作范文（6 篇）</h2>
           <span class="es-tag">Сочинения</span>
         </div>
-        <p class="sec-desc">ТРКИ A1 写作考试要写"个人信息 + 短信/明信片"。这两篇 A1 水平范文覆盖最常考的主题，<b>逐句可点击试听</b>，建议背诵句式后替换为自己的信息。</p>
+        <p class="sec-desc">A2 写作考试要写"个人信息 + 一篇 10~15 句的短文"。以下 6 篇范文覆盖 ТРКИ A2 官方主题：<b>自我介绍、我的家庭、我的工作日、我的城市、健康与医生、天气与季节</b>。逐句可点击试听，建议背诵句式后替换为自己的信息。</p>
 
-        <div class="essay-grid">
-          <div class="essay-card">
-            <h3><span class="mark">1</span> О себе · 自我介绍</h3>
-            <p class="e-zh-title">写作 Tarea 1 高频主题：介绍姓名、国籍、职业、语言、爱好</p>
-            <div class="essay-line" data-es="Здравствуйте! Меня зовут Анна.">
-              <span class="n">1</span><span class="ru">Здравствуйте! Меня зовут Анна.</span><span class="zh">您好！我叫安娜。</span>
-            </div>
-            <div class="essay-line" data-es="Я из Китая, из города Пекин.">
-              <span class="n">2</span><span class="ru">Я из Китая, из города Пекин.</span><span class="zh">我来自中国北京。</span>
-            </div>
-            <div class="essay-line" data-es="Мне двадцать два года.">
-              <span class="n">3</span><span class="ru">Мне двадцать два года.</span><span class="zh">我二十二岁。</span>
-            </div>
-            <div class="essay-line" data-es="Я студентка, я изучаю русский язык.">
-              <span class="n">4</span><span class="ru">Я студентка, я изучаю русский язык.</span><span class="zh">我是学生，我在学俄语。</span>
-            </div>
-            <div class="essay-line" data-es="Я говорю по-русски немного.">
-              <span class="n">5</span><span class="ru">Я говорю по-русски немного.</span><span class="zh">我会说一点俄语。</span>
-            </div>
-            <div class="essay-line" data-es="Я люблю музыку и спорт.">
-              <span class="n">6</span><span class="ru">Я люблю музыку и спорт.</span><span class="zh">我喜欢音乐和运动。</span>
-            </div>
-            <div class="essay-line" data-es="Моя семья живёт в Пекине.">
-              <span class="n">7</span><span class="ru">Моя семья живёт в Пекине.</span><span class="zh">我的家人住在北京。</span>
-            </div>
-            <div class="essay-line" data-es="Спасибо за внимание! До свидания.">
-              <span class="n">8</span><span class="ru">Спасибо за внимание! До свидания.</span><span class="zh">谢谢聆听！再见。</span>
-            </div>
-          </div>
-
-          <div class="essay-card">
-            <h3><span class="mark">2</span> Моя семья · 我的家庭</h3>
-            <p class="e-zh-title">口语 Tarea 2 / 写作高频主题：介绍家庭成员、职业与居住地</p>
-            <div class="essay-line" data-es="У меня большая и дружная семья.">
-              <span class="n">1</span><span class="ru">У меня большая и дружная семья.</span><span class="zh">我有一个和睦的大家庭。</span>
-            </div>
-            <div class="essay-line" data-es="В семье четыре человека: папа, мама, брат и я.">
-              <span class="n">2</span><span class="ru">В семье четыре человека: папа, мама, брат и я.</span><span class="zh">家里有四口人：爸爸、妈妈、哥哥和我。</span>
-            </div>
-            <div class="essay-line" data-es="Мой папа работает врачом в больнице.">
-              <span class="n">3</span><span class="ru">Мой папа работает врачом в больнице.</span><span class="zh">我爸爸在医院当医生。</span>
-            </div>
-            <div class="essay-line" data-es="Моя мама учительница, она работает в школе.">
-              <span class="n">4</span><span class="ru">Моя мама учительница, она работает в школе.</span><span class="zh">我妈妈是老师，她在学校工作。</span>
-            </div>
-            <div class="essay-line" data-es="Мой брат студент, он учится в университете.">
-              <span class="n">5</span><span class="ru">Мой брат студент, он учится в университете.</span><span class="zh">我哥哥是大学生，他在大学读书。</span>
-            </div>
-            <div class="essay-line" data-es="Мы живём в большом доме в центре города.">
-              <span class="n">6</span><span class="ru">Мы живём в большом доме в центре города.</span><span class="zh">我们住在市中心的一栋大房子里。</span>
-            </div>
-            <div class="essay-line" data-es="По выходным мы вместе гуляем в парке.">
-              <span class="n">7</span><span class="ru">По выходным мы вместе гуляем в парке.</span><span class="zh">周末我们一起去公园散步。</span>
-            </div>
-            <div class="essay-line" data-es="Я очень люблю свою семью.">
-              <span class="n">8</span><span class="ru">Я очень люблю свою семью.</span><span class="zh">我非常爱我的家人。</span>
-            </div>
-          </div>
+        <div class="essay-grid" id="essay-grid">
+          <!-- 由 assets/app.js 生成 -->
         </div>
 
         <div class="note-banner">
-          <b>写作小贴士：</b>A1 作文不用复杂句式，把<b>每句写短写对</b>即可拿分。记忆要点：人称与动词变位一致（<span class="ex">Я живу / Он живёт</span>）、名词性数一致（<span class="ex">большой дом / большая семья</span>）、句末标点完整。写完后逐句朗读检查（本页范文每句都可点击听发音）。
+          <b>写作小贴士（A2）：</b>要求比 A1 更高——必须会用<b>过去时和将来时</b>叙述、会用 <span class="ex">который / потому что / поэтому</span> 连接句子、句长 10~15 词。每篇范文都用到了这些结构，写完后对照检查：人称与动词变位一致、名词与形容词性数格一致、句末标点完整。
         </div>
       </section>
 
       <!-- ============ Exam guide ============ -->
       <section id="examen">
         <div class="sec-head">
-          <h2>ТРКИ A1 考试指南</h2>
-          <span class="es-tag">Экзамен ТРКИ</span>
+          <h2>ТРКИ A2 考试指南</h2>
+          <span class="es-tag">Экзамен ТБУ</span>
         </div>
-        <p class="sec-desc">ТРКИ（Тест по русскому языку как иностранному，又称 TORFL）是俄罗斯教育部认可、面向非母语者的<b>国家级俄语等级考试</b>，共分 6 级，与欧标 CEFR 对应。A1（基础级 ТЭУ）证明考生能应付最基本的日常交流：自我介绍、提出和回答简单问题、理解简短文字与慢速口语<sup><a href="#cite-2">[2]</a></sup>。</p>
+        <p class="sec-desc">ТРКИ A2（ТБУ 基础级）是俄罗斯国家对外俄语等级考试的第二级。达到 A2 证明考生能在<b>日常生活、学习、社会文化</b>领域与俄语母语者进行基本交流：读懂常见公告与广告、听懂日常对话、写简单信件、就熟悉话题交谈，词汇量约 <b>1300 词</b>，通常需要 A1 之后约 180~200 学时<sup><a href="#cite-2">[2]</a></sup>。</p>
 
         <div class="exam-grid">
           <div class="exam-card">
             <h3><span class="badge">Тест 1</span> 词汇与语法</h3>
-            <div class="meta"><span>50 分钟</span><span>选择/填空</span><span>100 分</span></div>
-            <p>考察<b>词汇量、名词性数、动词变位、前置词</b>等基础语法，全部为选择题或短填空。</p>
+            <div class="meta"><span>50 分钟</span><span>100 题</span><span>100 分</span></div>
+            <p>考察<b>词汇、六格变格（名词/形容词/代词）、动词系统、运动动词（含前缀）、连接词</b>，全部为客观题<sup><a href="#cite-3">[3]</a></sup>。</p>
             <ul>
-              <li>内容：词汇用法、名词/形容词性数一致、动词现在时变位</li>
-              <li>题型：单项选择 + 短文填空，约 100 题左右</li>
+              <li>词汇题 + 变格/变位题 + 前置词与连接词选择</li>
+              <li>难点：格词尾辨析、动词体选择、运动动词前缀</li>
             </ul>
           </div>
 
           <div class="exam-card">
             <h3><span class="badge green">Тест 2</span> 阅读</h3>
-            <div class="meta"><span>50 分钟</span><span>短文理解</span><span>100 分</span></div>
-            <p>读懂<b>简短生活文本</b>（通知、广告、便条、个人信件），并回答理解题。</p>
+            <div class="meta"><span>50 分钟</span><span>30 题</span><span>100 分</span></div>
+            <p>读懂<b>生活短文、公告、广告、短篇叙事</b>（每篇 250~300 词），提取主题与细节信息。</p>
             <ul>
-              <li>内容：日常生活场景的简短文字与公告</li>
-              <li>题型：选择 + 判断正误，文本为 A1 级别改写材料</li>
+              <li>题型：多项选择 + 信息配对 + 判断</li>
+              <li>文本含复合句，需熟悉 который/когда/если 等结构</li>
             </ul>
           </div>
 
           <div class="exam-card">
             <h3><span class="badge">Тест 3</span> 听力</h3>
-            <div class="meta"><span>30 分钟</span><span>慢速录音</span><span>100 分</span></div>
-            <p>听懂<b>慢速、清晰的对话和独白</b>，捕捉姓名、数字、时间等关键信息。</p>
+            <div class="meta"><span>30 分钟</span><span>25 题</span><span>100 分</span></div>
+            <p>听懂<b>日常对话、通知、简短独白</b>（每段播放两遍），捕捉人物、地点、时间、数字等关键信息。</p>
             <ul>
-              <li>内容：简短日常对话、电话留言、广播通知</li>
-              <li>录音播放两遍，语速慢、发音标准</li>
+              <li>内容：购物、交通、就医、电话等生活场景</li>
+              <li>比 A1 语速略快、文本更长，需抓"谁在做什么"</li>
             </ul>
           </div>
 
           <div class="exam-card">
             <h3><span class="badge green">Тест 4</span> 写作</h3>
             <div class="meta"><span>50 分钟</span><span>2 项任务</span><span>100 分</span></div>
-            <p>用简单句子完成<b>个人信息表格</b>和<b>一封 8~10 句的短信/明信片</b>。</p>
+            <p>完成<b>个人信息表</b>和<b>一篇 10~15 句的命题短文</b>（如"我的城市""我的工作日"），要求使用过去时/将来时与复合句。</p>
             <ul>
-              <li>任务 1：填写个人信息表（姓名、国籍、职业等）</li>
-              <li>任务 2：写一封简短书信，回答对方的 3~4 个问题</li>
+              <li>任务 1：填写个人信息/申请表</li>
+              <li>任务 2：按要点写短文（如介绍城市、周末安排）</li>
             </ul>
           </div>
 
           <div class="exam-card">
             <h3><span class="badge">Тест 5</span> 口语</h3>
-            <div class="meta"><span>30 分钟</span><span>与考官对话</span><span>100 分</span></div>
-            <p>与考官一对一交流：<b>自我介绍、回答提问、根据情境表达</b>。</p>
+            <div class="meta"><span>25 分钟</span><span>4 大题/12 项</span><span>100 分</span></div>
+            <p>与考官一对一交流：<b>自我介绍、回答问题、情景对话、看图/主题陈述</b>。</p>
             <ul>
-              <li>任务 1：自我介绍（姓名、国籍、职业、爱好）</li>
-              <li>任务 2：回答日常问题（家庭、城市、饮食）</li>
-              <li>任务 3：情景表达（点餐、问路、购物等）</li>
+              <li>任务 1-2：自我介绍 + 回答日常问题（家庭、工作、爱好）</li>
+              <li>任务 3-4：情景应答（购物/问路）+ 主题陈述（我的城市等）</li>
             </ul>
           </div>
 
           <div class="exam-card">
             <h3><span class="badge green">评分与通过</span> 各单项达标制</h3>
-            <div class="meta"><span>总时长约 3.5 小时</span><span>5 项各 100 分</span></div>
-            <p>每个子测试满分 100 分，<b>每项均需达到约 66% 以上（约 66 分）</b>才算通过；任一项不足即不合格<sup><a href="#cite-2">[2]</a></sup>。</p>
+            <div class="meta"><span>总时长约 4 小时</span><span>5 项各 100 分</span></div>
+            <p>每个子测试满分 100 分，<b>每项需达到 66% 以上（约 66 分）</b>；其中最多允许 <b>1~2 个子测试为 60%</b>，其余须 66% 以上<sup><a href="#cite-3">[3]</a></sup>。</p>
             <ul>
-              <li>证书全球有效，是赴俄留学、工作的语言证明</li>
-              <li>写作+阅读+词汇语法通常同一天笔试，听力、口语单独安排</li>
+              <li>A2 证书是申请俄罗斯临时居留（РВП）的语言证明</li>
+              <li>词汇语法+阅读+写作通常同日笔试，听力、口语单独安排</li>
             </ul>
           </div>
         </div>
 
         <div class="note-banner">
-          <b>评分规则：</b>ТРКИ A1 五个子测试各 100 分，通过标准为<b>每项得分 ≥ 66 分（66%）</b>，五科全部达标才可取得证书。相比西语 DELE 的"分组及格制"，ТРКИ 要求<b>每科都及格</b>，所以不能有明显短板<sup><a href="#cite-3">[3]</a></sup>。
+          <b>评分规则：</b>ТРКИ A2 五个子测试各 100 分，通过标准为<b>每项 ≥ 66%</b>（最多允许 1~2 项 60%），五科全部达标才可取得证书<sup><a href="#cite-3">[3]</a></sup>。与 A1 相比，词汇语法题量从 70 题增至 100 题，阅读文本更长（250~300 词），口语需进行完整的情景对话与主题陈述。
         </div>
 
         <div style="margin-top:1.6rem;">
           <div class="sec-head" style="border-image:linear-gradient(90deg, var(--accent2), rgba(31,122,140,0)) 1;">
-            <h2 style="font-size:1.2rem;">A1 备考建议</h2>
+            <h2 style="font-size:1.2rem;">A2 备考建议</h2>
             <span class="es-tag">Советы</span>
           </div>
           <ul class="tips">
-            <li><span class="num">1</span><span><b>词汇是地基。</b>A1 词汇量要求约 <b>700~800 词</b>，按主题（数字、家庭、食物、场所）分组记忆，配合本页发音反复跟读。</span></li>
-            <li><span class="num">2</span><span><b>背熟动词变位。</b>第一、第二变位法的词尾变化必须达到"条件反射"水平，高频动词（<span class="ex">читать、говорить、жить、работать、любить</span>）逐个过关。</span></li>
-            <li><span class="num">3</span><span><b>口语按模板练。</b>准备自我介绍、我的家庭、我的城市等主题模板，口语任务 1~2 基本可套用。</span></li>
-            <li><span class="num">4</span><span><b>听力抓关键词。</b>答题前先读题预判内容，听到<b>数字、时间、地点</b>等信息立即标注。</span></li>
-            <li><span class="num">5</span><span><b>写作背格式。</b>书信格式固定：<span class="ex">Здравствуйте…（您好）、До свидания（再见）</span>，按要点逐句写即可。</span></li>
-            <li><span class="num">6</span><span><b>做官方样题。</b>圣彼得堡国立大学、莫斯科国立大学等测试中心提供 A1 样题（Пробный тест），考前至少完整模拟一遍<sup><a href="#cite-2">[2]</a></sup>。</span></li>
+            <li><span class="num">1</span><span><b>攻克六格。</b>把本页六格表打印出来，每天朗读一列（<span class="ex">стол/книга/окно</span> 各格），配合形容词变格做替换练习，这是词汇语法子测试拿分的关键。</span></li>
+            <li><span class="num">2</span><span><b>动词体成对记。</b>每学一个动词就记它的"对"（<span class="ex">читать/прочитать、покупать/купить</span>），并用"过程 vs 结果"造句区分。</span></li>
+            <li><span class="num">3</span><span><b>运动动词按场景练。</b>用"我今天去…"（<span class="ex">идти/ехать</span>）和"我经常去…"（<span class="ex">ходить/ездить</span>）两个场景反复造句，再扩展带前缀的 <span class="ex">прийти/уйти/выйти</span>。</span></li>
+            <li><span class="num">4</span><span><b>复合句提前练。</b>A2 作文必须有从句。每天写 3 个 <span class="ex">который</span> 句和 2 个 <span class="ex">потому что</span> 句，坚持两周即成习惯。</span></li>
+            <li><span class="num">5</span><span><b>听力多听生活场景。</b>利用本页词汇和句型跟读，重点练"数字+时间+地点"组合信息，这是听力 25 题的高频考点。</span></li>
+            <li><span class="num">6</span><span><b>做官方样题。</b>圣彼得堡国立大学、普希金学院等提供 A2 样题（Пробный тест ТБУ），考前完整模拟一遍，重点限时训练词汇语法 100 题<sup><a href="#cite-4">[4]</a></sup>。</span></li>
           </ul>
         </div>
       </section>
@@ -1289,20 +1497,24 @@
         <h2>参考来源</h2>
         <ol>
           <li id="cite-1">
-            <span class="src-title">Санкт-Петербургский государственный университет (SPbU), Вводно-фонетический курс：现代俄语字母表共 33 个字母（10 元音、21 辅音、2 无音符号）及发音入门课程。</span>
+            <span class="src-title">Санкт-Петербургский государственный университет (SPbU), Вводно-фонетический курс：现代俄语字母表共 33 个字母（10 元音、21 辅音、2 无音符号）。</span>
             <a class="src-url" href="https://elementaryrussian.spbu.ru/lessons/l1.html" target="_blank" rel="noopener">https://elementaryrussian.spbu.ru/lessons/l1.html</a>
           </li>
           <li id="cite-2">
-            <span class="src-title">Российская государственная система тестирования ТРКИ（TORFL）：考试 6 级体系与 A1（ТЭУ）能力描述，由俄罗斯教育部认可、各高校测试中心组织。</span>
-            <a class="src-url" href="https://international.sfu-kras.ru/testing/TRKI" target="_blank" rel="noopener">https://international.sfu-kras.ru/testing/TRKI</a>
+            <span class="src-title">Государственный стандарт РКИ, Базовый уровень (А2)：A2 交际能力要求、主题范围、语法体系（六格、时态、动词体、运动动词、复合句）、词汇量 1300 词。</span>
+            <a class="src-url" href="https://urya.ru/docs/53-urovni_rki_bazovyi_uroven_a2.html" target="_blank" rel="noopener">https://urya.ru/docs/53-urovni_rki_bazovyi_uroven_a2.html</a>
           </li>
           <li id="cite-3">
-            <span class="src-title">Герценовский университет（РГПУ им. А. И. Герцена）, Центр тестирования ТРКИ：A1 各子测试时长（词汇语法 50 分、阅读 50 分、听力 30 分、写作 50 分、口语 30 分）与测试结构。</span>
-            <a class="src-url" href="https://www.herzen.spb.ru/about/struct-uni/centers/tsentr-testirovaniya/trki/" target="_blank" rel="noopener">https://www.herzen.spb.ru/about/struct-uni/centers/tsentr-testirovaniya/trki/</a>
+            <span class="src-title">СПбГУ, Центр языкового тестирования (webinar)：ТРКИ 各级别子测试结构与时长（A2：词汇语法 100 题/50 分、阅读 30 题/50 分、听力 25 题/30 分），通过标准 66%（最多 1~2 项 60%）。</span>
+            <a class="src-url" href="https://testingcenter.spbu.ru/images/webinars/webinar_5_test_rki.pdf" target="_blank" rel="noopener">https://testingcenter.spbu.ru/images/webinars/webinar_5_test_rki.pdf</a>
+          </li>
+          <li id="cite-4">
+            <span class="src-title">Пушкинский институт, Тестирование ТРКИ：ТБУ 基础级考试时长约 4 小时、5 个子测试的官方说明。</span>
+            <a class="src-url" href="https://www.pushkin.institute/certificates/trki/" target="_blank" rel="noopener">https://www.pushkin.institute/certificates/trki/</a>
           </li>
         </ol>
       </div>
-      <p class="fine">Учим русский язык · 郦书甲老师的俄语小课堂 · 发音提示为近似音，建议结合音频练习</p>
+      <p class="fine">Учим русский язык для ТРКИ А2 · 郦书甲老师的俄语小课堂 · 发音提示为近似音，建议结合音频练习</p>
     </footer>
 
   </article>
