@@ -4,7 +4,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>郦书甲老师的俄语小课堂 · ТРКИ A2 备考</title>
+  <title>郦书甲老师的俄语小课堂 · ТРКИ A2 系统课程</title>
 
   <style>
     @font-face {
@@ -49,6 +49,8 @@
       --rule: #eae0d3;
       --accent: #e4572e;
       --accent2: #1f7a8c;
+      --ok: #2e7d32;
+      --err: #c62828;
       --font-head: 'Bricolage', 'Microsoft YaHei', sans-serif;
       --font-body: 'Instrument', 'Microsoft YaHei', sans-serif;
       --font-es: 'Crimson', Georgia, serif;
@@ -65,8 +67,7 @@
       background: var(--bg);
       background-image:
         radial-gradient(ellipse 900px 420px at 12% -4%, rgba(228, 87, 46, 0.08), transparent 60%),
-        radial-gradient(ellipse 800px 400px at 92% 8%, rgba(31, 122, 140, 0.07), transparent 60%),
-        radial-gradient(ellipse 700px 500px at 50% 110%, rgba(228, 87, 46, 0.05), transparent 60%);
+        radial-gradient(ellipse 800px 400px at 92% 8%, rgba(31, 122, 140, 0.07), transparent 60%);
       background-attachment: fixed;
       line-height: 1.7;
       padding: 0;
@@ -140,785 +141,225 @@
       transition: color 0.15s ease, background 0.15s ease;
       white-space: nowrap;
     }
-    .topnav a.link:hover {
-      color: var(--ink);
-      background: rgba(228, 87, 46, 0.08);
-    }
+    .topnav a.link:hover { color: var(--ink); background: rgba(228, 87, 46, 0.08); }
+    .topnav a.link.cur { color: var(--accent); background: rgba(228, 87, 46, 0.1); font-weight: 600; }
 
-    .page {
-      max-width: var(--max);
-      margin: 0 auto;
-      padding: 0 1.5rem 4rem;
-    }
+    .page { max-width: var(--max); margin: 0 auto; padding: 0 1.5rem 4rem; }
 
     /* ===== Hero ===== */
-    .hero {
-      text-align: center;
-      padding: 4rem 0 2.8rem;
-    }
+    .hero { text-align: center; padding: 4rem 0 2.8rem; }
     .hero .kicker {
-      display: inline-block;
-      font-size: 0.82rem;
-      font-weight: 700;
-      letter-spacing: 0.22em;
-      text-transform: uppercase;
+      display: inline-block; font-size: 0.82rem; font-weight: 700;
+      letter-spacing: 0.22em; text-transform: uppercase;
       color: var(--accent2);
       border: 1px solid rgba(31, 122, 140, 0.35);
-      background: rgba(255, 255, 255, 0.7);
-      backdrop-filter: blur(10px);
-      padding: 0.35rem 1rem;
-      border-radius: 999px;
-      margin-bottom: 1.4rem;
+      background: rgba(255, 255, 255, 0.7); backdrop-filter: blur(10px);
+      padding: 0.35rem 1rem; border-radius: 999px; margin-bottom: 1.4rem;
     }
     .hero h1 {
-      font-family: var(--font-head);
-      font-weight: 700;
-      font-size: clamp(2.2rem, 5.5vw, 3.4rem);
-      line-height: 1.15;
-      letter-spacing: 0.01em;
+      font-family: var(--font-head); font-weight: 700;
+      font-size: clamp(2.2rem, 5.5vw, 3.4rem); line-height: 1.15; letter-spacing: 0.01em;
     }
     .hero h1 .es {
-      font-family: var(--font-es);
-      font-style: italic;
-      font-weight: 400;
+      font-family: var(--font-es); font-style: italic; font-weight: 400;
       background: linear-gradient(135deg, var(--accent), #f0a04b);
-      -webkit-background-clip: text;
-      background-clip: text;
-      -webkit-text-fill-color: transparent;
+      -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent;
     }
-    .hero .sub {
-      margin-top: 1rem;
-      color: var(--muted);
-      font-size: 1.05rem;
-      max-width: 720px;
-      margin-left: auto;
-      margin-right: auto;
-    }
-    .stats {
-      display: flex;
-      justify-content: center;
-      gap: 1rem;
-      flex-wrap: wrap;
-      margin-top: 2.2rem;
-    }
+    .hero .sub { margin-top: 1rem; color: var(--muted); font-size: 1.05rem; max-width: 760px; margin-left: auto; margin-right: auto; }
+    .stats { display: flex; justify-content: center; gap: 1rem; flex-wrap: wrap; margin-top: 2.2rem; }
     .stat {
-      background: rgba(255, 255, 255, 0.72);
-      backdrop-filter: blur(10px);
-      border: 1px solid rgba(228, 87, 46, 0.14);
-      border-radius: var(--radius);
-      padding: 0.9rem 1.6rem;
-      min-width: 130px;
-      box-shadow: var(--shadow);
+      background: rgba(255, 255, 255, 0.72); backdrop-filter: blur(10px);
+      border: 1px solid rgba(228, 87, 46, 0.14); border-radius: var(--radius);
+      padding: 0.9rem 1.6rem; min-width: 130px; box-shadow: var(--shadow);
     }
     .stat b {
-      display: block;
-      font-family: var(--font-head);
-      font-size: 1.9rem;
-      line-height: 1.2;
+      display: block; font-family: var(--font-head); font-size: 1.9rem; line-height: 1.2;
       background: linear-gradient(135deg, var(--accent), var(--accent2));
-      -webkit-background-clip: text;
-      background-clip: text;
-      -webkit-text-fill-color: transparent;
+      -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent;
     }
     .stat span { font-size: 0.85rem; color: var(--muted); }
 
-    /* ===== Sections ===== */
-    section { margin-top: 3.5rem; scroll-margin-top: 70px; }
+    /* ===== Course grid ===== */
+    section { margin-top: 3rem; scroll-margin-top: 70px; }
     .sec-head {
-      display: flex;
-      align-items: baseline;
-      gap: 0.8rem;
-      margin-bottom: 1.6rem;
-      padding-bottom: 0.6rem;
+      display: flex; align-items: baseline; gap: 0.8rem;
+      margin-bottom: 1.4rem; padding-bottom: 0.6rem;
       border-bottom: 2px solid;
       border-image: linear-gradient(90deg, var(--accent), rgba(228, 87, 46, 0)) 1;
     }
-    .sec-head h2 {
-      font-family: var(--font-head);
-      font-weight: 700;
-      font-size: 1.5rem;
-      letter-spacing: 0.01em;
-    }
-    .sec-head .es-tag {
-      font-family: var(--font-es);
-      font-style: italic;
-      color: var(--muted);
-      font-size: 0.95rem;
-    }
-    .sec-desc {
-      color: var(--muted);
-      margin-bottom: 1.6rem;
-      font-size: 0.98rem;
-      max-width: 850px;
-    }
+    .sec-head h2 { font-family: var(--font-head); font-weight: 700; font-size: 1.5rem; }
+    .sec-head .es-tag { font-family: var(--font-es); font-style: italic; color: var(--muted); font-size: 0.95rem; }
+    .sec-desc { color: var(--muted); margin-bottom: 1.6rem; font-size: 0.98rem; max-width: 850px; }
     .sec-desc b { color: var(--ink); }
 
-    /* ===== Letter grid ===== */
-    .grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(168px, 1fr));
-      gap: 0.9rem;
-    }
-    .letter-card {
-      font-family: inherit;
-      text-align: left;
-      cursor: pointer;
-      background: rgba(255, 255, 255, 0.78);
-      backdrop-filter: blur(10px);
-      border: 1px solid var(--rule);
-      border-radius: var(--radius);
-      padding: 1rem 1.05rem 0.85rem;
+    .course-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 0.9rem; }
+    .course-card {
+      text-align: left; cursor: pointer; font-family: inherit;
+      background: rgba(255, 255, 255, 0.78); backdrop-filter: blur(10px);
+      border: 1px solid var(--rule); border-radius: var(--radius);
+      padding: 1rem 1.1rem;
       transition: transform 0.15s ease, box-shadow 0.15s ease, border-color 0.15s ease;
       box-shadow: var(--shadow);
-      position: relative;
-      overflow: hidden;
     }
-    .letter-card:hover {
-      transform: translateY(-3px);
-      border-color: rgba(228, 87, 46, 0.45);
-      box-shadow: 0 4px 10px rgba(228, 87, 46, 0.1), 0 12px 28px rgba(43, 38, 34, 0.08);
+    .course-card:hover { transform: translateY(-3px); border-color: rgba(228, 87, 46, 0.45); }
+    .course-card .c-no {
+      display: inline-block; font-family: var(--font-head); font-size: 0.75rem; font-weight: 700;
+      color: var(--accent2); background: rgba(31, 122, 140, 0.1);
+      border-radius: 999px; padding: 0.1rem 0.6rem; margin-bottom: 0.45rem;
     }
-    .letter-card:focus-visible {
-      outline: 2px solid var(--accent);
-      outline-offset: 2px;
+    .course-card .c-ru { font-family: var(--font-es); font-size: 1.05rem; color: var(--ink); display: block; }
+    .course-card .c-zh { font-size: 0.82rem; color: var(--muted); display: block; margin-top: 0.15rem; }
+    .course-card .c-gram { font-size: 0.78rem; color: var(--accent); display: block; margin-top: 0.35rem; }
+
+    /* ===== Lesson panel ===== */
+    .lesson-panel {
+      background: rgba(255, 255, 255, 0.78); backdrop-filter: blur(10px);
+      border: 1px solid var(--rule); border-radius: var(--radius);
+      padding: 1.6rem 1.6rem; box-shadow: var(--shadow);
+      display: none;
     }
-    .letter-card.vowel {
-      border-color: rgba(31, 122, 140, 0.4);
-      background: linear-gradient(160deg, rgba(255, 255, 255, 0.9), rgba(31, 122, 140, 0.06));
+    .lesson-panel.active { display: block; animation: fadeIn 0.3s ease; }
+    @keyframes fadeIn { from { opacity: 0; transform: translateY(6px); } to { opacity: 1; transform: none; } }
+    .lesson-head { display: flex; align-items: baseline; gap: 0.8rem; flex-wrap: wrap; margin-bottom: 0.3rem; }
+    .lesson-head h3 { font-family: var(--font-head); font-size: 1.35rem; }
+    .lesson-head .es { font-family: var(--font-es); font-style: italic; color: var(--muted); }
+    .lesson-goals {
+      background: rgba(31, 122, 140, 0.07); border-left: 4px solid var(--accent2);
+      border-radius: 8px; padding: 0.8rem 1rem; margin: 0.9rem 0 1.4rem; font-size: 0.9rem;
     }
-    .letter-card.vowel:hover { border-color: var(--accent2); }
-    .letter-card.sign {
-      border-color: rgba(122, 111, 99, 0.4);
-      background: linear-gradient(160deg, rgba(255, 255, 255, 0.9), rgba(122, 111, 99, 0.08));
+    .lesson-goals b { color: var(--accent2); }
+    .lesson-block { margin-bottom: 1.6rem; }
+    .lesson-block h4 {
+      font-family: var(--font-head); font-size: 1.05rem;
+      display: flex; align-items: center; gap: 0.5rem; margin-bottom: 0.6rem;
     }
-    .letter-card.sign .l-maj { color: var(--muted); }
-    .letter-card.sign .l-name { background: rgba(122, 111, 99, 0.14); color: var(--muted); }
-    .l-char {
-      display: flex;
-      align-items: baseline;
-      gap: 0.35rem;
-      margin-bottom: 0.45rem;
+    .lesson-block h4 .b {
+      display: inline-flex; align-items: center; justify-content: center;
+      font-size: 0.72rem; min-width: 1.7rem; height: 1.7rem; border-radius: 8px;
+      background: rgba(228, 87, 46, 0.12); color: var(--accent); font-weight: 700;
     }
-    .l-maj {
-      font-family: var(--font-head);
-      font-weight: 700;
-      font-size: 2.3rem;
-      line-height: 1;
-      color: var(--accent);
+    .lesson-block h4 .b.g { background: rgba(31, 122, 140, 0.12); color: var(--accent2); }
+
+    /* vocab table */
+    .table-wrap { overflow-x: auto; overflow-y: auto; max-height: 600px; border: 1px solid var(--rule); border-radius: var(--radius); background: rgba(255, 255, 255, 0.8); box-shadow: var(--shadow); }
+    table.tbl { width: 100%; border-collapse: collapse; font-size: 0.92rem; min-width: 620px; }
+    table.tbl th { font-family: var(--font-head); font-size: 0.85rem; text-align: left; padding: 0.7rem 1rem; background: rgba(228, 87, 46, 0.08); color: var(--ink); border-bottom: 1px solid var(--rule); white-space: nowrap; }
+    table.tbl td { padding: 0.6rem 1rem; border-bottom: 1px solid rgba(234, 224, 211, 0.6); }
+    table.tbl tr:last-child td { border-bottom: none; }
+    table.tbl td.es { font-family: var(--font-es); font-size: 1rem; color: var(--accent); white-space: nowrap; }
+    table.tbl td.zh { color: var(--muted); font-size: 0.85rem; }
+    table.tbl td.inf { color: var(--accent2); font-size: 0.82rem; }
+    .tbl-note { margin-top: 0.6rem; font-size: 0.85rem; color: var(--muted); }
+    .tbl-note b { color: var(--ink); }
+    .vocab-word { cursor: pointer; transition: background 0.15s ease; }
+    .vocab-word:hover { background: rgba(228, 87, 46, 0.05); }
+
+    /* grammar explain */
+    .gram-pt { margin-bottom: 0.7rem; font-size: 0.95rem; }
+    .gram-pt b { color: var(--accent); }
+    .gram-pt .ex { font-family: var(--font-es); color: var(--ink); }
+    .gram-pt .ex i { font-style: normal; font-family: var(--font-body); font-size: 0.82rem; color: var(--muted); margin-left: 0.3rem; }
+    .gram-warn {
+      background: rgba(228, 87, 46, 0.06); border: 1px dashed rgba(228, 87, 46, 0.35);
+      border-radius: 8px; padding: 0.7rem 0.9rem; font-size: 0.88rem; color: var(--muted); margin-top: 0.6rem;
     }
-    .letter-card.vowel .l-maj { color: var(--accent2); }
-    .l-min {
-      font-family: var(--font-head);
-      font-size: 1.4rem;
-      color: var(--muted);
+    .gram-warn b { color: var(--accent); }
+
+    /* text & dialog */
+    .text-para { font-family: var(--font-es); font-size: 1.05rem; line-height: 2; margin-bottom: 0.8rem; cursor: pointer; border-radius: 8px; padding: 0.15rem 0.4rem; transition: background 0.15s ease; }
+    .text-para:hover { background: rgba(31, 122, 140, 0.06); }
+    .text-para .tzh { font-family: var(--font-body); font-size: 0.85rem; color: var(--muted); display: block; }
+    .dialog-line { display: flex; gap: 0.7rem; padding: 0.35rem 0; cursor: pointer; border-radius: 8px; align-items: baseline; }
+    .dialog-line:hover { background: rgba(31, 122, 140, 0.06); }
+    .dialog-line .who { flex-shrink: 0; font-family: var(--font-head); font-size: 0.78rem; font-weight: 700; color: var(--accent2); background: rgba(31, 122, 140, 0.1); border-radius: 6px; padding: 0.08rem 0.5rem; min-width: 3.2rem; text-align: center; }
+    .dialog-line .d-ru { font-family: var(--font-es); font-size: 1rem; }
+    .dialog-line .d-zh { font-size: 0.8rem; color: var(--muted); display: block; }
+
+    /* exercises */
+    .ex-item { margin-bottom: 1.1rem; }
+    .ex-q { font-size: 0.95rem; margin-bottom: 0.5rem; }
+    .ex-q b { color: var(--accent); }
+    .ex-opts { display: flex; gap: 0.5rem; flex-wrap: wrap; }
+    .ex-opt {
+      font-family: var(--font-body); font-size: 0.92rem;
+      color: var(--ink); background: rgba(255, 255, 255, 0.9);
+      border: 1px solid var(--rule); border-radius: 10px;
+      padding: 0.5rem 1rem; cursor: pointer; transition: all 0.15s ease;
     }
-    .l-name {
-      display: inline-block;
-      font-family: var(--font-es);
-      font-style: italic;
-      font-size: 0.98rem;
-      background: rgba(228, 87, 46, 0.1);
-      color: var(--accent);
-      border-radius: 6px;
-      padding: 0.05rem 0.5rem;
-      margin-bottom: 0.35rem;
+    .ex-opt:hover { border-color: var(--accent); }
+    .ex-opt.correct { background: rgba(46, 125, 50, 0.12); border-color: var(--ok); color: var(--ok); }
+    .ex-opt.wrong { background: rgba(198, 40, 40, 0.1); border-color: var(--err); color: var(--err); }
+    .ex-opt:disabled { cursor: default; }
+    .ex-input-wrap { display: flex; gap: 0.6rem; align-items: center; flex-wrap: wrap; }
+    .ex-input {
+      font-family: var(--font-es); font-size: 1rem;
+      padding: 0.5rem 0.9rem; border: 1px solid var(--rule); border-radius: 10px;
+      background: rgba(255, 255, 255, 0.95); color: var(--ink); min-width: 220px;
     }
-    .letter-card.vowel .l-name { background: rgba(31, 122, 140, 0.1); color: var(--accent2); }
-    .l-pron {
-      display: block;
-      font-size: 0.82rem;
-      color: var(--muted);
-      margin-bottom: 0.35rem;
-    }
-    .l-word {
-      display: block;
-      font-family: var(--font-es);
-      font-size: 1.06rem;
-    }
-    .l-word i {
-      font-style: normal;
-      font-family: var(--font-body);
-      font-size: 0.78rem;
-      color: var(--muted);
-      margin-left: 0.35rem;
-    }
-    .l-hint {
-      display: block;
-      margin-top: 0.55rem;
-      font-size: 0.72rem;
-      color: rgba(228, 87, 46, 0.75);
-      opacity: 0;
+    .ex-input:focus { outline: 2px solid rgba(31, 122, 140, 0.4); }
+    .ex-btn {
+      font-family: var(--font-body); font-size: 0.9rem; font-weight: 600;
+      color: #fff; background: linear-gradient(135deg, var(--accent), #f0a04b);
+      border: none; border-radius: 10px; padding: 0.5rem 1.2rem; cursor: pointer;
       transition: opacity 0.15s ease;
     }
-    .letter-card:hover .l-hint { opacity: 1; }
-    .speaking { border-color: var(--accent) !important; box-shadow: 0 0 0 3px rgba(228, 87, 46, 0.2) !important; }
+    .ex-btn:hover { opacity: 0.88; }
+    .ex-fb { font-size: 0.88rem; margin-top: 0.45rem; min-height: 1.3em; }
+    .ex-fb.ok { color: var(--ok); }
+    .ex-fb.no { color: var(--err); }
+    .ex-fb.hint { color: var(--accent2); }
 
-    .note-banner {
-      margin-top: 1.4rem;
-      background: rgba(255, 255, 255, 0.72);
-      backdrop-filter: blur(10px);
-      border: 1px solid var(--rule);
-      border-left: 4px solid var(--accent);
-      border-radius: 10px;
-      padding: 0.9rem 1.2rem;
-      font-size: 0.92rem;
-      color: var(--muted);
-    }
-    .note-banner b, .note-banner strong { color: var(--ink); }
+    /* self test */
+    .quiz-box { border: 1px dashed rgba(228, 87, 46, 0.4); border-radius: var(--radius); padding: 1.1rem 1.2rem; background: rgba(228, 87, 46, 0.04); }
+    .quiz-box .quiz-title { font-family: var(--font-head); font-size: 1rem; color: var(--accent); margin-bottom: 0.8rem; }
+    .quiz-result { font-family: var(--font-head); font-size: 1.1rem; margin-top: 0.8rem; }
 
-    /* ===== Grammar tables ===== */
-    .grammar-block { margin-bottom: 2rem; }
-    .grammar-block h3 {
-      font-family: var(--font-head);
-      font-size: 1.12rem;
-      margin-bottom: 0.4rem;
+    .lesson-nav { display: flex; justify-content: space-between; gap: 1rem; margin-top: 1.6rem; }
+    .lesson-nav button {
+      font-family: var(--font-body); font-size: 0.92rem; font-weight: 600;
+      color: var(--accent2); background: rgba(31, 122, 140, 0.08);
+      border: 1px solid rgba(31, 122, 140, 0.3); border-radius: 10px;
+      padding: 0.6rem 1.3rem; cursor: pointer; transition: all 0.15s ease;
     }
-    .grammar-block .g-desc {
-      color: var(--muted);
-      font-size: 0.92rem;
-      margin-bottom: 0.9rem;
-      max-width: 850px;
-    }
-    .grammar-block .g-desc b { color: var(--ink); }
-    .table-wrap {
-      overflow-x: auto;
-      overflow-y: auto;
-      max-height: 600px;
-      border: 1px solid var(--rule);
-      border-radius: var(--radius);
-      background: rgba(255, 255, 255, 0.78);
-      backdrop-filter: blur(10px);
-      box-shadow: var(--shadow);
-    }
-    table.tbl {
-      width: 100%;
-      border-collapse: collapse;
-      font-size: 0.92rem;
-      min-width: 640px;
-    }
-    table.tbl th {
-      font-family: var(--font-head);
-      font-size: 0.85rem;
-      text-align: left;
-      padding: 0.7rem 1rem;
-      background: rgba(228, 87, 46, 0.08);
-      color: var(--ink);
-      border-bottom: 1px solid var(--rule);
-      white-space: nowrap;
-    }
-    table.tbl td {
-      padding: 0.6rem 1rem;
-      border-bottom: 1px solid rgba(234, 224, 211, 0.6);
-    }
-    table.tbl tr:last-child td { border-bottom: none; }
-    table.tbl td.es {
-      font-family: var(--font-es);
-      font-size: 1rem;
-      color: var(--accent);
-      white-space: nowrap;
-    }
-    table.tbl td.zh { color: var(--muted); font-size: 0.85rem; }
-    table.tbl .headrow td {
-      font-family: var(--font-head);
-      font-size: 0.82rem;
-      color: var(--accent2);
-      background: rgba(31, 122, 140, 0.06);
-      font-weight: 700;
-    }
-    .tbl-note {
-      margin-top: 0.6rem;
-      font-size: 0.85rem;
-      color: var(--muted);
-    }
-    .tbl-note b { color: var(--ink); }
-
-    /* ===== Case badges ===== */
-    .case-chip {
-      display: inline-block;
-      font-family: var(--font-head);
-      font-size: 0.78rem;
-      font-weight: 700;
-      border-radius: 999px;
-      padding: 0.12rem 0.6rem;
-      margin: 0 0.2rem 0.2rem 0;
-      color: #fff;
-    }
-    .c-nom { background: #d9534f; }
-    .c-gen { background: #e67e22; }
-    .c-dat { background: #f1c40f; color: #5b4a00; }
-    .c-acc { background: #27ae60; }
-    .c-ins { background: #1f7a8c; }
-    .c-pre { background: #7a6f63; }
-
-    /* ===== Info cards ===== */
-    .cards-2col {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 1rem;
-    }
-    .cards-3col {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 1rem;
-    }
-    .info-card {
-      background: rgba(255, 255, 255, 0.78);
-      backdrop-filter: blur(10px);
-      border: 1px solid var(--rule);
-      border-radius: var(--radius);
-      padding: 1.2rem 1.3rem;
-      box-shadow: var(--shadow);
-    }
-    .info-card h3 {
-      font-family: var(--font-head);
-      font-size: 1.02rem;
-      margin-bottom: 0.45rem;
-      display: flex;
-      align-items: center;
-      gap: 0.5rem;
-    }
-    .info-card h3 .mark {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      font-family: var(--font-es);
-      font-style: italic;
-      font-size: 0.9rem;
-      min-width: 2rem;
-      height: 2rem;
-      border-radius: 8px;
-      background: rgba(228, 87, 46, 0.12);
-      color: var(--accent);
-      padding: 0 0.4rem;
-    }
-    .info-card.alt h3 .mark { background: rgba(31, 122, 140, 0.12); color: var(--accent2); }
-    .info-card p { font-size: 0.92rem; color: var(--muted); }
-    .info-card p b { color: var(--ink); }
-    .info-card .ex {
-      font-family: var(--font-es);
-      font-size: 1.02rem;
-      color: var(--ink);
-      margin-top: 0.5rem;
-      display: block;
-    }
-    .info-card .ex i {
-      font-style: normal;
-      font-family: var(--font-body);
-      font-size: 0.8rem;
-      color: var(--muted);
-      margin-left: 0.35rem;
-    }
-
-    /* ===== Vowel detail ===== */
-    .vowel-row {
-      display: grid;
-      grid-template-columns: repeat(5, 1fr);
-      gap: 0.9rem;
-      margin-bottom: 1.2rem;
-    }
-    .vowel-cell {
-      text-align: center;
-      background: rgba(255, 255, 255, 0.8);
-      border: 1px solid rgba(31, 122, 140, 0.3);
-      border-radius: var(--radius);
-      padding: 1rem 0.5rem;
-      box-shadow: var(--shadow);
-      cursor: pointer;
-      transition: transform 0.15s ease;
-    }
-    .vowel-cell:hover { transform: translateY(-3px); border-color: var(--accent2); }
-    .vowel-cell .v-char {
-      font-family: var(--font-head);
-      font-weight: 700;
-      font-size: 2rem;
-      color: var(--accent2);
-      display: block;
-      line-height: 1.1;
-    }
-    .vowel-cell .v-ipa { font-size: 0.85rem; color: var(--muted); display: block; margin-top: 0.15rem; }
-    .vowel-cell .v-ex {
-      font-family: var(--font-es);
-      font-size: 0.95rem;
-      display: block;
-      margin-top: 0.4rem;
-    }
-
-    /* ===== Vocab tabs ===== */
-    .tabs {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 0.5rem;
-      margin-bottom: 1.2rem;
-    }
-    .tab-btn {
-      font-family: var(--font-body);
-      font-size: 0.9rem;
-      font-weight: 600;
-      color: var(--muted);
-      background: rgba(255, 255, 255, 0.7);
-      border: 1px solid var(--rule);
-      border-radius: 999px;
-      padding: 0.45rem 1.1rem;
-      cursor: pointer;
-      transition: all 0.15s ease;
-    }
-    .tab-btn:hover { color: var(--ink); border-color: rgba(228, 87, 46, 0.4); }
-    .tab-btn.active {
-      color: #fff;
-      background: linear-gradient(135deg, var(--accent), #f0a04b);
-      border-color: transparent;
-      box-shadow: 0 4px 12px rgba(228, 87, 46, 0.25);
-    }
-    .tab-panel { display: none; }
-    .tab-panel.active { display: block; animation: fadeIn 0.3s ease; }
-    @keyframes fadeIn { from { opacity: 0; transform: translateY(6px); } to { opacity: 1; transform: none; } }
-
-    .vocab-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
-      gap: 0.8rem;
-    }
-    .vocab-chip {
-      display: flex;
-      flex-direction: column;
-      gap: 0.1rem;
-      background: rgba(255, 255, 255, 0.78);
-      border: 1px solid var(--rule);
-      border-radius: 12px;
-      padding: 0.75rem 0.9rem;
-      cursor: pointer;
-      text-align: left;
-      font-family: inherit;
-      transition: transform 0.15s ease, border-color 0.15s ease, box-shadow 0.15s ease;
-      box-shadow: var(--shadow);
-    }
-    .vocab-chip:hover {
-      transform: translateY(-2px);
-      border-color: rgba(228, 87, 46, 0.45);
-      box-shadow: 0 6px 16px rgba(228, 87, 46, 0.1);
-    }
-    .vocab-chip .w-es {
-      font-family: var(--font-es);
-      font-size: 1.12rem;
-      color: var(--ink);
-    }
-    .vocab-chip .w-zh {
-      font-size: 0.8rem;
-      color: var(--muted);
-    }
-
-    /* ===== Phrases ===== */
-    .phrase-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-      gap: 0.9rem;
-    }
-    .phrase-card {
-      background: rgba(255, 255, 255, 0.78);
-      backdrop-filter: blur(10px);
-      border: 1px solid var(--rule);
-      border-radius: var(--radius);
-      padding: 1rem 1.2rem;
-      cursor: pointer;
-      transition: transform 0.15s ease, border-color 0.15s ease;
-      box-shadow: var(--shadow);
-    }
-    .phrase-card:hover {
-      transform: translateY(-2px);
-      border-color: rgba(31, 122, 140, 0.45);
-    }
-    .phrase-card.long {
-      border-left: 4px solid var(--accent2);
-    }
-    .phrase-card .p-tag {
-      display: inline-block;
-      font-size: 0.68rem;
-      color: var(--accent2);
-      background: rgba(31, 122, 140, 0.1);
-      border-radius: 999px;
-      padding: 0.08rem 0.5rem;
-      margin-bottom: 0.3rem;
-      letter-spacing: 0.04em;
-    }
-    .phrase-card .p-es {
-      font-family: var(--font-es);
-      font-size: 1.12rem;
-      color: var(--accent2);
-      display: block;
-    }
-    .phrase-card .p-zh {
-      font-size: 0.85rem;
-      color: var(--muted);
-      display: block;
-      margin-top: 0.2rem;
-    }
-
-    /* ===== Essays ===== */
-    .essay-grid {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 1rem;
-    }
-    .essay-card {
-      background: rgba(255, 255, 255, 0.78);
-      backdrop-filter: blur(10px);
-      border: 1px solid var(--rule);
-      border-radius: var(--radius);
-      padding: 1.3rem 1.4rem;
-      box-shadow: var(--shadow);
-    }
-    .essay-card h3 {
-      font-family: var(--font-head);
-      font-size: 1.08rem;
-      display: flex;
-      align-items: center;
-      gap: 0.5rem;
-      margin-bottom: 0.2rem;
-    }
-    .essay-card h3 .mark {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      font-family: var(--font-es);
-      font-style: italic;
-      font-size: 0.88rem;
-      min-width: 2rem;
-      height: 2rem;
-      border-radius: 8px;
-      background: rgba(228, 87, 46, 0.12);
-      color: var(--accent);
-      padding: 0 0.4rem;
-    }
-    .essay-card .e-zh-title {
-      font-size: 0.85rem;
-      color: var(--muted);
-      margin-bottom: 1rem;
-    }
-    .essay-line {
-      display: flex;
-      gap: 0.8rem;
-      padding: 0.42rem 0;
-      border-bottom: 1px dashed rgba(234, 224, 211, 0.7);
-      font-size: 0.92rem;
-      cursor: pointer;
-      border-radius: 6px;
-      transition: background 0.15s ease;
-    }
-    .essay-line:last-child { border-bottom: none; }
-    .essay-line:hover { background: rgba(228, 87, 46, 0.05); }
-    .essay-line .n {
-      flex-shrink: 0;
-      width: 1.4rem;
-      height: 1.4rem;
-      border-radius: 50%;
-      background: rgba(31, 122, 140, 0.12);
-      color: var(--accent2);
-      font-family: var(--font-head);
-      font-weight: 700;
-      font-size: 0.75rem;
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      margin-top: 0.1rem;
-    }
-    .essay-line .ru {
-      font-family: var(--font-es);
-      color: var(--ink);
-      flex: 1;
-    }
-    .essay-line .zh {
-      color: var(--muted);
-      font-size: 0.82rem;
-      flex: 1;
-    }
-
-    /* ===== Exam section ===== */
-    .exam-grid {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 1rem;
-      margin-bottom: 1.2rem;
-    }
-    .exam-card {
-      background: rgba(255, 255, 255, 0.78);
-      backdrop-filter: blur(10px);
-      border: 1px solid var(--rule);
-      border-radius: var(--radius);
-      padding: 1.2rem 1.3rem;
-      box-shadow: var(--shadow);
-    }
-    .exam-card h3 {
-      font-family: var(--font-head);
-      font-size: 1.02rem;
-      display: flex;
-      align-items: center;
-      gap: 0.5rem;
-      margin-bottom: 0.5rem;
-    }
-    .exam-card h3 .badge {
-      font-family: var(--font-head);
-      font-size: 0.78rem;
-      background: linear-gradient(135deg, var(--accent), #f0a04b);
-      color: #fff;
-      border-radius: 6px;
-      padding: 0.12rem 0.5rem;
-    }
-    .exam-card h3 .badge.green { background: linear-gradient(135deg, var(--accent2), #4aa5b5); }
-    .exam-card .meta {
-      display: flex;
-      gap: 0.6rem;
-      flex-wrap: wrap;
-      margin-bottom: 0.5rem;
-    }
-    .exam-card .meta span {
-      font-size: 0.78rem;
-      color: var(--accent2);
-      background: rgba(31, 122, 140, 0.08);
-      border-radius: 999px;
-      padding: 0.15rem 0.6rem;
-    }
-    .exam-card p { font-size: 0.88rem; color: var(--muted); }
-    .exam-card p b { color: var(--ink); }
-    .exam-card ul {
-      list-style: none;
-      margin-top: 0.4rem;
-    }
-    .exam-card ul li {
-      font-size: 0.85rem;
-      color: var(--muted);
-      padding: 0.22rem 0;
-      padding-left: 1.1rem;
-      position: relative;
-    }
-    .exam-card ul li::before {
-      content: '';
-      position: absolute;
-      left: 0;
-      top: 0.68rem;
-      width: 6px;
-      height: 6px;
-      border-radius: 50%;
-      background: var(--accent);
-    }
-    .exam-card ul li b { color: var(--ink); }
-
-    /* ===== Tips ===== */
-    .tips {
-      list-style: none;
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 0.9rem;
-    }
-    .tips li {
-      background: rgba(255, 255, 255, 0.78);
-      border: 1px solid var(--rule);
-      border-radius: var(--radius);
-      padding: 1rem 1.2rem;
-      font-size: 0.93rem;
-      display: flex;
-      gap: 0.7rem;
-      align-items: flex-start;
-      box-shadow: var(--shadow);
-    }
-    .tips .num {
-      flex-shrink: 0;
-      width: 1.6rem;
-      height: 1.6rem;
-      border-radius: 50%;
-      background: linear-gradient(135deg, var(--accent), #f0a04b);
-      color: #fff;
-      font-family: var(--font-head);
-      font-weight: 700;
-      font-size: 0.85rem;
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      margin-top: 0.1rem;
-    }
-    .tips b { color: var(--accent); }
-    .tips .ex { font-family: var(--font-es); }
+    .lesson-nav button:hover { background: rgba(31, 122, 140, 0.16); }
+    .lesson-nav button:disabled { opacity: 0.4; cursor: default; }
 
     /* ===== Footer ===== */
-    footer {
-      margin-top: 4rem;
-      padding-top: 2rem;
-      border-top: 1px solid var(--rule);
-    }
-    footer .sources h2 {
-      font-family: var(--font-head);
-      font-size: 1rem;
-      margin-bottom: 0.8rem;
-    }
-    footer .sources ol {
-      padding-left: 1.2rem;
-      font-size: 0.85rem;
-      color: var(--muted);
-    }
+    footer { margin-top: 4rem; padding-top: 2rem; border-top: 1px solid var(--rule); }
+    footer .sources h2 { font-family: var(--font-head); font-size: 1rem; margin-bottom: 0.8rem; }
+    footer .sources ol { padding-left: 1.2rem; font-size: 0.85rem; color: var(--muted); }
     footer .sources li { margin-bottom: 0.5rem; overflow-wrap: break-word; word-break: break-all; }
     footer .sources .src-title { color: var(--ink); word-break: normal; }
     footer .sources .src-url { display: block; margin-top: 0.15rem; font-size: 0.82rem; color: var(--accent); word-break: break-all; }
-    footer .sources a { word-break: break-all; }
-    footer .fine {
-      margin-top: 1.5rem;
-      font-size: 0.8rem;
-      color: var(--muted);
-      text-align: center;
-    }
-    sup a {
-      color: var(--accent);
-      text-decoration: none;
-      font-size: 0.75em;
-      font-weight: 600;
-    }
+    footer .fine { margin-top: 1.5rem; font-size: 0.8rem; color: var(--muted); text-align: center; }
+    sup a { color: var(--accent); text-decoration: none; font-size: 0.75em; font-weight: 600; }
     sup a:hover { text-decoration: underline; }
+    .speaking { border-color: var(--accent) !important; box-shadow: 0 0 0 3px rgba(228, 87, 46, 0.2) !important; }
 
     /* ===== Responsive ===== */
-    @media (max-width: 900px) {
-      .cards-3col { grid-template-columns: repeat(2, 1fr); }
-    }
+    @media (max-width: 900px) { .course-grid { grid-template-columns: repeat(2, 1fr); } }
     @media (max-width: 768px) {
       .page { padding: 0 1rem 3rem; }
       .hero { padding: 3rem 0 2rem; }
-      .cards-2col, .tips, .exam-grid, .essay-grid { grid-template-columns: 1fr; }
-      .vowel-row { grid-template-columns: repeat(5, 1fr); gap: 0.5rem; }
-      .vowel-cell .v-ex { font-size: 0.82rem; }
-      .grid { grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); }
       .topnav .inner { padding: 0.6rem 1rem; }
+      .lesson-panel { padding: 1.2rem 1rem; }
     }
-    @media (max-width: 560px) {
-      .cards-3col { grid-template-columns: 1fr; }
-      .vowel-row { grid-template-columns: repeat(3, 1fr); }
-      .vowel-cell:nth-child(4), .vowel-cell:nth-child(5) { grid-column: span 1; }
-    }
-
-    @media print {
-      .letter-card, .vowel-cell, .vocab-chip, .phrase-card, .exam-card { break-inside: avoid; }
-      .topnav { display: none; }
-      body { background: #fff; }
-    }
+    @media (max-width: 520px) { .course-grid { grid-template-columns: 1fr; } }
+    @media print { .topnav, .lesson-nav { display: none; } body { background: #fff; } }
   </style>
 </head>
 <body>
 
   <!-- ============ Teacher banner ============ -->
-  <div class="teacher-banner">郦书甲老师的俄语小课堂<em>уроки русского языка · ТРКИ A2 备考</em></div>
+  <div class="teacher-banner">郦书甲老师的俄语小课堂<em>системный курс · ТРКИ A2 系统课程</em></div>
 
   <!-- ============ Top nav ============ -->
   <nav class="topnav">
     <div class="inner">
-      <a class="brand" href="#top">俄语小课堂<span><em>русский язык</em></span></a>
-      <a class="link" href="#alfabeto">字母表</a>
-      <a class="link" href="#vocales">元音</a>
-      <a class="link" href="#especiales">特殊字母</a>
-      <a class="link" href="#gramatica">语法</a>
-      <a class="link" href="#padezhi">六格系统</a>
-      <a class="link" href="#vremena">时态</a>
-      <a class="link" href="#vid">动词体</a>
-      <a class="link" href="#dvizhenie">运动动词</a>
-      <a class="link" href="#slozhnye">复合句</a>
-      <a class="link" href="#vocabulario">词汇</a>
-      <a class="link" href="#frases">句型</a>
-      <a class="link" href="#composiciones">范文</a>
+      <a class="brand" href="#top">俄语系统课程<span><em>русский язык</em></span></a>
+      <a class="link" href="#kurse">课程目录</a>
+      <a class="link" href="#urok">课时学习</a>
+      <a class="link" href="#spravochnik">语法手册</a>
       <a class="link" href="#examen">考试指南</a>
     </div>
   </nav>
@@ -927,475 +368,51 @@
 
     <!-- ============ Hero ============ -->
     <header class="hero">
-      <span class="kicker">Учим русский · 目标 ТРКИ A2</span>
-      <h1>俄语入门到进阶 <span class="es">Уровень А2</span></h1>
-      <p class="sub">以对外俄语等级考试 ТРКИ A2（基础级 ТБУ）为目标：从字母发音到完整语法体系（六格、三时态、动词体、运动动词、复合句），词汇约 1300 词，一套页面系统备考。所有字母、单词、句子均可点击试听。</p>
+      <span class="kicker">Системный курс · 教科书式系统课</span>
+      <h1>俄语 A2 系统课程 <span class="es">12 уроков</span></h1>
+      <p class="sub">按教科书模式编排的 12 课完整课程：每课包含<b>教学目标 → 生词表（重音+变格标注）→ 语法精讲 → 情景课文与对话 → 互动练习（即时判题）→ 单元自测</b>。生词、课文、对话均可点击试听。</p>
       <div class="stats">
-        <div class="stat"><b>33</b><span>个字母</span></div>
-        <div class="stat"><b>6</b><span>个格</span></div>
-        <div class="stat"><b>1300</b><span>目标词汇量</span></div>
-        <div class="stat"><b>5</b><span>项考试测试</span></div>
+        <div class="stat"><b>12</b><span>课</span></div>
+        <div class="stat"><b>6</b><span>个格全掌握</span></div>
+        <div class="stat"><b>200+</b><span>互动练习题</span></div>
+        <div class="stat"><b>ТБУ</b><span>А2 考试目标</span></div>
       </div>
     </header>
 
     <main>
 
-      <!-- ============ Alphabet ============ -->
-      <section id="alfabeto">
+      <!-- ============ Course catalog ============ -->
+      <section id="kurse">
         <div class="sec-head">
-          <h2>字母表总览</h2>
-          <span class="es-tag">Алфавит · 33 буквы</span>
+          <h2>课程目录</h2>
+          <span class="es-tag">Программа курса</span>
         </div>
-        <p class="sec-desc">现代俄语字母表共 <b>33 个字母</b>：<b>10 个元音</b>（а е ё и о у ы э ю я）、<b>21 个辅音</b>和 <b>2 个不发音的符号</b>（ъ 硬音符号、ь 软音符号）<sup><a href="#cite-1">[1]</a></sup>。每张卡片包含大小写、字母名称（俄）、读音提示（中）和示例单词，点击卡片可试听。蓝色卡片为元音，灰色卡片为无音符号。</p>
-
-        <div class="grid" id="letter-grid">
-          <!-- 卡片由 assets/app.js 动态生成 -->
-        </div>
-
-        <div class="note-banner">
-          <b>注意：</b>俄语有 <b>5 个"硬元音"</b>（а о у ы э）和 <b>5 个"软元音"</b>（я ё ю е и）；字母 <span class="ex">е、ё、ю、я</span> 在词首、元音后或硬软符号后发"й+元音"的音（如 <span class="ex">я [йа]</span>），在辅音后则使该辅音软化。俄语字母与拉丁字母外形相似的（如 <span class="ex">в、н、р、с、х</span>）发音完全不同，不要用英语习惯去读。
-        </div>
-      </section>
-
-      <!-- ============ Vowels ============ -->
-      <section id="vocales">
-        <div class="sec-head">
-          <h2>十个元音</h2>
-          <span class="es-tag">Гласные</span>
-        </div>
-        <p class="sec-desc">俄语 <b>10 个元音字母</b>对应 6 个元音音位（а о у ы э и）。其中 <b>я ё ю е</b> 是"软元音"（带 й 音），<b>а о у ы э</b> 是"硬元音"。先读准元音，是俄语发音的第一步。点击元音可试听。</p>
-
-        <div class="vowel-row" id="vowel-row">
-          <!-- 由 assets/app.js 生成 -->
-        </div>
-
-        <div class="note-banner">
-          <b>元音规则：</b>俄语元音<strong>在重读音节中清晰响亮，在非重读音节中会弱化</strong>（如 <span class="ex">о</span> 非重读时读近 <span class="ex">а</span>：<span class="ex">молоко [малако] 牛奶</span>）。<b>ы</b> 是俄语特有的元音，发音时舌位介于"i"和"u"之间，口型较小。
-        </div>
-      </section>
-
-      <!-- ============ Special letters ============ -->
-      <section id="especiales">
-        <div class="sec-head">
-          <h2>特殊字母与发音规则</h2>
-          <span class="es-tag">Особые буквы</span>
-        </div>
-        <p class="sec-desc">这 8 个知识点是中文母语者学习俄语时最需要留意的发音差异，建议逐一掌握。</p>
-
-        <div class="cards-2col">
-          <div class="info-card">
-            <h3><span class="mark">Р р</span> 大舌颤音</h3>
-            <p>发 <b>[r]</b>，是俄语的标志性"大舌颤音"：舌尖轻抵上齿龈，靠气流吹动连续颤动。汉语没有这个音，需要专门练习。</p>
-            <span class="ex">рынок 市场 <i>·</i> Россия 俄罗斯</span>
-          </div>
-
-          <div class="info-card alt">
-            <h3><span class="mark">Ы ы</span> 俄语特有元音</h3>
-            <p>发 <b>[ɨ]</b>，近似"呃+一"的中间音：<b>口型小而圆</b>，舌位靠后。汉语和英语中都没有完全对应的音。</p>
-            <span class="ex">сыр 奶酪 <i>·</i> мы 我们</span>
-          </div>
-
-          <div class="info-card alt">
-            <h3><span class="mark">Ш ш / Щ щ</span> 双胞胎分清</h3>
-            <p><b>ш</b> 发 <b>[ʂ]</b>（重而硬，近似"沙"但舌位靠后），<b>щ</b> 发 <b>[ɕː]</b>（轻而长，近似"夏"，发音时嘴角向两边咧开）。</p>
-            <span class="ex">школа 学校 <i>·</i> щука 狗鱼</span>
-          </div>
-
-          <div class="info-card">
-            <h3><span class="mark">Ж ж</span> 浊辅音</h3>
-            <p>发 <b>[ʐ]</b>，是 <b>ш</b> 的浊音（声带振动），近似汉语"日"但更硬。俄语中 <b>ж、ш、ц</b> 永远读硬音。</p>
-            <span class="ex">журнал 杂志 <i>·</i> жизнь 生活</span>
-          </div>
-
-          <div class="info-card">
-            <h3><span class="mark">Х х</span> 喉部送气</h3>
-            <p>发 <b>[x]</b>，与汉语拼音 <b>h</b>（"哈"）相似，但摩擦更明显，类似德语 ch。</p>
-            <span class="ex">хлеб 面包 <i>·</i> хорошо 好</span>
-          </div>
-
-          <div class="info-card alt">
-            <h3><span class="mark">Ц ц / Ч ч</span> 别混了</h3>
-            <p><b>ц</b> 发 <b>[ts]</b>（近似汉语拼音 c，"此"），<b>ч</b> 发 <b>[tɕ]</b>（近似汉语拼音 q，"七"）。注意 <b>ч</b> 永远读软音。</p>
-            <span class="ex">центр 中心 <i>·</i> час 小时</span>
-          </div>
-
-          <div class="info-card alt">
-            <h3><span class="mark">Ъ ъ / Ь ь</span> 无音符号</h3>
-            <p><b>ъ</b> 硬音符号：隔开辅音与后面的软元音，使其发硬音（如 <span class="ex">съезд</span>）；<b>ь</b> 软音符号：使前面的辅音软化（如 <span class="ex">семья</span>）。两者都不发音。</p>
-            <span class="ex">съезд 会议 <i>·</i> семья 家庭</span>
-          </div>
-
-          <div class="info-card">
-            <h3><span class="mark">Ё ё</span> 永远带重音</h3>
-            <p>发 <b>[jo]</b>（近似"哟"）。字母 <b>ё</b> 在书写中<b>永远自带重音</b>，且书写时两点常省略（写作 <span class="ex">е</span>），但发音不变。</p>
-            <span class="ex">ёж 刺猬 <i>·</i> мёд 蜂蜜</span>
-          </div>
-        </div>
-      </section>
-
-      <!-- ============ Grammar basics ============ -->
-      <section id="gramatica">
-        <div class="sec-head">
-          <h2>核心语法基础</h2>
-          <span class="es-tag">Основная грамматика</span>
-        </div>
-        <p class="sec-desc">ТРКИ A2 语法要求大幅提升：除 A1 的人称代词、名词性数、现在时变位外，还需掌握<b>六格系统、形容词与代词变格、过去时与将来时、动词体、运动动词、常用复合句</b><sup><a href="#cite-2">[2]</a></sup>。以下为 A2 语法全览，从基础到进阶。</p>
-
-        <div class="grammar-block">
-          <h3>主语人称代词（回顾）</h3>
-          <p class="g-desc">俄语动词变位已隐含主语，主语代词常省略。注意第三人称有 <b>он（他）/ она（她）/ оно（它）</b>之分，复数统一用 <b>они</b>。</p>
-          <div class="table-wrap">
-            <table class="tbl">
-              <tr><th>单数</th><th>含义</th><th>复数</th><th>含义</th></tr>
-              <tr><td class="es">я</td><td class="zh">我</td><td class="es">мы</td><td class="zh">我们</td></tr>
-              <tr><td class="es">ты</td><td class="zh">你</td><td class="es">вы</td><td class="zh">你们 / 您（尊称）</td></tr>
-              <tr><td class="es">он / она / оно</td><td class="zh">他 / 她 / 它</td><td class="es">они</td><td class="zh">他们 / 她们 / 它们</td></tr>
-            </table>
-          </div>
-        </div>
-
-        <div class="grammar-block">
-          <h3>名词的性与数（回顾）</h3>
-          <p class="g-desc">俄语名词分<b>阳性、阴性、中性</b>三种性，主要通过词尾判断；俄语<b>没有冠词</b>。这是掌握六格变化的基础——不同"性"的名词变格词尾不同。</p>
-          <div class="table-wrap">
-            <table class="tbl">
-              <tr><th>性</th><th>词尾规律</th><th>单数示例</th><th>复数示例</th></tr>
-              <tr><td class="zh">阳性</td><td class="zh">辅音结尾</td><td class="es">стол 桌子 · музей 博物馆</td><td class="es">столы · музеи</td></tr>
-              <tr><td class="zh">阴性</td><td class="zh">-а / -я 结尾</td><td class="es">книга 书 · семья 家庭</td><td class="es">книги · семьи</td></tr>
-              <tr><td class="zh">中性</td><td class="zh">-о / -е 结尾</td><td class="es">окно 窗户 · море 海</td><td class="es">окна · моря</td></tr>
-            </table>
-          </div>
-        </div>
-
-        <div class="grammar-block">
-          <h3>规则动词现在时变位（回顾）</h3>
-          <p class="g-desc">动词现在时按人称变化，分两大类：<b>第一变位法</b>（-ать/-ять/-еть）和<b>第二变位法</b>（-ить）。A2 要求在此基础上掌握<b>全部六个人称 + 过去时 + 将来时</b>。</p>
-          <div class="table-wrap">
-            <table class="tbl">
-              <tr>
-                <th>人称</th><th>第一变位 читать 读</th><th>第二变位 говорить 说</th><th>жить 居住</th><th>работать 工作</th>
-              </tr>
-              <tr><td class="zh">я</td><td class="es">читаю</td><td class="es">говорю</td><td class="es">живу</td><td class="es">работаю</td></tr>
-              <tr><td class="zh">ты</td><td class="es">читаешь</td><td class="es">говоришь</td><td class="es">живёшь</td><td class="es">работаешь</td></tr>
-              <tr><td class="zh">он/она</td><td class="es">читает</td><td class="es">говорит</td><td class="es">живёт</td><td class="es">работает</td></tr>
-              <tr><td class="zh">мы</td><td class="es">читаем</td><td class="es">говорим</td><td class="es">живём</td><td class="es">работаем</td></tr>
-              <tr><td class="zh">вы</td><td class="es">читаете</td><td class="es">говорите</td><td class="es">живёте</td><td class="es">работаете</td></tr>
-              <tr><td class="zh">они</td><td class="es">читают</td><td class="es">говорят</td><td class="es">живут</td><td class="es">работают</td></tr>
-            </table>
-          </div>
-          <p class="tbl-note"><b>高频不规则动词变位（必背）：</b>быть（现在时省略）、есть/пить/идти/хотеть 等。例如 <span class="ex">хотеть：хочу, хочешь, хочет, хотим, хотите, хотят</span>。</p>
-        </div>
-      </section>
-
-      <!-- ============ Case system ============ -->
-      <section id="padezhi">
-        <div class="sec-head">
-          <h2>六格系统</h2>
-          <span class="es-tag">Падежи</span>
-        </div>
-        <p class="sec-desc">俄语名词、形容词、代词都有 <b>6 个格</b>，通过词尾变化表达在句中的作用（主语、宾语、地点、工具等）。这是 A2 语法<b>最重要的考点</b>，词汇语法子测试约 100 题中格相关占比最高。下面按格逐一讲解，并给出名词单数变格表。</p>
-
-        <div class="note-banner">
-          <b>六格速记：</b>
-          <span class="case-chip c-nom">1 主格</span>
-          <span class="case-chip c-gen">2 属格</span>
-          <span class="case-chip c-dat">3 与格</span>
-          <span class="case-chip c-acc">4 宾格</span>
-          <span class="case-chip c-ins">5 工具格</span>
-          <span class="case-chip c-pre">6 前置格</span>
-          <br>记忆口诀："主属与宾工前"；主格回答 <span class="ex">кто? что?</span>（谁？什么？），其余各格在下方详述。
-        </div>
-
-        <div class="grammar-block">
-          <h3>名词单数变格总表（以 стол 桌子 / книга 书 / окно 窗户 为例）</h3>
-          <div class="table-wrap">
-            <table class="tbl">
-              <tr><th>格</th><th>问题</th><th>阳性 стол</th><th>阴性 книга</th><th>中性 окно</th><th>典型用法</th></tr>
-              <tr><td class="zh">1 主格</td><td class="es">кто? что?</td><td class="es">стол</td><td class="es">книга</td><td class="es">окно</td><td class="zh">主语（是什么/谁）</td></tr>
-              <tr><td class="zh">2 属格</td><td class="es">кого? чего?</td><td class="es">стола</td><td class="es">книги</td><td class="es">окна</td><td class="zh">所属、否定、数量（"的"）</td></tr>
-              <tr><td class="zh">3 与格</td><td class="es">кому? чему?</td><td class="es">столу</td><td class="es">книге</td><td class="es">окну</td><td class="zh">间接宾语（"给谁"）</td></tr>
-              <tr><td class="zh">4 宾格</td><td class="es">кого? что?</td><td class="es">стол</td><td class="es">книгу</td><td class="es">окно</td><td class="zh">直接宾语（动作对象）</td></tr>
-              <tr><td class="zh">5 工具格</td><td class="es">кем? чем?</td><td class="es">столом</td><td class="es">книгой</td><td class="es">окном</td><td class="zh">工具、方式、一起（"用/和"）</td></tr>
-              <tr><td class="zh">6 前置格</td><td class="es">о ком? о чём?</td><td class="es">о столе</td><td class="es">о книге</td><td class="es">об окне</td><td class="zh">只用于前置词后（в/на/о）</td></tr>
-            </table>
-          </div>
-          <p class="tbl-note"><b>变格词尾规律速记：</b>阳性单数属格 -а/-я、与格 -у/-ю、工具格 -ом/-ем；阴性属格 -ы/-и、与格/前置格 -е、工具格 -ой/-ей；中性同阳性（宾格同主格）。<b>前置格永远需要前置词</b>（в 在里 / на 在…上 / о 关于）。</p>
-        </div>
-
-        <div class="cards-2col">
-          <div class="info-card">
-            <h3><span class="mark c-gen">2</span> 属格主要用法</h3>
-            <p>表示<b>所属</b>（相当于"的"）、<b>否定</b>（нет 后）、<b>数量</b>（数字 2~4 与 5+ 后词形不同）及<b>来源</b>（из/с/от 后）。</p>
-            <span class="ex">книга брата 哥哥的书 <i>·</i> У меня нет времени. 我没有时间 <i>·</i> два стола / пять столов 两张/五张桌子</span>
-          </div>
-          <div class="info-card alt">
-            <h3><span class="mark c-dat">3</span> 与格主要用法</h3>
-            <p>表示<b>间接宾语</b>（给谁/对谁），常用于 <span class="ex">дать 给、помогать 帮助、нравиться 喜欢、звонить 打电话</span> 等动词后。</p>
-            <span class="ex">Я даю книгу брату. 我把书给哥哥 <i>·</i> Мне нравится Москва. 我喜欢莫斯科 <i>·</i> Помоги мне! 帮帮我！</span>
-          </div>
-          <div class="info-card alt">
-            <h3><span class="mark c-acc">4</span> 宾格主要用法</h3>
-            <p>表示<b>动作的直接对象</b>。注意：阳性非动物名词宾格=主格，阳性动物名词与阴性名词宾格词尾变化（如 <span class="ex">вижу брата 看见哥哥、вижу книгу 看见书</span>）。</p>
-            <span class="ex">Я читаю книгу. 我读书 <i>·</i> Мы любим Россию. 我们爱俄罗斯 <i>·</i> Я вижу Антона. 我看见安东</span>
-          </div>
-          <div class="info-card">
-            <h3><span class="mark c-ins">5</span> 工具格主要用法</h3>
-            <p>表示<b>工具/手段</b>（用…）、<b>职业</b>（作为…）、<b>伴随</b>（с + 工具格 = 和…一起）。</p>
-            <span class="ex">Я пишу ручкой. 我用钢笔写字 <i>·</i> Он работает врачом. 他是医生 <i>·</i> Я гуляю с другом. 我和朋友散步</span>
-          </div>
-        </div>
-
-        <div class="grammar-block">
-          <h3>人称代词变格（A2 必背）</h3>
-          <p class="g-desc">代词变格在口语中极高频，例如 <span class="ex">меня（我）、мне（给我/对我）、меня（宾语）、мной（用我）、обо мне（关于我）</span>。</p>
-          <div class="table-wrap">
-            <table class="tbl">
-              <tr><th>格</th><th>я 我</th><th>ты 你</th><th>он/оно 他/它</th><th>она 她</th><th>мы 我们</th><th>вы 你们</th><th>они 他们</th></tr>
-              <tr><td class="zh">1 主格</td><td class="es">я</td><td class="es">ты</td><td class="es">он</td><td class="es">она</td><td class="es">мы</td><td class="es">вы</td><td class="es">они</td></tr>
-              <tr><td class="zh">2 属格</td><td class="es">меня</td><td class="es">тебя</td><td class="es">его</td><td class="es">её</td><td class="es">нас</td><td class="es">вас</td><td class="es">их</td></tr>
-              <tr><td class="zh">3 与格</td><td class="es">мне</td><td class="es">тебе</td><td class="es">ему</td><td class="es">ей</td><td class="es">нам</td><td class="es">вам</td><td class="es">им</td></tr>
-              <tr><td class="zh">4 宾格</td><td class="es">меня</td><td class="es">тебя</td><td class="es">его</td><td class="es">её</td><td class="es">нас</td><td class="es">вас</td><td class="es">их</td></tr>
-              <tr><td class="zh">5 工具格</td><td class="es">мной</td><td class="es">тобой</td><td class="es">им</td><td class="es">ей</td><td class="es">нами</td><td class="es">вами</td><td class="es">ими</td></tr>
-              <tr><td class="zh">6 前置格</td><td class="es">обо мне</td><td class="es">о тебе</td><td class="es">о нём</td><td class="es">о ней</td><td class="es">о нас</td><td class="es">о вас</td><td class="es">о них</td></tr>
-            </table>
-          </div>
-        </div>
-
-        <div class="grammar-block">
-          <h3>形容词变格（修饰名词须性数格一致）</h3>
-          <p class="g-desc">形容词必须与所修饰名词在<b>性、数、格</b>上完全一致。以 <span class="ex">новый（新的）</span>为例：<span class="ex">новый дом（阳）、новая книга（阴）、новое окно（中）</span>。</p>
-          <div class="table-wrap">
-            <table class="tbl">
-              <tr><th>格</th><th>阳性 новый</th><th>阴性 новая</th><th>中性 новое</th><th>复数 новые</th></tr>
-              <tr><td class="zh">1 主格</td><td class="es">новый дом</td><td class="es">новая книга</td><td class="es">новое окно</td><td class="es">новые дома</td></tr>
-              <tr><td class="zh">2 属格</td><td class="es">нового дома</td><td class="es">новой книги</td><td class="es">нового окна</td><td class="es">новых домов</td></tr>
-              <tr><td class="zh">3 与格</td><td class="es">новому дому</td><td class="es">новой книге</td><td class="es">новому окну</td><td class="es">новым домам</td></tr>
-              <tr><td class="zh">4 宾格</td><td class="es">новый дом</td><td class="es">новую книгу</td><td class="es">новое окно</td><td class="es">новые дома</td></tr>
-              <tr><td class="zh">5 工具格</td><td class="es">новым домом</td><td class="es">новой книгой</td><td class="es">новым окном</td><td class="es">новыми домами</td></tr>
-              <tr><td class="zh">6 前置格</td><td class="es">о новом доме</td><td class="es">о новой книге</td><td class="es">о новом окне</td><td class="es">о новых домах</td></tr>
-            </table>
-          </div>
-          <p class="tbl-note"><b>形容词词尾规律：</b>阳性 -ый/-ий/-ой，阴性 -ая/-яя，中性 -ое/-ее，复数 -ые/-ие；变格时把词尾替换为对应格的 <b>-ого/-ой/-ому/-ую/-ым/-ыми/-ых</b> 等（与名词词尾呼应）。</p>
-        </div>
-      </section>
-
-      <!-- ============ Tenses ============ -->
-      <section id="vremena">
-        <div class="sec-head">
-          <h2>时态：过去时与将来时</h2>
-          <span class="es-tag">Времена глагола</span>
-        </div>
-        <p class="sec-desc">A2 要求在现在时基础上掌握<b>过去时</b>和<b>将来时</b>。过去时按"性数"变化（不按人称），将来时分为未完成体（быть+不定式）和完成体（变位）两种构成方式。</p>
-
-        <div class="grammar-block">
-          <h3>过去时（按性数变化，不按人称）</h3>
-          <p class="g-desc">过去时词尾规律：阳性 -л，阴性 -ла，中性 -ло，复数 -ли。只需记住 <span class="ex">он читал / она читала / они читали</span> 即可推导所有人称。</p>
-          <div class="table-wrap">
-            <table class="tbl">
-              <tr><th>动词</th><th>я/он（阳）</th><th>я/она（阴）</th><th>оно（中）</th><th>мы/вы/они（复）</th></tr>
-              <tr><td class="es">читать 读</td><td class="es">читал</td><td class="es">читала</td><td class="es">читало</td><td class="es">читали</td></tr>
-              <tr><td class="es">говорить 说</td><td class="es">говорил</td><td class="es">говорила</td><td class="es">говорило</td><td class="es">говорили</td></tr>
-              <tr><td class="es">быть 是</td><td class="es">был</td><td class="es">была</td><td class="es">было</td><td class="es">были</td></tr>
-              <tr><td class="es">жить 居住</td><td class="es">жил</td><td class="es">жила</td><td class="es">жило</td><td class="es">жили</td></tr>
-            </table>
-          </div>
-          <p class="tbl-note"><b>注意：</b>否定过去时常用属格：<span class="ex">Меня не было дома. 我当时不在家</span>（не было + 属格）。</p>
-        </div>
-
-        <div class="grammar-block">
-          <h3>将来时（两种构成）</h3>
-          <p class="g-desc"><b>未完成体将来时</b> = быть 变位 + 动词不定式（表"将要持续/习惯性动作"）；<b>完成体将来时</b> = 完成体动词直接按现在时方式变位（表"将要完成"）。</p>
-          <div class="table-wrap">
-            <table class="tbl">
-              <tr><th>人称</th><th>未完成体：буду читать 将要读</th><th>完成体：прочитаю 将读完</th></tr>
-              <tr><td class="zh">я</td><td class="es">я буду читать</td><td class="es">я прочитаю</td></tr>
-              <tr><td class="zh">ты</td><td class="es">ты будешь читать</td><td class="es">ты прочитаешь</td></tr>
-              <tr><td class="zh">он/она</td><td class="es">будет читать</td><td class="es">прочитает</td></tr>
-              <tr><td class="zh">мы</td><td class="es">будем читать</td><td class="es">прочитаем</td></tr>
-              <tr><td class="zh">вы</td><td class="es">будете читать</td><td class="es">прочитаете</td></tr>
-              <tr><td class="zh">они</td><td class="es">будут читать</td><td class="es">прочитают</td></tr>
-            </table>
-          </div>
-          <p class="tbl-note"><b>运用示例：</b><span class="ex">Завтра я буду читать книгу. 明天我要读书（过程）· Завтра я прочитаю эту книгу. 明天我会读完这本书（结果）</span>。</p>
-        </div>
-      </section>
-
-      <!-- ============ Verbal aspect ============ -->
-      <section id="vid">
-        <div class="sec-head">
-          <h2>动词体：完成体与未完成体</h2>
-          <span class="es-tag">Вид глагола</span>
-        </div>
-        <p class="sec-desc">俄语动词分<b>未完成体</b>（强调过程、习惯、持续）和<b>完成体</b>（强调结果、一次性完成）。绝大多数动词以"对"出现（一对两词）。这是 A2 语法的重要考点，也直接影响将来时和过去时的选择。</p>
-
-        <div class="grammar-block">
-          <h3>高频动词体配对（必背）</h3>
-          <div class="table-wrap">
-            <table class="tbl">
-              <tr><th>未完成体</th><th>含义</th><th>完成体</th><th>例句对比</th></tr>
-              <tr><td class="es">читать</td><td class="zh">读（过程）</td><td class="es">прочитать</td><td class="es">читать книгу / прочитать книгу</td></tr>
-              <tr><td class="es">писать</td><td class="zh">写</td><td class="es">написать</td><td class="es">писать письмо / написать письмо</td></tr>
-              <tr><td class="es">делать</td><td class="zh">做</td><td class="es">сделать</td><td class="es">делать уроки / сделать уроки</td></tr>
-              <tr><td class="es">покупать</td><td class="zh">买</td><td class="es">купить</td><td class="es">покупать хлеб / купить хлеб</td></tr>
-              <tr><td class="es">смотреть</td><td class="zh">看</td><td class="es">посмотреть</td><td class="es">смотреть фильм / посмотреть фильм</td></tr>
-              <tr><td class="es">говорить</td><td class="zh">说</td><td class="es">сказать</td><td class="es">говорить по-русски / сказать слово</td></tr>
-              <tr><td class="es">есть</td><td class="zh">吃</td><td class="es">съесть</td><td class="es">есть суп / съесть суп</td></tr>
-              <tr><td class="es">пить</td><td class="zh">喝</td><td class="es">выпить</td><td class="es">пить чай / выпить чай</td></tr>
-              <tr><td class="es">открывать</td><td class="zh">打开</td><td class="es">открыть</td><td class="es">открывать окно / открыть окно</td></tr>
-              <tr><td class="es">начинать</td><td class="zh">开始</td><td class="es">начать</td><td class="es">начинать урок / начать урок</td></tr>
-            </table>
-          </div>
-        </div>
-
-        <div class="cards-2col">
-          <div class="info-card">
-            <h3><span class="mark">未</span> 未完成体用在哪</h3>
-            <p>① 强调<b>过程</b>：<span class="ex">Я читал книгу два часа. 我读了两个小时书</span>；② <b>习惯/反复</b>：<span class="ex">Я каждое утро пью кофе. 我每天早上喝咖啡</span>；③ <b>正在发生</b>。</p>
-          </div>
-          <div class="info-card alt">
-            <h3><span class="mark">完</span> 完成体用在哪</h3>
-            <p>① 强调<b>结果</b>：<span class="ex">Я прочитал книгу. 我把书读完了</span>；② <b>一次性完成</b>：<span class="ex">Я купил хлеб. 我买好了面包</span>；③ <b>将来的确定结果</b>：<span class="ex">Завтра я позвоню тебе. 明天我给你打电话</span>。</p>
-          </div>
-        </div>
-      </section>
-
-      <!-- ============ Verbs of motion ============ -->
-      <section id="dvizhenie">
-        <div class="sec-head">
-          <h2>运动动词</h2>
-          <span class="es-tag">Глаголы движения</span>
-        </div>
-        <p class="sec-desc">俄语运动动词是 A2 的重点和难点：每个动作通常有<b>定向</b>（正在去某处）和<b>不定向</b>（往返/习惯）两个未完成体，加上完成体与<b>前缀</b>组合，可表达"去/来/进入/出来/到达"等丰富含义。</p>
-
-        <div class="grammar-block">
-          <h3>成对运动动词（未完成体）</h3>
-          <div class="table-wrap">
-            <table class="tbl">
-              <tr><th>定向（正在去）</th><th>不定向（往返/习惯）</th><th>含义</th><th>例句</th></tr>
-              <tr><td class="es">идти</td><td class="es">ходить</td><td class="zh">步行</td><td class="es">Я иду в магазин. / Я хожу в парк по утрам.</td></tr>
-              <tr><td class="es">ехать</td><td class="es">ездить</td><td class="zh">乘车</td><td class="es">Мы едем в Москву. / Мы ездим в Москву летом.</td></tr>
-              <tr><td class="es">бежать</td><td class="es">бегать</td><td class="zh">跑</td><td class="es">Он бежит в школу. / Он бегает каждое утро.</td></tr>
-              <tr><td class="es">лететь</td><td class="es">летать</td><td class="zh">飞</td><td class="es">Самолёт летит в Пекин. / Он летает на родину.</td></tr>
-              <tr><td class="es">плыть</td><td class="es">плавать</td><td class="zh">游泳/航行</td><td class="es">Она плывёт к берегу. / Я плаваю по субботам.</td></tr>
-              <tr><td class="es">нести</td><td class="es">носить</td><td class="zh">携带（拿）</td><td class="es">Он несёт сумку. / Она носит очки.</td></tr>
-            </table>
-          </div>
-          <p class="tbl-note"><b>区分技巧：</b>定向 = "此刻正在去"（单程）；不定向 = "往返过/经常去"（多程或习惯）。问"你去哪？"用 <span class="ex">Куда ты идёшь?</span></p>
-        </div>
-
-        <div class="grammar-block">
-          <h3>带前缀的运动动词（A2 进阶）</h3>
-          <p class="g-desc">前缀改变方向或结果，常见组合：<b>по-</b>（开始去）、<b>при-</b>（来到）、<b>у-</b>（离开）、<b>в-/во-</b>（进入）、<b>вы-</b>（出来）、<b>до-</b>（到达）。</p>
-          <div class="table-wrap">
-            <table class="tbl">
-              <tr><th>前缀</th><th>完成体</th><th>含义</th><th>例句</th></tr>
-              <tr><td class="zh">по-</td><td class="es">пойти / поехать</td><td class="zh">出发去</td><td class="es">Я пошёл в школу. 我去上学了</td></tr>
-              <tr><td class="zh">при-</td><td class="es">прийти / приехать</td><td class="zh">来到（到达）</td><td class="es">Он приехал в Москву. 他来到了莫斯科</td></tr>
-              <tr><td class="zh">у-</td><td class="es">уйти / уехать</td><td class="zh">离开</td><td class="es">Она ушла домой. 她回家去了</td></tr>
-              <tr><td class="zh">в-</td><td class="es">войти / въехать</td><td class="zh">进入</td><td class="es">Мы вошли в комнату. 我们进了房间</td></tr>
-              <tr><td class="zh">вы-</td><td class="es">выйти / выехать</td><td class="zh">出来</td><td class="es">Он вышел из дома. 他出了家门</td></tr>
-              <tr><td class="zh">до-</td><td class="es">дойти / доехать</td><td class="zh">到达（辛苦到达）</td><td class="es">Мы дошли до парка. 我们走到了公园</td></tr>
-            </table>
-          </div>
-          <p class="tbl-note"><b>注意前置词搭配：</b>"去某地"用 <span class="ex">в/на + 宾格</span>（<span class="ex">в школу</span>）；"从某地来"用 <span class="ex">из/с + 属格</span>（<span class="ex">из школы</span>）。</p>
-        </div>
-      </section>
-
-      <!-- ============ Complex sentences ============ -->
-      <section id="slozhnye">
-        <div class="sec-head">
-          <h2>复合句</h2>
-          <span class="es-tag">Сложные предложения</span>
-        </div>
-        <p class="sec-desc">A2 写作和口语要求能连接<b>两个及以上简单句</b>，常用连接词：<b>который</b>（定语从句）、<b>когда</b>（时间）、<b>если</b>（条件）、<b>потому что / поэтому</b>（因果）、<b>чтобы</b>（目的）。掌握这些，作文立刻上一个档次。</p>
-
-        <div class="grammar-block">
-          <h3>常用连接词与句型</h3>
-          <div class="table-wrap">
-            <table class="tbl">
-              <tr><th>连接词</th><th>功能</th><th>例句</th></tr>
-              <tr><td class="es">который</td><td class="zh">定语从句（"那个…的"）</td><td class="es">Я знаю человека, который живёт в Москве. 我认识住在莫斯科的那个人</td></tr>
-              <tr><td class="es">когда</td><td class="zh">时间（"当…时"）</td><td class="es">Когда я был в России, я много путешествовал. 我在俄罗斯时旅行了很多</td></tr>
-              <tr><td class="es">если</td><td class="zh">条件（"如果"）</td><td class="es">Если будет время, я приду. 如果有时间我就来</td></tr>
-              <tr><td class="es">потому что</td><td class="zh">原因（"因为"）</td><td class="es">Я учу русский, потому что он мне нравится. 我学俄语，因为我喜欢它</td></tr>
-              <tr><td class="es">поэтому</td><td class="zh">结果（"所以"）</td><td class="es">Я много занимаюсь, поэтому хорошо говорю. 我很努力，所以说得不错</td></tr>
-              <tr><td class="es">чтобы</td><td class="zh">目的（"为了"）</td><td class="es">Я учу русский, чтобы работать в России. 我学俄语是为了在俄罗斯工作</td></tr>
-            </table>
-          </div>
-          <p class="tbl-note"><b>который 的性数格要一致：</b>который 指代先行词，须与其<b>性、数、格</b>一致——<span class="ex">человек, который…（阳单主格）；книга, которую я читаю（阴单宾格）；друзья, с которыми я гуляю（复工具格）</span>。</p>
-        </div>
-
-        <div class="cards-3col">
-          <div class="info-card">
-            <h3><span class="mark">к</span> чтобы 后动词不定式</h3>
-            <p>主句主语与从句主语<b>相同时</b>，чтобы 后用<b>不定式</b>：<span class="ex">Я пришёл, чтобы помочь тебе.</span></p>
-          </div>
-          <div class="info-card alt">
-            <h3><span class="mark">п</span> потому что 与 поэтому</h3>
-            <p><b>потому что</b> 放在原因从句前（因为…）；<b>поэтому</b> 放在结果句前（所以…），两者不能互换位置。</p>
-          </div>
-          <div class="info-card">
-            <h3><span class="mark">к</span> когда 从句位置灵活</h3>
-            <p>时间从句可放<b>主句前或后</b>：<span class="ex">Когда я читаю, я пью чай. / Я пью чай, когда читаю.</span></p>
-          </div>
-        </div>
-      </section>
-
-      <!-- ============ Vocabulary ============ -->
-      <section id="vocabulario">
-        <div class="sec-head">
-          <h2>高频词汇（12 大主题）</h2>
-          <span class="es-tag">Словарь · 1300 слов</span>
-        </div>
-        <p class="sec-desc">按 ТРКИ A2 国家标准的交际主题整理高频词汇，从 A1 的 6 个主题扩展到 <b>12 大主题</b>，覆盖购物、交通、健康、天气、工作学习等考试场景。点击单词可试听发音。</p>
-
-        <div class="tabs" id="vocab-tabs">
-          <button class="tab-btn active" data-tab="numeros">数字</button>
-          <button class="tab-btn" data-tab="dias">时间</button>
-          <button class="tab-btn" data-tab="colores">颜色</button>
-          <button class="tab-btn" data-tab="familia">家庭</button>
-          <button class="tab-btn" data-tab="comida">食物</button>
-          <button class="tab-btn" data-tab="gorod">城市交通</button>
-          <button class="tab-btn" data-tab="magazin">购物</button>
-          <button class="tab-btn" data-tab="zdorovie">健康</button>
-          <button class="tab-btn" data-tab="pogoda">天气</button>
-          <button class="tab-btn" data-tab="rabota">工作学习</button>
-          <button class="tab-btn" data-tab="otdyh">休闲</button>
-          <button class="tab-btn" data-tab="saludos">问候</button>
-        </div>
-
-        <div id="vocab-panels">
+        <p class="sec-desc">12 课按 ТРКИ A2 大纲递进编排：先巩固基础（1-2 课），再逐格攻克（3-6 课），随后学习时态与动词体（7-10 课），最后掌握运动动词与复合句（11-12 课）。<b>建议按顺序学习，每课完成后做单元自测再进入下一课。</b></p>
+        <div class="course-grid" id="course-grid">
           <!-- 由 assets/app.js 生成 -->
         </div>
       </section>
 
-      <!-- ============ Phrases ============ -->
-      <section id="frases">
+      <!-- ============ Lesson ============ -->
+      <section id="urok">
         <div class="sec-head">
-          <h2>必备句型（60+ 句）</h2>
-          <span class="es-tag">Полезные фразы</span>
+          <h2>课时学习</h2>
+          <span class="es-tag">Урок</span>
         </div>
-        <p class="sec-desc">覆盖 A2 考试全部交际场景的万能句型：问候、自我介绍、购物、问路、点餐、就医、电话、表达意见等。长句带"长句"标签。点击句子可试听。</p>
-
-        <div class="phrase-grid" id="phrase-grid">
+        <div id="lesson-panel">
           <!-- 由 assets/app.js 生成 -->
         </div>
       </section>
 
-      <!-- ============ Essays ============ -->
-      <section id="composiciones">
+      <!-- ============ Grammar handbook ============ -->
+      <section id="spravochnik">
         <div class="sec-head">
-          <h2>写作范文（6 篇）</h2>
-          <span class="es-tag">Сочинения</span>
+          <h2>语法手册</h2>
+          <span class="es-tag">Справочник</span>
         </div>
-        <p class="sec-desc">A2 写作考试要写"个人信息 + 一篇 10~15 句的短文"。以下 6 篇范文覆盖 ТРКИ A2 官方主题：<b>自我介绍、我的家庭、我的工作日、我的城市、健康与医生、天气与季节</b>。逐句可点击试听，建议背诵句式后替换为自己的信息。</p>
-
-        <div class="essay-grid" id="essay-grid">
+        <p class="sec-desc">学习过程中的快速查阅表：六格总览、代词变格、形容词变格、过去时与将来时、动词体配对、运动动词前缀。点击可展开查看。</p>
+        <div id="handbook">
           <!-- 由 assets/app.js 生成 -->
-        </div>
-
-        <div class="note-banner">
-          <b>写作小贴士（A2）：</b>要求比 A1 更高——必须会用<b>过去时和将来时</b>叙述、会用 <span class="ex">который / потому что / поэтому</span> 连接句子、句长 10~15 词。每篇范文都用到了这些结构，写完后对照检查：人称与动词变位一致、名词与形容词性数格一致、句末标点完整。
         </div>
       </section>
 
@@ -1405,87 +422,9 @@
           <h2>ТРКИ A2 考试指南</h2>
           <span class="es-tag">Экзамен ТБУ</span>
         </div>
-        <p class="sec-desc">ТРКИ A2（ТБУ 基础级）是俄罗斯国家对外俄语等级考试的第二级。达到 A2 证明考生能在<b>日常生活、学习、社会文化</b>领域与俄语母语者进行基本交流：读懂常见公告与广告、听懂日常对话、写简单信件、就熟悉话题交谈，词汇量约 <b>1300 词</b>，通常需要 A1 之后约 180~200 学时<sup><a href="#cite-2">[2]</a></sup>。</p>
-
-        <div class="exam-grid">
-          <div class="exam-card">
-            <h3><span class="badge">Тест 1</span> 词汇与语法</h3>
-            <div class="meta"><span>50 分钟</span><span>100 题</span><span>100 分</span></div>
-            <p>考察<b>词汇、六格变格（名词/形容词/代词）、动词系统、运动动词（含前缀）、连接词</b>，全部为客观题<sup><a href="#cite-3">[3]</a></sup>。</p>
-            <ul>
-              <li>词汇题 + 变格/变位题 + 前置词与连接词选择</li>
-              <li>难点：格词尾辨析、动词体选择、运动动词前缀</li>
-            </ul>
-          </div>
-
-          <div class="exam-card">
-            <h3><span class="badge green">Тест 2</span> 阅读</h3>
-            <div class="meta"><span>50 分钟</span><span>30 题</span><span>100 分</span></div>
-            <p>读懂<b>生活短文、公告、广告、短篇叙事</b>（每篇 250~300 词），提取主题与细节信息。</p>
-            <ul>
-              <li>题型：多项选择 + 信息配对 + 判断</li>
-              <li>文本含复合句，需熟悉 который/когда/если 等结构</li>
-            </ul>
-          </div>
-
-          <div class="exam-card">
-            <h3><span class="badge">Тест 3</span> 听力</h3>
-            <div class="meta"><span>30 分钟</span><span>25 题</span><span>100 分</span></div>
-            <p>听懂<b>日常对话、通知、简短独白</b>（每段播放两遍），捕捉人物、地点、时间、数字等关键信息。</p>
-            <ul>
-              <li>内容：购物、交通、就医、电话等生活场景</li>
-              <li>比 A1 语速略快、文本更长，需抓"谁在做什么"</li>
-            </ul>
-          </div>
-
-          <div class="exam-card">
-            <h3><span class="badge green">Тест 4</span> 写作</h3>
-            <div class="meta"><span>50 分钟</span><span>2 项任务</span><span>100 分</span></div>
-            <p>完成<b>个人信息表</b>和<b>一篇 10~15 句的命题短文</b>（如"我的城市""我的工作日"），要求使用过去时/将来时与复合句。</p>
-            <ul>
-              <li>任务 1：填写个人信息/申请表</li>
-              <li>任务 2：按要点写短文（如介绍城市、周末安排）</li>
-            </ul>
-          </div>
-
-          <div class="exam-card">
-            <h3><span class="badge">Тест 5</span> 口语</h3>
-            <div class="meta"><span>25 分钟</span><span>4 大题/12 项</span><span>100 分</span></div>
-            <p>与考官一对一交流：<b>自我介绍、回答问题、情景对话、看图/主题陈述</b>。</p>
-            <ul>
-              <li>任务 1-2：自我介绍 + 回答日常问题（家庭、工作、爱好）</li>
-              <li>任务 3-4：情景应答（购物/问路）+ 主题陈述（我的城市等）</li>
-            </ul>
-          </div>
-
-          <div class="exam-card">
-            <h3><span class="badge green">评分与通过</span> 各单项达标制</h3>
-            <div class="meta"><span>总时长约 4 小时</span><span>5 项各 100 分</span></div>
-            <p>每个子测试满分 100 分，<b>每项需达到 66% 以上（约 66 分）</b>；其中最多允许 <b>1~2 个子测试为 60%</b>，其余须 66% 以上<sup><a href="#cite-3">[3]</a></sup>。</p>
-            <ul>
-              <li>A2 证书是申请俄罗斯临时居留（РВП）的语言证明</li>
-              <li>词汇语法+阅读+写作通常同日笔试，听力、口语单独安排</li>
-            </ul>
-          </div>
-        </div>
-
-        <div class="note-banner">
-          <b>评分规则：</b>ТРКИ A2 五个子测试各 100 分，通过标准为<b>每项 ≥ 66%</b>（最多允许 1~2 项 60%），五科全部达标才可取得证书<sup><a href="#cite-3">[3]</a></sup>。与 A1 相比，词汇语法题量从 70 题增至 100 题，阅读文本更长（250~300 词），口语需进行完整的情景对话与主题陈述。
-        </div>
-
-        <div style="margin-top:1.6rem;">
-          <div class="sec-head" style="border-image:linear-gradient(90deg, var(--accent2), rgba(31,122,140,0)) 1;">
-            <h2 style="font-size:1.2rem;">A2 备考建议</h2>
-            <span class="es-tag">Советы</span>
-          </div>
-          <ul class="tips">
-            <li><span class="num">1</span><span><b>攻克六格。</b>把本页六格表打印出来，每天朗读一列（<span class="ex">стол/книга/окно</span> 各格），配合形容词变格做替换练习，这是词汇语法子测试拿分的关键。</span></li>
-            <li><span class="num">2</span><span><b>动词体成对记。</b>每学一个动词就记它的"对"（<span class="ex">читать/прочитать、покупать/купить</span>），并用"过程 vs 结果"造句区分。</span></li>
-            <li><span class="num">3</span><span><b>运动动词按场景练。</b>用"我今天去…"（<span class="ex">идти/ехать</span>）和"我经常去…"（<span class="ex">ходить/ездить</span>）两个场景反复造句，再扩展带前缀的 <span class="ex">прийти/уйти/выйти</span>。</span></li>
-            <li><span class="num">4</span><span><b>复合句提前练。</b>A2 作文必须有从句。每天写 3 个 <span class="ex">который</span> 句和 2 个 <span class="ex">потому что</span> 句，坚持两周即成习惯。</span></li>
-            <li><span class="num">5</span><span><b>听力多听生活场景。</b>利用本页词汇和句型跟读，重点练"数字+时间+地点"组合信息，这是听力 25 题的高频考点。</span></li>
-            <li><span class="num">6</span><span><b>做官方样题。</b>圣彼得堡国立大学、普希金学院等提供 A2 样题（Пробный тест ТБУ），考前完整模拟一遍，重点限时训练词汇语法 100 题<sup><a href="#cite-4">[4]</a></sup>。</span></li>
-          </ul>
+        <p class="sec-desc">ТРКИ A2（ТБУ 基础级）：词汇量约 <b>1300 词</b>，需掌握<b>六格变格、过去时与将来时、动词体、运动动词（含前缀）、常用复合句</b><sup><a href="#cite-2">[2]</a></sup>。本课程 12 课即按此大纲设计，学完即具备考试所需语法与词汇框架。</p>
+        <div id="exam-detail">
+          <!-- 由 assets/app.js 生成 -->
         </div>
       </section>
 
@@ -1497,28 +436,25 @@
         <h2>参考来源</h2>
         <ol>
           <li id="cite-1">
-            <span class="src-title">Санкт-Петербургский государственный университет (SPbU), Вводно-фонетический курс：现代俄语字母表共 33 个字母（10 元音、21 辅音、2 无音符号）。</span>
+            <span class="src-title">Санкт-Петербургский государственный университет (SPbU), Вводно-фонетический курс：现代俄语字母表共 33 个字母。</span>
             <a class="src-url" href="https://elementaryrussian.spbu.ru/lessons/l1.html" target="_blank" rel="noopener">https://elementaryrussian.spbu.ru/lessons/l1.html</a>
           </li>
           <li id="cite-2">
-            <span class="src-title">Государственный стандарт РКИ, Базовый уровень (А2)：A2 交际能力要求、主题范围、语法体系（六格、时态、动词体、运动动词、复合句）、词汇量 1300 词。</span>
+            <span class="src-title">Государственный стандарт РКИ, Базовый уровень (А2)：A2 语法体系（六格、时态、动词体、运动动词、复合句）、词汇量 1300 词、交际主题范围。</span>
             <a class="src-url" href="https://urya.ru/docs/53-urovni_rki_bazovyi_uroven_a2.html" target="_blank" rel="noopener">https://urya.ru/docs/53-urovni_rki_bazovyi_uroven_a2.html</a>
           </li>
           <li id="cite-3">
-            <span class="src-title">СПбГУ, Центр языкового тестирования (webinar)：ТРКИ 各级别子测试结构与时长（A2：词汇语法 100 题/50 分、阅读 30 题/50 分、听力 25 题/30 分），通过标准 66%（最多 1~2 项 60%）。</span>
+            <span class="src-title">СПбГУ, Центр языкового тестирования：ТРКИ 各级别子测试结构与时长（A2：词汇语法 100 题/50 分、阅读 30 题/50 分、听力 25 题/30 分），通过标准 66%。</span>
             <a class="src-url" href="https://testingcenter.spbu.ru/images/webinars/webinar_5_test_rki.pdf" target="_blank" rel="noopener">https://testingcenter.spbu.ru/images/webinars/webinar_5_test_rki.pdf</a>
-          </li>
-          <li id="cite-4">
-            <span class="src-title">Пушкинский институт, Тестирование ТРКИ：ТБУ 基础级考试时长约 4 小时、5 个子测试的官方说明。</span>
-            <a class="src-url" href="https://www.pushkin.institute/certificates/trki/" target="_blank" rel="noopener">https://www.pushkin.institute/certificates/trki/</a>
           </li>
         </ol>
       </div>
-      <p class="fine">Учим русский язык для ТРКИ А2 · 郦书甲老师的俄语小课堂 · 发音提示为近似音，建议结合音频练习</p>
+      <p class="fine">Системный курс русского языка · 郦书甲老师的俄语小课堂 · 发音提示为近似音，建议结合音频练习</p>
     </footer>
 
   </article>
 
+  <script src="./assets/data-lessons.js"></script>
   <script src="./assets/app.js"></script>
 </body>
 </html>
